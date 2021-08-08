@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>SerDigital64 Blog</title>
-    <link>https://serdigital64.github.io/categories/reviews/</link>
-    <description>Recent content on SerDigital64 Blog</description>
+    <title>ansible on SerDigital64 Blog</title>
+    <link>https://serdigital64.github.io/tags/ansible/</link>
+    <description>Recent content in ansible on SerDigital64 Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 17 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://serdigital64.github.io/categories/reviews/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://serdigital64.github.io/tags/ansible/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ansible Concepts for SysAdmins</title>
       <link>https://serdigital64.github.io/post/ansible/ansible-concepts-for-sysadmins/</link>
