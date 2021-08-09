@@ -69,13 +69,14 @@
     
 
     
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B7P69BXNQK"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GWJGTNQ8CQ"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'G-B7P69BXNQK');
+    gtag('config', 'G-GWJGTNQ8CQ');
+    gtag('config', 'UA-202533179-1');
     </script>
 
 </head>
@@ -110,7 +111,7 @@
                         </li>
                         
                         <li>
-                            <a href="/categories/reviews">reviews</a>
+                            <a href="/categories/tutorials">tutorials</a>
                         </li>
                         
                     
@@ -231,14 +232,14 @@
                 
                 <h2 id="ansible-overview">Ansible Overview</h2>
 <p><strong>Ansible</strong> is an automation engine that executes tasks described in <strong>YAML</strong> + <strong>Jinja2</strong> to bring the target system to a known state.</p>
-<p>At it&rsquo;s core <strong>Ansible</strong> is a python module:</p>
+<p>At its core, <strong>Ansible</strong> is a python module:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">(</span>ansible<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>sysadmin@cnt84 ~<span style="color:#f92672">]</span>$ pip list | egrep -i -- <span style="color:#e6db74">&#39;ansible|jinja|yaml|markup&#39;</span>
 ansible      4.3.0
 ansible-core 2.11.3
 Jinja2       3.0.1
 MarkupSafe   2.0.1
 PyYAML       5.4.1
-</code></pre></div><p>The engine along with other helpers are available as stand-alone programs that can be run directly from the command-line:</p>
+</code></pre></div><p>The engine along with other helpers are available as stand-alone programs that can be run directly from the command line:</p>
 <ul>
 <li><code>ansible</code> : used to run individual tasks.</li>
 <li><code>ansible-playbook</code> : used to execute a batch of tasks in multiple targets.</li>
@@ -247,9 +248,9 @@ PyYAML       5.4.1
 <li><code>ansible-galaxy</code> : used to interact with the ansible packaging system.</li>
 </ul>
 <h2 id="ansible-tasks">Ansible Tasks</h2>
-<p>The minimum execution unit in <strong>Ansible</strong> is a task. Each task will focus in managing a particular component of the target host.</p>
+<p>The minimum execution unit in <strong>Ansible</strong> is a task. Each task will focus on managing a particular component of the target host.</p>
 <p>The main difference between an <strong>Ansible Task</strong> and traditional shell script commands is that the task defines the <em>what</em> (target state) and not the <em>how</em> (action).</p>
-<p>For example, in order to set file permissions using a <strong>Bash</strong> script you need to define <em>how</em> it will be done:</p>
+<p>For example, to set file permissions using a <strong>Bash</strong> script you need to define <em>how</em> it will be done:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
 </span><span style="color:#75715e"></span>
 echo <span style="color:#e6db74">&#34;Example: Set file permissions&#34;</span>
@@ -288,7 +289,7 @@ echo <span style="color:#e6db74">&#34;Example: Set file permissions&#34;</span>
 </tr>
 </tbody>
 </table>
-<h2 id="ansible-module">Ansible Module</h2>
+<h2 id="ansible-modules">Ansible Modules</h2>
 <p><strong>Ansible Modules</strong> are used to represent components in <strong>Ansible Tasks</strong> and are intended to hide the complexity of how the component is manipulated to achieve the desired end-state.</p>
 <p>A set of modules are already included in <strong>Ansible</strong> for managing common components. For example:</p>
 <table>
@@ -350,7 +351,7 @@ community.crypto:1.7.1 was installed successfully
 </code></pre></div><h2 id="ansible-playbooks">Ansible Playbooks</h2>
 <p>Similar to what scripts are for traditional shells like <em>bash</em>, <strong>Ansible Playbooks</strong> are <em>YAML</em> files used to create automation jobs.</p>
 <p>The minimum <strong>Ansible Playbook</strong> contains one or more <strong>Ansible Tasks</strong> and the explicit declaration of the target host where the end-state will be set.</p>
-<p>The following example playbook sets <code>test-server21</code> as the target host where the end-state for the package component will be set. In this case the desired end-state is to have the package <code>lsof</code> installed.</p>
+<p>The following example playbook sets <code>test-server21</code> as the target host where the end-state for the package component will be set. In this case, the desired end-state is to have the package <code>lsof</code> installed.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#f92672">hosts</span>: <span style="color:#ae81ff">test-server21</span>
   <span style="color:#f92672">tasks</span>:
     - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;Deploy LSOF tool&#34;</span>
@@ -360,9 +361,9 @@ community.crypto:1.7.1 was installed successfully
       <span style="color:#f92672">state</span>: <span style="color:#e6db74">&#34;present&#34;</span>
 </code></pre></div><p><strong>Ansible Playbooks</strong> can contain additional features to facilitate the creation of complex automation jobs:</p>
 <ul>
-<li>Job management: defines how task are going to be executed based on the number of target hosts (e.g. sequentially, in parallel, etc.)</li>
+<li>Job management: defines how tasks are going to be executed based on the number of target hosts (sequentially, in parallel, etc.)</li>
 <li>Error handling: provides features for recovering from failed tasks.</li>
-<li>Event Handlers: defines special tasks that are only executed when certain conditions are met. (e.g. the application X configuration reload handler is executed when the configuration update task sets a new parameter value)</li>
+<li>Event Handlers: defines special tasks that are only executed when certain conditions are met. For example, the application X configuration reload handler is executed when the configuration update task sets a new parameter value</li>
 <li>External Variable Definition: allows the inclusion of <strong>YAML</strong> files that contains variables definitions only.</li>
 <li>Roles: allows the inclusion of roles. Roles are similar to <strong>Ansible Modules</strong> but implemented using <strong>Ansible Tasks</strong>.</li>
 </ul>
@@ -382,9 +383,9 @@ ok: <span style="color:#f92672">[</span>localhost<span style="color:#f92672">]</
 PLAY RECAP ***********************************************************************************************************
 localhost                  : ok<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>    changed<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>    unreachable<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>    failed<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>    skipped<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>    rescued<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>    ignored<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
 </code></pre></div><h2 id="yaml-and-jinja">YAML and Jinja</h2>
-<p><strong>Ansible</strong> doesn&rsquo;t have a language on it&rsquo;s own for defining tasks.
-Instead it uses the data definition language <strong>YAML</strong> for declaring target&rsquo;s component end-state and the template engine <strong>Jinja2</strong> for embeding simple programming functions into <strong>YAML</strong> files.</p>
-<p>For example, lets define the <code>file_path</code> variable in a stand-alone <strong>YAML</strong> file:</p>
+<p><strong>Ansible</strong> doesn&rsquo;t have a language on its own for defining tasks.
+Instead, it uses the data definition language <strong>YAML</strong> for declaring desired end-state and the template engine <strong>Jinja2</strong> for embedding simple programming functions into <strong>YAML</strong> files.</p>
+<p>For example, let&rsquo;s define the <code>file_path</code> variable in a stand-alone <strong>YAML</strong> file:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
 <span style="color:#f92672">file_path</span>: <span style="color:#e6db74">&#34;/tmp/test.file&#34;</span>
 </code></pre></div><p>Now we can use the <code>file_path</code> variable to set the <code>path</code> attribute.
@@ -401,9 +402,9 @@ To use the variable a <strong>Jinja2</strong> template must be added to the <str
 <p><strong>Ansible</strong> defines two types of infrastructure components:</p>
 <ul>
 <li><em>Control Node</em>: central compute node where the automation engine is installed and from where <strong>Ansible Tasks</strong> are executed.</li>
-<li><em>Managed Node</em>: target node that <strong>Ansible Tasks</strong> will manage to reach the defined end-state. Nodes can be regular compute nodes (e.g. RedHat Linux Enterprise, Ubuntu, etc) or non-compute nodes such as storage devices, network devices, appliances, etc.</li>
+<li><em>Managed Node</em>: target node that <strong>Ansible Tasks</strong> will manage to reach the defined end-state. Nodes can be regular compute nodes (RedHat Linux Enterprise, Ubuntu, etc.) or non-compute nodes such as storage devices, network devices, appliances, etc.</li>
 </ul>
-<p>Communication between <em>Control Nodes</em> and <em>Managed Nodes</em> is implemented using <strong>Connection Plugins</strong>. The default plugin for Linux based nodes is <em>ssh</em>.</p>
+<p>Communication between <em>Control Nodes</em> and <em>Managed Nodes</em> is implemented using <strong>Connection Plugins</strong>. The default plugin for Linux nodes is <em>ssh</em>.</p>
 <p>Use the command <code>ansible-doc -t connection -l</code> to show available plugins:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">(</span>ansible<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>sysadmin@cnt84 ~<span style="color:#f92672">]</span>$ ansible-doc -t connection -l | egrep <span style="color:#e6db74">&#39;^ssh&#39;</span>
 ssh                            connect via ssh client binary
@@ -413,7 +414,7 @@ ssh                            connect via ssh client binary
 su                           Substitute User
 sudo                         Substitute User DO
 </code></pre></div><h2 id="content-organization">Content Organization</h2>
-<p><strong>Ansible</strong> doesn&rsquo;t enforce a strict directory structure for content organization. Instead it provides configuration parameters that can be used to define locations based on the resource type.</p>
+<p><strong>Ansible</strong> doesn&rsquo;t enforce a strict directory structure for content organization. Instead, it provides configuration parameters that can be used to define locations based on the resource type.</p>
 <p>The following is a basic directory structure that can be used for simple to medium size deployments:</p>
 <table>
 <thead>
@@ -464,14 +465,25 @@ sudo                         Substitute User DO
 <p>Once resources are organized you should consider managing the content using a version control system like GIT. This is key to implement the <em>infrastructure as code</em> strategy.</p>
 <h2 id="references--resources">References &amp; Resources</h2>
 <ul>
-<li><a href="https://docs.ansible.com/ansible_community.html">Ansible Community Documentation</a></li>
-<li><a href="https://galaxy.ansible.com/">Ansible Galaxy</a></li>
-<li><a href="https://jinja.palletsprojects.com/en/3.0.x/">Jinja2</a></li>
-<li><a href="https://yaml.org/spec/">YAML</a></li>
-<li><a href="https://git-scm.com/">GIT</a></li>
+<li>Ansible Community Documentation: <a href="https://docs.ansible.com/ansible_community.html">https://docs.ansible.com/ansible_community.html</a></li>
+<li>Ansible Galaxy: <a href="https://galaxy.ansible.com/">https://galaxy.ansible.com</a></li>
+<li>Jinja2: <a href="https://jinja.palletsprojects.com/en/3.0.x/">https://jinja.palletsprojects.com/en/3.0.x</a></li>
+<li>YAML: <a href="https://yaml.org/spec/">https://yaml.org/spec</a></li>
+<li>GIT: <a href="https://git-scm.com/">https://git-scm.com</a></li>
 </ul>
 
 
+                <hr>
+                
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+                    <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" />
+                </a>
+                Copyright information: this work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br>
+                For copyright information on the product or products mentioned in this article refer to their respective owner.
+                <hr>
+                Disclaimer: opinions presented in this article are personal and belong solely to me and do not represent people or organizations associated with me in a professional or personal way.
+                The content of this article is provided as-is and in no way should be taken as the official representation of the product or products mentioned inhere.
+                The purpose of this article is to share personal experiences in the technology area and is not intended to cover political, cultural, religious and social topics.
                 <hr>
                 
 
