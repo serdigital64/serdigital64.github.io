@@ -3,33 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://serdigital64.github.io/categories/image-gallery/</loc>
-    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://serdigital64.github.io/categories/tutorials/</loc>
-    <lastmod>2021-08-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://serdigital64.github.io/top/about/</loc>
-    <lastmod>2021-07-17T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://serdigital64.github.io/tags/ansible/</loc>
-    <lastmod>2021-08-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://serdigital64.github.io/post/ansible/ansible-concepts-for-sysadmins/</loc>
-    <lastmod>2021-08-08T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://serdigital64.github.io/tags/automation/</loc>
-    <lastmod>2021-08-08T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -39,27 +24,22 @@
   
   <url>
     <loc>https://serdigital64.github.io/tags/devops/</loc>
-    <lastmod>2021-08-08T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://serdigital64.github.io/post/gallery/landscapes/</loc>
-    <lastmod>2021-07-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://serdigital64.github.io/post/gallery/objects/</loc>
-    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
+    <loc>https://serdigital64.github.io/post/ansible/implementing-infrastructure-as-code-with-ansible-and-git/</loc>
+    <lastmod>2021-09-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://serdigital64.github.io/tags/infrastructure-as-code/</loc>
-    <lastmod>2021-08-08T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://serdigital64.github.io/tags/linux/</loc>
-    <lastmod>2021-08-08T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -74,12 +54,37 @@
   
   <url>
     <loc>https://serdigital64.github.io/tags/sysadmin/</loc>
-    <lastmod>2021-08-08T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://serdigital64.github.io/tags/</loc>
+    <lastmod>2021-09-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://serdigital64.github.io/categories/image-gallery/</loc>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://serdigital64.github.io/top/about/</loc>
+    <lastmod>2021-07-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://serdigital64.github.io/post/ansible/ansible-concepts-for-sysadmins/</loc>
     <lastmod>2021-08-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://serdigital64.github.io/post/gallery/landscapes/</loc>
+    <lastmod>2021-07-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://serdigital64.github.io/post/gallery/objects/</loc>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
