@@ -1,0 +1,34 @@
+<mxfile host="65bd71144e">
+    <diagram id="aIybNFz7LuJREmAZQOys" name="Page-1">
+        <mxGraphModel dx="1079" dy="542" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#ffffff" math="0" shadow="1">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="dizTWEikDnmKiAcGSFG2-1" value="Home Office" style="rounded=1;arcSize=10;dashed=0;fillColor=none;gradientColor=none;strokeWidth=2;verticalAlign=top;strokeColor=#B3B3B3;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="180" width="530" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="dizTWEikDnmKiAcGSFG2-11" value="&lt;font color=&quot;#000000&quot;&gt;Managed Nodes&lt;/font&gt;" style="outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;fillColor=none;verticalAlign=top;align=center;fontColor=#FF9900;dashed=0;spacingTop=3;strokeColor=#007A00;strokeWidth=2;rounded=1;shadow=1;sketch=0;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="210" width="490" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="dizTWEikDnmKiAcGSFG2-9" value="&lt;font color=&quot;#000000&quot;&gt;Control Node&lt;/font&gt;" style="outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;fillColor=none;verticalAlign=top;align=center;fontColor=#FF9900;dashed=0;spacingTop=3;strokeColor=#004C99;rounded=1;glass=0;shadow=1;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="430" y="352" width="100" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="dizTWEikDnmKiAcGSFG2-3" value="Centos 8.4" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/mscae/VM_Images.svg;labelBackgroundColor=none;fontColor=#333333;" parent="1" vertex="1">
+                    <mxGeometry x="455" y="382" width="50" height="46" as="geometry"/>
+                </mxCell>
+                <mxCell id="dizTWEikDnmKiAcGSFG2-4" value="Ubuntu 21.04" style="image;html=1;image=img/lib/clip_art/computers/MacBook_128x128.png;labelBackgroundColor=none;fontColor=#333333;" parent="1" vertex="1">
+                    <mxGeometry x="252" y="219" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="dizTWEikDnmKiAcGSFG2-5" value="Centos 8.4" style="image;html=1;image=img/lib/clip_art/computers/Monitor_Tower_128x128.png;labelBackgroundColor=none;fontColor=#333333;" parent="1" vertex="1">
+                    <mxGeometry x="539" y="219" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="dizTWEikDnmKiAcGSFG2-6" value="Ubuntu 21.04" style="image;html=1;image=img/lib/clip_art/computers/MacBook_128x128.png;labelBackgroundColor=none;fontColor=#333333;" parent="1" vertex="1">
+                    <mxGeometry x="345" y="219" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="dizTWEikDnmKiAcGSFG2-7" value="Fedora 33" style="image;html=1;image=img/lib/clip_art/computers/Monitor_Tower_128x128.png;labelBackgroundColor=none;fontColor=#333333;" parent="1" vertex="1">
+                    <mxGeometry x="630" y="219" width="80" height="80" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

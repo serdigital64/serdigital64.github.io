@@ -4,12 +4,17 @@
   
   <url>
     <loc>https://serdigital64.github.io/categories/image-gallery/</loc>
-    <lastmod>2021-08-08T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://serdigital64.github.io/categories/tutorials/</loc>
     <lastmod>2021-08-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://serdigital64.github.io/top/about/</loc>
+    <lastmod>2021-07-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -29,7 +34,7 @@
   
   <url>
     <loc>https://serdigital64.github.io/categories/</loc>
-    <lastmod>2021-08-08T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -44,7 +49,7 @@
   
   <url>
     <loc>https://serdigital64.github.io/post/gallery/objects/</loc>
-    <lastmod>2021-08-08T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -59,12 +64,12 @@
   
   <url>
     <loc>https://serdigital64.github.io/post/</loc>
-    <lastmod>2021-08-08T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://serdigital64.github.io/</loc>
-    <lastmod>2021-08-08T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -78,11 +83,8 @@
   </url>
   
   <url>
-    <loc>https://serdigital64.github.io/top/about/</loc>
-  </url>
-  
-  <url>
     <loc>https://serdigital64.github.io/top/</loc>
+    <lastmod>2021-07-17T00:00:00+00:00</lastmod>
   </url>
   
 </urlset>
