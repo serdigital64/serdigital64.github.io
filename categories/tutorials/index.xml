@@ -10,19 +10,19 @@
     <lastBuildDate>Sat, 04 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://serdigital64.github.io/categories/tutorials/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Implementing infrastructure-as-code with Ansible and GIT</title>
-      <link>https://serdigital64.github.io/post/tutorials/implementing-infrastructure-as-code-with-ansible-and-git/</link>
+      <link>https://serdigital64.github.io/post/ansible/implementing-infrastructure-as-code-with-ansible-and-git/</link>
       <pubDate>Sat, 04 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://serdigital64.github.io/post/tutorials/implementing-infrastructure-as-code-with-ansible-and-git/</guid>
+      <guid>https://serdigital64.github.io/post/ansible/implementing-infrastructure-as-code-with-ansible-and-git/</guid>
       <description>Manage compute nodes using the infrastructure-as-code concept using Ansible and GIT</description>
     </item>
     
     <item>
       <title>Ansible Concepts</title>
-      <link>https://serdigital64.github.io/post/tutorials/ansible-concepts/</link>
+      <link>https://serdigital64.github.io/post/ansible/ansible-concepts/</link>
       <pubDate>Sat, 17 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://serdigital64.github.io/post/tutorials/ansible-concepts/</guid>
+      <guid>https://serdigital64.github.io/post/ansible/ansible-concepts/</guid>
       <description>What is Ansible? Explore main concepts, identify key components, understand content structure and organization, compare to traditional shell scripting</description>
     </item>
     
