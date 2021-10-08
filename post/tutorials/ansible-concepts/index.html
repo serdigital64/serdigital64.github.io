@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Ansible Concepts | SerDigital64</title>
+
+    
+
+
+
+<meta name="author" content="SerDigital64" />
+<meta name="description" content="Blog dedicated to sharing personal experiences and knowledge on Information Technology topics" />
+
+
+
+<meta name="generator" content="Hugo 0.80.0" />
+
+<link rel="canonical" href="https://serdigital64.github.io/post/tutorials/ansible-concepts/" />
+
+
+<meta property="og:title" content="Ansible Concepts" />
+<meta property="og:description" content="What is Ansible? Explore main concepts, identify key components, understand content structure and organization, compare to traditional shell scripting" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://serdigital64.github.io/post/tutorials/ansible-concepts/" />
+<meta property="article:published_time" content="2021-07-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-10-06T00:00:00+00:00" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ansible Concepts"/>
+<meta name="twitter:description" content="What is Ansible? Explore main concepts, identify key components, understand content structure and organization, compare to traditional shell scripting"/>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+<link rel="stylesheet" href="/css/icomoon.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@1.13.1/css/OverlayScrollbars.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css">
+<link rel="stylesheet" href="/css/site.css" />
+
+<style>
+  .ui.header a:not(.item, .ui.button):hover {
+    text-decoration: underline;
+  }
+
+  
+  a:not(.item, .ui.button) {
+    color: seagreen !important;
+  }
+  
+
+  
+  .inverted a:not(.item, .ui.button) {
+     color: darkseagreen !important;
+  }
+  
+
+  
+  body.default {
+    
+    background-color: #f7f7f7;
+    
+
+    
+    background-image: url(from-serdigital64-flicker/DSC_6388-tall.jpg);
+    
+  }
+  
+
+  
+  body.dark {
+    
+    background-color: black;
+    
+
+    
+    background-image: url(from-serdigital64-flicker/DSC_6388-tall.jpg);
+    
+  }
+  
+</style>
+
+
+    
+
+
+
+
+
+
+
+    
+  </head>
+
+  <body class="default">
+    
+<nav class="ui secondary menu dream-menu dream-nav">
+
+  <a class="item dream-flip-toggle" title="">
+    <i class="large link bullseye icon"></i>
+  </a>
+  <a class="item" href="https://serdigital64.github.io" title="">
+    <i class="large link home icon"></i>
+  </a>
+  
+  <a class="item" onclick="themeSwitch(event)">
+    <i class="large link icon theme-switch"></i>
+  </a>
+  
+  
+  <a class="item" title="" onclick="toggleSearch(event)">
+    <i class="large link search icon"></i>
+  </a>
+  
+</nav>
+
+    <div class="flip-container">
+      <div class="flipper">
+        <section class="front">
+          <div class="dream-max-width">
+            
+<div class="ui relaxed centered grid dream-grid dream-grid-single"style="flex-direction: row-reverse;">
+  
+  
+  
+  
+
+  
+  <aside class="sixteen wide mobile sixteen wide tablet three wide computer column dream-single-aside">
+    
+    <div class="ui segment toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ansible-overview">Ansible Overview</a></li>
+    <li><a href="#ansible-tasks">Ansible Tasks</a></li>
+    <li><a href="#ansible-modules">Ansible Modules</a></li>
+    <li><a href="#ansible-playbooks">Ansible Playbooks</a></li>
+    <li><a href="#yaml-and-jinja">YAML and Jinja</a></li>
+    <li><a href="#ansible-infrastructure">Ansible Infrastructure</a></li>
+    <li><a href="#content-organization">Content Organization</a></li>
+    <li><a href="#references--resources">References &amp; Resources</a></li>
+    <li><a href="#copyright-information">Copyright information</a></li>
+    <li><a href="#disclaimer">Disclaimer</a></li>
+  </ul>
+</nav>
+    </div>
+    
+
+    
+  </aside>
+  
+  <div class="sixteen wide mobile sixteen wide tablet ten wide computer column markdown-body dream-single" id="dream-save-post-as-img">
+    <section class="ui top attached segment">
+      <header>
+        <h1 class="ui large header">Ansible Concepts<span class="sub header">
+            <span class="left">
+              @
+              
+                SerDigital64
+              
+
+              | 
+                  
+                    Saturday, Jul 17, 2021
+                  
+                
+
+              | 7
+
+              
+              | 
+                
+                  
+                    Wednesday, Oct 6, 2021
+                  
+                
+              
+            </span>
+
+            
+            <span class="dream-share">
+  <a href="#" class="save-as-image" title="" onclick="savePostAsImg()">
+    <i class="save icon"></i>
+  </a>
+  <a href="https://twitter.com/intent/tweet?text=Ansible%20Concepts&url=https%3a%2f%2fserdigital64.github.io%2fpost%2ftutorials%2fansible-concepts%2f" title="Twitter">
+    <i class="twitter icon"></i>
+  </a>
+  <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fserdigital64.github.io%2fpost%2ftutorials%2fansible-concepts%2f" title="Facebook">
+    <i class="facebook icon"></i>
+  </a>
+</span>
+
+            
+          </span>
+        </h1>
+      </header>
+
+      <article class="main">
+        
+        <img class="cover" src="/from-serdigital64-flicker/DSC_7966-wide.jpg" />
+        
+
+        <h2 id="ansible-overview">Ansible Overview</h2>
+<p><strong>Ansible</strong> is an automation engine that executes tasks described in <strong>YAML</strong> + <strong>Jinja2</strong> to bring the target system to a known state.</p>
+<p>At its core, <strong>Ansible</strong> is a python module:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6">6</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">(ansible) [sysadmin@cnt84 ~]$ pip list | egrep -i -- <span style="color:#0ff;font-weight:bold">&#39;ansible|jinja|yaml|markup&#39;</span>
+ansible      4.3.0
+ansible-core 2.11.3
+Jinja2       3.0.1
+MarkupSafe   2.0.1
+PyYAML       5.4.1
+</code></pre></td></tr></table>
+</div>
+</div><p>The engine along with other helpers are available as stand-alone programs that can be run directly from the command line:</p>
+<ul>
+<li><code>ansible</code> : used to run individual tasks.</li>
+<li><code>ansible-playbook</code> : used to execute a batch of tasks in multiple targets.</li>
+<li><code>ansible-config</code> : used to define engine configuration settings.</li>
+<li><code>ansible-doc</code> : used to show documentation of several ansible components.</li>
+<li><code>ansible-galaxy</code> : used to interact with the ansible packaging system.</li>
+</ul>
+<h2 id="ansible-tasks">Ansible Tasks</h2>
+<p>The minimum execution unit in <strong>Ansible</strong> is a task. Each task will focus on managing a particular component of the target host.</p>
+<p>The main difference between an <strong>Ansible Task</strong> and traditional shell script commands is that the task defines the <em>what</em> (target state) and not the <em>how</em> (action).</p>
+<p>For example, to set file permissions using a <strong>Bash</strong> script you need to define <em>how</em> it will be done:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#0f0;font-weight:bold">#!/bin/bash
+</span><span style="color:#0f0;font-weight:bold"></span>
+<span style="color:#fff;font-weight:bold">echo</span> <span style="color:#0ff;font-weight:bold">&#34;Example: Set file permissions&#34;</span>
+/usr/bin/chmod <span style="color:#0ff;font-weight:bold">&#39;0644&#39;</span> <span style="color:#0ff;font-weight:bold">&#39;/tmp/test.file&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>To achieve the same result using <strong>Ansible Tasks</strong> you define <em>what</em> will be the end-state of the component:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-yaml" data-lang="yaml">---
+- <span style="font-weight:bold">name</span>: <span style="color:#0ff;font-weight:bold">&#34;Example: Set file permissions&#34;</span>
+  <span style="font-weight:bold">ansible.builtin.file</span>:
+    <span style="font-weight:bold">mode</span>: <span style="color:#0ff;font-weight:bold">&#34;0644&#34;</span>
+    <span style="font-weight:bold">path</span>: <span style="color:#0ff;font-weight:bold">&#34;/tmp/test.file&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Here the component is the Linux file <code>/tmp/test.file</code> managed by the <code>ansible.builtin.file</code> <strong>Ansible Module</strong> and the end-state is defined by the <code>mode</code> attribute.</p>
+<p>See below common shell script actions and their equivalent <strong>Ansible Tasks</strong></p>
+<table>
+<thead>
+<tr>
+<th>Bash</th>
+<th>Ansible</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Action: Copy FileA to DestinationB</td>
+<td>Target State: FileA must be present in DestinationB</td>
+</tr>
+<tr>
+<td>Action: Set FileA Owner to UserX</td>
+<td>Target State: UserX must own FileA</td>
+</tr>
+<tr>
+<td>Action: Start the ServiceX</td>
+<td>Target State: ServiceX must be in started state</td>
+</tr>
+<tr>
+<td>Action: Install PackageX</td>
+<td>Target State: PackageX must be installed</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ansible-modules">Ansible Modules</h2>
+<p><strong>Ansible Modules</strong> are used to represent components in <strong>Ansible Tasks</strong> and are intended to hide the complexity of how the component is manipulated to achieve the desired end-state.</p>
+<p>A set of modules are already included in <strong>Ansible</strong> for managing common components. For example:</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Module Name</th>
+<th>End-State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linux File</td>
+<td>copy</td>
+<td>Source File is present in the Target Path</td>
+</tr>
+<tr>
+<td>Linux File</td>
+<td>file</td>
+<td>File attributes are set (ownership, permissions, etc)</td>
+</tr>
+<tr>
+<td>Linux File</td>
+<td>lineinfile</td>
+<td>The text line is included (or not) in the target file</td>
+</tr>
+<tr>
+<td>Linux OS Package</td>
+<td>package</td>
+<td>The OS package is present (or not) in the target host</td>
+</tr>
+<tr>
+<td>Linux OS Service</td>
+<td>service</td>
+<td>The OS service is started (or not) in the target host</td>
+</tr>
+<tr>
+<td>OS User</td>
+<td>user</td>
+<td>OS User is created (or not) in the target host</td>
+</tr>
+<tr>
+<td>OpenSSH</td>
+<td>authorized_keys</td>
+<td>OpenSSH key is present (or not) in the authorized_keys file</td>
+</tr>
+</tbody>
+</table>
+<p>Additional modules developed by product owners or the OSS community are available at the <em>Ansible Galaxy</em> site and can be installed using the <code>ansible-galaxy</code> command.</p>
+<p>For example, to add the <code>openssh_keypair</code> <strong>Ansible Module</strong> included in the community provided <code>community.crypto.openssh_keypair</code> <strong>Ansible Collection</strong>:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6">6</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7">7</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">(ansible) [sysadmin@cnt84 ~]$ ansible-galaxy collection install community.crypto
+Starting galaxy collection install process
+Process install dependency map
+Starting collection install process
+Downloading https://galaxy.ansible.com/download/community-crypto-1.7.1.tar.gz to /home/sysadmin/.ansible/tmp/ansible-local-321219he000qkm/tmpd12y1_sb/community-crypto-1.7.1-xrp950jz
+Installing <span style="color:#0ff;font-weight:bold">&#39;community.crypto:1.7.1&#39;</span> to <span style="color:#0ff;font-weight:bold">&#39;/home/sysadmin/.ansible/collections/ansible_collections/community/crypto&#39;</span>
+community.crypto:1.7.1 was installed successfully
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="ansible-playbooks">Ansible Playbooks</h2>
+<p>Similar to what scripts are for traditional shells like <em>bash</em>, <strong>Ansible Playbooks</strong> are <em>YAML</em> files used to create automation jobs.</p>
+<p>The minimum <strong>Ansible Playbook</strong> contains one or more <strong>Ansible Tasks</strong> and the explicit declaration of the target host where the end-state will be set.</p>
+<p>The following example playbook sets <code>test-server21</code> as the target host where the end-state for the package component will be set. In this case, the desired end-state is to have the package <code>lsof</code> installed.</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6">6</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7">7</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-yaml" data-lang="yaml">- <span style="font-weight:bold">hosts</span>: test-server21
+  <span style="font-weight:bold">tasks</span>:
+    - <span style="font-weight:bold">name</span>: <span style="color:#0ff;font-weight:bold">&#34;Deploy LSOF tool&#34;</span>
+      <span style="font-weight:bold">ansible.builtin.package</span>:
+        <span style="font-weight:bold">name</span>:
+          - <span style="color:#0ff;font-weight:bold">&#34;lsof&#34;</span>
+      <span style="font-weight:bold">state</span>: <span style="color:#0ff;font-weight:bold">&#34;present&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>Ansible Playbooks</strong> can contain additional features to facilitate the creation of complex automation jobs:</p>
+<ul>
+<li>Job management: defines how tasks are going to be executed based on the number of target hosts (sequentially, in parallel, etc.)</li>
+<li>Error handling: provides features for recovering from failed tasks.</li>
+<li>Event Handlers: defines special tasks that are only executed when certain conditions are met. For example, the application X configuration reload handler is executed when the configuration update task sets a new parameter value</li>
+<li>External Variable Definition: allows the inclusion of <strong>YAML</strong> files that contains variables definitions only.</li>
+<li>Roles: allows the inclusion of roles. Roles are similar to <strong>Ansible Modules</strong> but implemented using <strong>Ansible Tasks</strong>.</li>
+</ul>
+<p>To run <strong>Ansible Playbooks</strong> use the command <code>ansible-playbook</code>:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1"> 1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2"> 2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3"> 3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4"> 4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5"> 5</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6"> 6</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7"> 7</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8"> 8</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="9"><a style="outline: none; text-decoration:none; color:inherit" href="#9"> 9</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="10"><a style="outline: none; text-decoration:none; color:inherit" href="#10">10</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="11"><a style="outline: none; text-decoration:none; color:inherit" href="#11">11</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="12"><a style="outline: none; text-decoration:none; color:inherit" href="#12">12</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="13"><a style="outline: none; text-decoration:none; color:inherit" href="#13">13</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="14"><a style="outline: none; text-decoration:none; color:inherit" href="#14">14</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">(ansible) [sysadmin@cnt84 ~]$ ansible-playbook hello_world.yml
+
+PLAY [localhost] *****************************************************************************************************
+
+TASK [Gathering Facts] ***********************************************************************************************
+ok: [localhost]
+
+TASK [Hello World] ***************************************************************************************************
+ok: [localhost] =&gt; {
+    <span style="color:#0ff;font-weight:bold">&#34;msg&#34;</span>: <span style="color:#0ff;font-weight:bold">&#34;Hello World&#34;</span>
+}
+
+PLAY RECAP ***********************************************************************************************************
+localhost                  : ok=<span style="color:#ff0;font-weight:bold">2</span>    changed=<span style="color:#ff0;font-weight:bold">0</span>    unreachable=<span style="color:#ff0;font-weight:bold">0</span>    failed=<span style="color:#ff0;font-weight:bold">0</span>    skipped=<span style="color:#ff0;font-weight:bold">0</span>    rescued=<span style="color:#ff0;font-weight:bold">0</span>    ignored=<span style="color:#ff0;font-weight:bold">0</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="yaml-and-jinja">YAML and Jinja</h2>
+<p><strong>Ansible</strong> doesn&rsquo;t have a language on its own for defining tasks.
+Instead, it uses the data definition language <strong>YAML</strong> for declaring desired end-state and the template engine <strong>Jinja2</strong> for embedding simple programming functions into <strong>YAML</strong> files.</p>
+<p>For example, let&rsquo;s define the <code>file_path</code> variable in a stand-alone <strong>YAML</strong> file:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-yaml" data-lang="yaml">---
+<span style="font-weight:bold">file_path</span>: <span style="color:#0ff;font-weight:bold">&#34;/tmp/test.file&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Now we can use the <code>file_path</code> variable to set the <code>path</code> attribute.
+To use the variable a <strong>Jinja2</strong> template must be added to the <strong>YAML</strong> declaration using the expression container <code>&quot;{{ }}&quot;</code>:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6">6</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7">7</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8">8</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-yaml" data-lang="yaml">---
+- <span style="font-weight:bold">name</span>: <span style="color:#0ff;font-weight:bold">&#34;Example: Include variable from file&#34;</span>
+  <span style="font-weight:bold">include_vars</span>:
+    <span style="font-weight:bold">file</span>: <span style="color:#0ff;font-weight:bold">&#34;example_var_definition.yml&#34;</span>
+- <span style="font-weight:bold">name</span>: <span style="color:#0ff;font-weight:bold">&#34;Example: Set file permissions&#34;</span>
+  <span style="font-weight:bold">ansible.builtin.file</span>:
+    <span style="font-weight:bold">mode</span>: <span style="color:#0ff;font-weight:bold">&#34;0644&#34;</span>
+    <span style="font-weight:bold">path</span>: <span style="color:#0ff;font-weight:bold">&#34;{{ file_path }}&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="ansible-infrastructure">Ansible Infrastructure</h2>
+<p><strong>Ansible</strong> defines two types of infrastructure components:</p>
+<ul>
+<li><em>Control Node</em>: central compute node where the automation engine is installed and from where <strong>Ansible Tasks</strong> are executed.</li>
+<li><em>Managed Node</em>: target node that <strong>Ansible Tasks</strong> will manage to reach the defined end-state. Nodes can be regular compute nodes (RedHat Linux Enterprise, Ubuntu, etc.) or non-compute nodes such as storage devices, network devices, appliances, etc.</li>
+</ul>
+<p>Communication between <em>Control Nodes</em> and <em>Managed Nodes</em> is implemented using <strong>Connection Plugins</strong>. The default plugin for Linux nodes is <em>ssh</em>.</p>
+<p>Use the command <code>ansible-doc -t connection -l</code> to show available plugins:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">(ansible) [sysadmin@cnt84 ~]$ ansible-doc -t connection -l | egrep <span style="color:#0ff;font-weight:bold">&#39;^ssh&#39;</span>
+ssh                            connect via ssh client binary
+</code></pre></td></tr></table>
+</div>
+</div><p>For tasks that requires privileged access to manage the component <strong>Ansible</strong> provides <strong>Become Plugins</strong>. The default plugin for Linux based nodes is <em>sudo</em>.</p>
+<p>Use the command <code>ansible-doc -t become -l</code> to show available plugins:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">(ansible) [sysadmin@cnt84 ~]$ ansible-doc -t become -l | egrep <span style="color:#0ff;font-weight:bold">&#39;^sudo|^su&#39;</span>
+su                           Substitute User
+sudo                         Substitute User DO
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="content-organization">Content Organization</h2>
+<p><strong>Ansible</strong> doesn&rsquo;t enforce a strict directory structure for content organization. Instead, it provides configuration parameters that can be used to define locations based on the resource type.</p>
+<p>The following is a basic directory structure that can be used for simple to medium size deployments:</p>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Content</th>
+<th>Ansible Parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>etc/</td>
+<td><strong>Ansible</strong> configuration files</td>
+<td>ANSIBLE_CONFIG</td>
+</tr>
+<tr>
+<td>files/</td>
+<td>Site wide data files</td>
+<td></td>
+</tr>
+<tr>
+<td>inventories/</td>
+<td><strong>Ansible Playbooks</strong> inventory files, host_vars and group_vars</td>
+<td>ANSIBLE_INVENTORY</td>
+</tr>
+<tr>
+<td>collections/</td>
+<td>Collections installed from Ansible-Galaxy</td>
+<td>ANSIBLE_COLLECTIONS_PATHS</td>
+</tr>
+<tr>
+<td>roles/</td>
+<td><strong>Ansible Roles</strong></td>
+<td>ANSIBLE_ROLES_PATH</td>
+</tr>
+<tr>
+<td>playbooks/</td>
+<td><strong>Ansible Playbooks</strong></td>
+<td>ANSIBLE_PLAYBOOK_DIR</td>
+</tr>
+<tr>
+<td>logs/</td>
+<td>Execution logs</td>
+<td>ANSIBLE_LOG_PATH</td>
+</tr>
+</tbody>
+</table>
+<p>Once resources are organized you should consider managing the content using a version control system like GIT. This is key to implement the <em>infrastructure as code</em> strategy.</p>
+<h2 id="references--resources">References &amp; Resources</h2>
+<ul>
+<li>Ansible Community Documentation: <a href="https://docs.ansible.com/ansible_community.html">https://docs.ansible.com/ansible_community.html</a></li>
+<li>Ansible Galaxy: <a href="https://galaxy.ansible.com/">https://galaxy.ansible.com</a></li>
+<li>Jinja2: <a href="https://jinja.palletsprojects.com/en/3.0.x/">https://jinja.palletsprojects.com/en/3.0.x</a></li>
+<li>YAML: <a href="https://yaml.org/spec/">https://yaml.org/spec</a></li>
+<li>GIT: <a href="https://git-scm.com/">https://git-scm.com</a></li>
+<li>Infrastructure-as-code Tutorial: <a href="https://serdigital64.github.io/post/ansible/implementing-infrastructure-as-code-with-ansible-and-git/">https://serdigital64.github.io</a></li>
+<li>A:Platform64 Automation Platform: <a href="https://serdigital64.github.io/post/projects/project-aplatform64/">https://serdigital64.github.io</a></li>
+</ul>
+<h2 id="copyright-information">Copyright information</h2>
+<p>This article is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. For copyright information on the product or products mentioned inhere refer to their respective owner.</p>
+<h2 id="disclaimer">Disclaimer</h2>
+<p>Opinions presented in this article are personal and belong solely to me, and do not represent people or organizations associated with me in a professional or personal way. All the information on this site is provided &ldquo;as is&rdquo; with no guarantee of completeness, accuracy or the results obtained from the use of this information.</p>
+
+      </article>
+    </section>
+
+    
+
+    
+
+    
+  </div>
+</div>
+
+
+            <footer class="ui basic center aligned segment" style="background-color: transparent;">
+              
+              <p>© 2021 SerDigital64</p>
+              
+
+              <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</p>
+
+              
+            </footer>
+          </div>
+        </section>
+        <section class="back">
+          <div class="dream-max-width">
+            <header class="ui basic very padded segment dream-header">
+  
+  <div class="ui small circular image">
+    <img src="/about/SerDigital64-Font:ANSIShadow-circle.png" alt="avatar" />
+  </div>
+  
+
+  <div class="content">
+    <h1 class="ui medium header">SerDigital64&#39;s Blog<span class="sub header">Traveler log from my journey through the lands of the ever evolving  digital world</span>
+    </h1>
+
+    <article class="ui horizontal list">
+      
+      <a class="item" href="/categories">
+        <i class="th list icon" title=""></i>
+      </a>
+      <a class="item" href="/tags">
+        <i class="tags icon" title=""></i>
+      </a>
+    </article>
+
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+
+    
+
+    
+
+    
+    
+
+    <div class="tags-with-dropdown">
+      <div class="ui accordion">
+        <div class="title">
+          <div class="ui horizontal list">
+            <a class="item dropdown" href="#">
+              <i class="chevron right icon dropdown-icon"></i>
+            </a>
+          </div>
+          <div class="dream-tags">
+          
+          
+          
+            <a class="ui label" href="/tags/ansible/" title="ansible">
+              ansible
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/automation/" title="automation">
+              automation
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/images/" title="images">
+              images
+            </a>
+          
+          </div>
+        </div>
+        <div class="content">
+    
+          <div class="dream-tags" style="margin-left: 1.5rem;">
+          
+          
+          
+            <a class="ui label" href="/tags/infrastructure-as-code/" title="infrastructure-as-code">
+              infrastructure-as-code
+            </a>
+          
+          </div>
+    
+        </div>
+      </div>
+    </div>
+    
+
+    
+  </div>
+</header>
+
+
+<div class="ui relaxed grid dream-grid dream-back">
+  
+  
+  
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    <article class="ui segment markdown-body">
+      <div class="ui medium header">About SerDigital64</div>
+      <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">
+
+
+███████╗███████╗██████╗                         
+██╔════╝██╔════╝██╔══██╗                        
+███████╗█████╗  ██████╔╝                        
+╚════██║██╔══╝  ██╔══██╗                        
+███████║███████╗██║  ██║                        
+╚══════╝╚══════╝╚═╝  ╚═╝                        
+                                  
+██████╗ ██╗ ██████╗ ██╗████████╗ █████╗ ██╗     
+██╔══██╗██║██╔════╝ ██║╚══██╔══╝██╔══██╗██║     
+██║  ██║██║██║  ███╗██║   ██║   ███████║██║     
+██║  ██║██║██║   ██║██║   ██║   ██╔══██║██║     
+██████╔╝██║╚██████╔╝██║   ██║   ██║  ██║███████╗
+╚═════╝ ╚═╝ ╚═════╝ ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝
+                                  
+██████╗ ██╗  ██╗                               
+██╔════╝ ██║  ██║                               
+███████╗ ███████║                               
+██╔═══██╗╚════██║                               
+╚██████╔╝     ██║                               
+╚═════╝      ╚═╝                               
+
+
+Linux &amp;&amp; OSS advocate
+Solutions Architect = <span style="color:#fff;font-weight:bold">for</span> a living
+SysAdmin &amp;&amp; Developer = <span style="color:#fff;font-weight:bold">for</span> the fun
+Sci-Fi == fan
+Photography &amp;&amp; DIY enthusiast
+                                                
+</code></pre></div>
+    </article>
+  </div>
+  
+
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    <article class="ui segment">
+      <div class="ui medium header"></div>
+      <nav class="ui secondary menu dream-menu dream-socials">
+  
+  <a class="item" href="/index.xml">
+    <i class="large rss square icon" title="RSS"></i>
+  </a>
+  
+
+  
+  <a class="item" href="mailto:serdigital64@gmail.com">
+    <i class="large mail icon" title="Email"></i>
+  </a>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <a class="item" href="https://github.com/https://github.com/serdigital64/" target="_blank">
+    <i class="large github icon" title="GitHub"></i>
+  </a>
+  
+
+  
+
+  
+
+  
+</nav>
+
+    </article>
+  </div>
+
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    
+    <article class="ui segment">
+      Articles in this site are licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/)
+    </article>
+    
+  </div>
+
+  
+</div>
+
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+    
+    <div class="ui segment" id="dream-search">
+  <div class="ui search">
+    <div class="ui transparent input">
+      <input class="prompt" type="text" placeholder="" />
+    </div>
+    <div class="results"></div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $.getJSON('https:\/\/serdigital64.github.io/index.json', function (data) {
+      $('.ui.search').search({
+        source: data,
+        searchFields: ['title'],
+        showNoResults: false,
+      })
+    })
+  })
+</script>
+<script src="/js/search.js"></script>
+
+    
+
+    
+
+    <script>
+  window.background = "#f7f7f7"
+  window.defaultDark =  false 
+  window.backgroundDark = "black"
+  window.backgroundImageDark = "from-serdigital64-flicker/DSC_6388-tall.jpg"
+  window.darkNav =  true 
+  window.maxTags =  3 
+  window.hasTwitterEmbed =  null 
+  window.fixedNav =  true 
+
+  if (window.hasTwitterEmbed) {
+    
+    window.twttr = (function (d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {}
+      if (d.getElementById(id)) return t
+      js = d.createElement(s)
+      js.id = id
+      js.src = 'https://platform.twitter.com/widgets.js'
+      fjs.parentNode.insertBefore(js, fjs)
+
+      t._e = []
+      t.ready = function (f) {
+        t._e.push(f)
+      }
+
+      return t
+    })(document, 'script', 'twitter-wjs')
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@1.13.1/js/jquery.overlayScrollbars.min.js"></script>
+<script src="/js/header.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/theme.js"></script>
+
+    
+
+
+
+<script src="/js/scrollToTop.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1"></script>
+<script src="/js/post.js" defer></script>
+
+
+    
+
+    
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-202533179-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
+  </body>
+</html>

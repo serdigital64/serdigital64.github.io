@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>A:Platform64 Project | SerDigital64</title>
+
+    
+
+
+
+<meta name="author" content="SerDigital64" />
+<meta name="description" content="Blog dedicated to sharing personal experiences and knowledge on Information Technology topics" />
+
+
+
+<meta name="generator" content="Hugo 0.80.0" />
+
+<link rel="canonical" href="https://serdigital64.github.io/post/projects/project-aplatform64/" />
+
+
+<meta property="og:title" content="A:Platform64 Project" />
+<meta property="og:description" content="Automated infrastructure-as-code management solution based on Ansible for small to medium computing environments" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://serdigital64.github.io/post/projects/project-aplatform64/" />
+<meta property="article:published_time" content="2021-10-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-10-03T00:00:00+00:00" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="A:Platform64 Project"/>
+<meta name="twitter:description" content="Automated infrastructure-as-code management solution based on Ansible for small to medium computing environments"/>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+<link rel="stylesheet" href="/css/icomoon.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@1.13.1/css/OverlayScrollbars.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css">
+<link rel="stylesheet" href="/css/site.css" />
+
+<style>
+  .ui.header a:not(.item, .ui.button):hover {
+    text-decoration: underline;
+  }
+
+  
+  a:not(.item, .ui.button) {
+    color: seagreen !important;
+  }
+  
+
+  
+  .inverted a:not(.item, .ui.button) {
+     color: darkseagreen !important;
+  }
+  
+
+  
+  body.default {
+    
+    background-color: #f7f7f7;
+    
+
+    
+    background-image: url(from-serdigital64-flicker/DSC_6388-tall.jpg);
+    
+  }
+  
+
+  
+  body.dark {
+    
+    background-color: black;
+    
+
+    
+    background-image: url(from-serdigital64-flicker/DSC_6388-tall.jpg);
+    
+  }
+  
+</style>
+
+
+    
+
+
+
+
+
+
+
+    
+  </head>
+
+  <body class="default">
+    
+<nav class="ui secondary menu dream-menu dream-nav">
+
+  <a class="item dream-flip-toggle" title="">
+    <i class="large link bullseye icon"></i>
+  </a>
+  <a class="item" href="https://serdigital64.github.io" title="">
+    <i class="large link home icon"></i>
+  </a>
+  
+  <a class="item" onclick="themeSwitch(event)">
+    <i class="large link icon theme-switch"></i>
+  </a>
+  
+  
+  <a class="item" title="" onclick="toggleSearch(event)">
+    <i class="large link search icon"></i>
+  </a>
+  
+</nav>
+
+    <div class="flip-container">
+      <div class="flipper">
+        <section class="front">
+          <div class="dream-max-width">
+            
+<div class="ui relaxed centered grid dream-grid dream-grid-single"style="flex-direction: row-reverse;">
+  
+  
+  
+  
+
+  
+  <aside class="sixteen wide mobile sixteen wide tablet three wide computer column dream-single-aside">
+    
+    <div class="ui segment toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a>
+      <ul>
+        <li><a href="#design-principles">Design Principles</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#automation-scripts">Automation Scripts</a></li>
+      </ul>
+    </li>
+    <li><a href="#deployment">Deployment</a>
+      <ul>
+        <li><a href="#os-compatibility">OS Compatibility</a></li>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a>
+      <ul>
+        <li><a href="#initialize-the-environment">Initialize the environment</a></li>
+        <li><a href="#register-managed-hosts">Register managed hosts</a></li>
+        <li><a href="#run-automation-scripts">Run automation scripts</a></li>
+      </ul>
+    </li>
+    <li><a href="#source-code">Source Code</a>
+      <ul>
+        <li><a href="#repositories">Repositories</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+
+    
+  </aside>
+  
+  <div class="sixteen wide mobile sixteen wide tablet ten wide computer column markdown-body dream-single" id="dream-save-post-as-img">
+    <section class="ui top attached segment">
+      <header>
+        <h1 class="ui large header">A:Platform64 Project<span class="sub header">
+            <span class="left">
+              @
+              
+                SerDigital64
+              
+
+              | 
+                  
+                    Sunday, Oct 3, 2021
+                  
+                
+
+              | 5
+
+              
+              | 
+                
+                  
+                    Sunday, Oct 3, 2021
+                  
+                
+              
+            </span>
+
+            
+            <span class="dream-share">
+  <a href="#" class="save-as-image" title="" onclick="savePostAsImg()">
+    <i class="save icon"></i>
+  </a>
+  <a href="https://twitter.com/intent/tweet?text=A%3aPlatform64%20Project&url=https%3a%2f%2fserdigital64.github.io%2fpost%2fprojects%2fproject-aplatform64%2f" title="Twitter">
+    <i class="twitter icon"></i>
+  </a>
+  <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fserdigital64.github.io%2fpost%2fprojects%2fproject-aplatform64%2f" title="Facebook">
+    <i class="facebook icon"></i>
+  </a>
+</span>
+
+            
+          </span>
+        </h1>
+      </header>
+
+      <article class="main">
+        
+        <img class="cover" src="/from-serdigital64-flicker/DSC_8063-wide.jpg" />
+        
+
+        <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-text" data-lang="text"> █████╗    ██████╗ ██╗      █████╗ ████████╗███████╗ ██████╗ ██████╗ ███╗   ███╗ ██████╗ ██╗  ██╗
+██╔══██╗██╗██╔══██╗██║     ██╔══██╗╚══██╔══╝██╔════╝██╔═══██╗██╔══██╗████╗ ████║██╔════╝ ██║  ██║
+███████║╚═╝██████╔╝██║     ███████║   ██║   █████╗  ██║   ██║██████╔╝██╔████╔██║███████╗ ███████║
+██╔══██║██╗██╔═══╝ ██║     ██╔══██║   ██║   ██╔══╝  ██║   ██║██╔══██╗██║╚██╔╝██║██╔═══██╗╚════██║
+██║  ██║╚═╝██║     ███████╗██║  ██║   ██║   ██║     ╚██████╔╝██║  ██║██║ ╚═╝ ██║╚██████╔╝     ██║
+╚═╝  ╚═╝   ╚═╝     ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚═╝      ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝ ╚═════╝      ╚═╝
+</code></pre></div><h2 id="overview">Overview</h2>
+<p><strong>A:Platform64</strong> is an automated infrastructure-as-code management platform based on Ansible for small to medium computing environments.</p>
+<h3 id="design-principles">Design Principles</h3>
+<p>The platform is designed to take full control of the target infrastructure under the following principles:</p>
+<ul>
+<li><strong>Automate everything</strong>: all management tasks should be automated. Exceptions should be carefully evaluated and only used when no automation is possible.</li>
+<li><strong>Separate code from end-state configuration</strong>: automation scripts must be developed to define a clear and well-documented parameter interface for setting end-state and behaviour data.</li>
+<li><strong>Ansible Roles must be specialized</strong>: roles will be used to manage single components or services. Dependencies must be clearly documented for cases where the role relies on features provided by other roles.</li>
+<li><strong>Infrastructure data model</strong>: the infrastructure will use a data model to represent the target end-state and run-time behaviour. The model includes the following elements:
+<ul>
+<li><em>Site</em>: Represents a group of Nodes that are managed by the same Control Node.</li>
+<li><em>Node</em>: Compute node that is capable of hosting software components and that is fully managed by the Control Node.</li>
+<li><em>Component</em>: Individual software product that is installed in a Node.</li>
+<li><em>Service</em>: Group of Components configured in one or more Nodes to serve a particular function.</li>
+</ul>
+</li>
+<li><strong>Multi-platform friendly</strong>: roles must be prepared to separate platform-specific code into individual files that can be loaded on-demand. Roles should not be allowed to execute on platforms that are not supported.</li>
+<li><strong>Test everything</strong>: roles must include testing code to check platform compatibility, code sanity, standardization, integration and functionality.</li>
+</ul>
+<h3 id="architecture">Architecture</h3>
+<p>The platform defines the following components:</p>
+<ul>
+<li>Control Node: compute node that will host the Ansible engine and the <strong>A:Platform64</strong> platform.</li>
+<li>Management Node: compute nodes that will me managed by <strong>A:Platform64</strong></li>
+</ul>
+<p>Communication between the <strong>Control Node</strong> and the <strong>Management Nodes</strong> will be done using OpenSSH and regular Linux user accounts with public/private key pairs.
+Root privilege will be provided by Sudo.</p>
+<p>The <strong>Control Node</strong> will have the following directory structure to store <strong>A:Platform64</strong> components:</p>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>etc/</td>
+<td>Configuration files and keys</td>
+</tr>
+<tr>
+<td>inventories/</td>
+<td>Ansible inventory files, host_vars and group_vars</td>
+</tr>
+<tr>
+<td>collections/</td>
+<td>Ansible Collections installed from Ansible-Galaxy</td>
+</tr>
+<tr>
+<td>roles/</td>
+<td>Custom Ansible Roles</td>
+</tr>
+<tr>
+<td>playbooks/</td>
+<td>Custom Ansible Playbooks</td>
+</tr>
+<tr>
+<td>files/</td>
+<td>Ansible data files for custom playbooks and roles</td>
+</tr>
+<tr>
+<td>templates/</td>
+<td>Custom Ansible templates</td>
+</tr>
+<tr>
+<td>tests/</td>
+<td>Ansible playbooks for testing Custom Ansible Roles and Playbooks</td>
+</tr>
+<tr>
+<td>vars/</td>
+<td>Ansible variables for custom playbooks and roles</td>
+</tr>
+<tr>
+<td>logs/</td>
+<td>Execution logs</td>
+</tr>
+<tr>
+<td>var/</td>
+<td>Variable and temporal data store</td>
+</tr>
+</tbody>
+</table>
+<p>The directory structure and configuration are automatically created during the <a href="#deployment-procedure">Deployment Procedure</a></p>
+<h3 id="automation-scripts">Automation Scripts</h3>
+<p>The platform uses Ansible Roles to implement automation scripts. Roles are grouped into Ansible Collections based on the managed component type:</p>
+<table>
+<thead>
+<tr>
+<th>Collection</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://aplatform64.readthedocs.io/en/latest/collections/application/">application</a></td>
+<td>Ansible Roles for automating office applications provisioning</td>
+</tr>
+<tr>
+<td><a href="https://aplatform64.readthedocs.io/en/latest/collections/automation/">automation</a></td>
+<td>Ansible Roles for managing automation tools provisioning</td>
+</tr>
+<tr>
+<td><a href="https://aplatform64.readthedocs.io/en/latest/collections/backup/">backup</a></td>
+<td>Ansible Roles for automating backup tools provisioning</td>
+</tr>
+<tr>
+<td><a href="https://aplatform64.readthedocs.io/en/latest/collections/cloud/">cloud</a></td>
+<td>Ansible Roles for automating cloud tools provisioning</td>
+</tr>
+<tr>
+<td><a href="https://aplatform64.readthedocs.io/en/latest/collections/core/">core</a></td>
+<td>Stand-alone dependency-free Ansible Roles used by <strong>A:Platform64</strong> collections</td>
+</tr>
+<tr>
+<td><a href="https://aplatform64.readthedocs.io/en/latest/collections/development/">development</a></td>
+<td>Ansible Roles for automating development environment provisioning</td>
+</tr>
+<tr>
+<td><a href="https://aplatform64.readthedocs.io/en/latest/collections/infrastructure/">infrastructure</a></td>
+<td>Ansible Roles for automating infrastructure tools provisioning</td>
+</tr>
+<tr>
+<td><a href="https://aplatform64.readthedocs.io/en/latest/collections/security/">security</a></td>
+<td>Ansible Roles for automating security tools provisioning</td>
+</tr>
+<tr>
+<td><a href="https://aplatform64.readthedocs.io/en/latest/collections/system/">system</a></td>
+<td>Ansible Roles for automating operating system management</td>
+</tr>
+</tbody>
+</table>
+<p>All collections are available on the <a href="https://galaxy.ansible.com/serdigital64">Ansible Galaxy site</a>.</p>
+<h2 id="deployment">Deployment</h2>
+<h3 id="os-compatibility">OS Compatibility</h3>
+<p><strong>A:Platform64</strong> is compatible with the following Linux operating systems:</p>
+<ul>
+<li>CentOS8</li>
+<li>OracleLinux8</li>
+<li>Ubuntu20</li>
+<li>Ubuntu21</li>
+<li>Fedora33</li>
+</ul>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Control Node:
+<ul>
+<li>Python 3</li>
+<li>OpenSSH</li>
+<li>Sudo</li>
+<li>Regular user account with sudo privilege for running the installer</li>
+</ul>
+</li>
+<li>Managed Nodes:
+<ul>
+<li>Python 3</li>
+<li>OpenSSH</li>
+<li>Sudo</li>
+<li>Regular user account with sudo privilege for the bootstrap process</li>
+</ul>
+</li>
+</ul>
+<h3 id="installation">Installation</h3>
+<p>Download the installation scripts:</p>
+<ul>
+<li><a href="https://raw.githubusercontent.com/serdigital64/aplatform64/main/collections/serdigital64/automation/roles/auto_aplatform64/files/installer/install.sh">install.sh</a></li>
+<li><a href="https://raw.githubusercontent.com/serdigital64/aplatform64/main/collections/serdigital64/automation/roles/auto_aplatform64/files/installer/install_helper.sh">install_helper.sh</a></li>
+<li><a href="https://raw.githubusercontent.com/serdigital64/aplatform64/main/collections/serdigital64/automation/roles/auto_aplatform64/files/installer/install_helper.yml">install_helper.yml</a></li>
+</ul>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">APLATFORM64=<span style="color:#0ff;font-weight:bold">&#39;https://raw.githubusercontent.com/serdigital64/aplatform64/main/collections/serdigital64/automation/roles/auto_aplatform64/files/installer&#39;</span>
+curl -O <span style="color:#0ff;font-weight:bold">&#34;</span>$APLATFORM64<span style="color:#0ff;font-weight:bold">/install.sh&#34;</span> -O <span style="color:#0ff;font-weight:bold">&#34;</span>$APLATFORM64<span style="color:#0ff;font-weight:bold">/install_helper.sh&#34;</span> -O <span style="color:#0ff;font-weight:bold">&#34;</span>$APLATFORM64<span style="color:#0ff;font-weight:bold">/install_helper.yml&#34;</span>
+chmod <span style="color:#ff0;font-weight:bold">755</span> install.sh install_helper.sh
+</code></pre></td></tr></table>
+</div>
+</div><p>Define installation options:</p>
+<ul>
+<li><code>-y PYTHON</code> : Python3.9 interpreter path. Default: <code>/usr/bin/python3.9</code></li>
+<li><code>-v VENV</code> : Python virtual environment name where Ansible will be installed to. Must be new. Default: <code>aplatform64</code></li>
+<li><code>-m USER</code> : Control node account login name. Default: <code>$USER</code> (current user)</li>
+<li><code>-r PATH</code> : Install path. Default: <code>${HOME}/aplatform64</code> (current user&rsquo;s home directory)</li>
+<li><code>-o PATH</code> : Variable data path. Default: <code>${HOME}/aplatform64/var</code> (current user&rsquo;s home directory)</li>
+<li><code>-t SITE</code> : Site name. Default: <code>site</code></li>
+<li><code>-k</code> : use this flag if the user requires password to use sudo</li>
+</ul>
+<p>Run the installation script:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">./install.sh <span style="color:#0ff;font-weight:bold">\
+</span><span style="color:#0ff;font-weight:bold"></span>  -p -w -u -m <span style="color:#0ff;font-weight:bold">&#39;sitectl&#39;</span> <span style="color:#0ff;font-weight:bold">\
+</span><span style="color:#0ff;font-weight:bold"></span>  -s -a -r <span style="color:#0ff;font-weight:bold">&#39;/opt/aplatform64&#39;</span> -o <span style="color:#0ff;font-weight:bold">&#39;/var/opt/aplatform64&#39;</span> <span style="color:#0ff;font-weight:bold">\
+</span><span style="color:#0ff;font-weight:bold"></span>  -v <span style="color:#0ff;font-weight:bold">&#39;aplatform64&#39;</span> -6 -t <span style="color:#0ff;font-weight:bold">&#39;site&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Done. The <strong>A:Platform64</strong> platform is now installed.</p>
+<h2 id="usage">Usage</h2>
+<h3 id="initialize-the-environment">Initialize the environment</h3>
+<p>To start using <strong>A:Platform64</strong> change to the Ansible Control user and set the environment:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6">6</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7">7</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8">8</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#007f7f"># Switch to the Ansible Control user</span>
+sudo su - <span style="color:#0ff;font-weight:bold">&#39;sitectl&#39;</span>
+
+<span style="color:#007f7f"># Set the environment for Ansible</span>
+<span style="color:#fff;font-weight:bold">source</span> /opt/aplatform64/load_environment.sh
+
+<span style="color:#007f7f"># Go to the install location</span>
+<span style="color:#fff;font-weight:bold">cd</span> /opt/aplatform64/
+</code></pre></td></tr></table>
+</div>
+</div><p>Review and adjust default settings:</p>
+<table>
+<thead>
+<tr>
+<th>Configuration File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>load_environment.sh</code></td>
+<td>Set global Ansible shell variables and Python virtual environment</td>
+</tr>
+<tr>
+<td><code>etc/cfg/site/ansible.cfg</code></td>
+<td>Set global Ansible runtime configuration settings</td>
+</tr>
+<tr>
+<td><code>inventories/site/group_vars/all/ansible_common.yml</code></td>
+<td>Set site specific Ansible remote access options</td>
+</tr>
+</tbody>
+</table>
+<h3 id="register-managed-hosts">Register managed hosts</h3>
+<p>Register the target remote host in the bootstrap process by adding it to the inventory:</p>
+<ul>
+<li>file: <code>inventories/site/hosts.ini</code></li>
+<li>group <code>[ansible_managed_nodes_bootstrap_distro]</code></li>
+</ul>
+<p>The bootstrap process will connect to the managed node using a pre-existing user account with root privilege and then create the dedicated account for Ansible.</p>
+<p>Register the bootstrap user details and review the dedicated user definition:</p>
+<ul>
+<li>file: <code>inventories/site/group_vars/ansible_managed_nodes_bootstrap_distro/auto_ansible_node.yml</code>
+<ul>
+<li>variable <code>auto_ansible_node_bootstrap:</code></li>
+<li>variable <code>auto_ansible_node_user:</code></li>
+</ul>
+</li>
+<li>file: <code>inventories/site/group_vars/ansible_managed_nodes/auto_ansible_node.yml</code>
+<ul>
+<li>variable <code>auto_ansible_node_user:</code></li>
+</ul>
+</li>
+</ul>
+<p>Execute the bootstrap process:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">ansible-playbook playbooks/site/manage_ansible_control_node.yml --tags managed_node
+</code></pre></td></tr></table>
+</div>
+</div><p>The host is now ready for Ansible. Remove it from the boostrap list and add it to the predefined host groups:</p>
+<table>
+<thead>
+<tr>
+<th>Host Group</th>
+<th>Required?</th>
+<th>Associated Playbook</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ansible_managed_nodes</code></td>
+<td>Yes</td>
+<td><code>playbooks/site/manage_ansible_control_node.yml</code></td>
+<td>Maintain Ansible Control and Managed nodes</td>
+</tr>
+<tr>
+<td><code>office_nodes</code></td>
+<td>No</td>
+<td><code>playbooks/site/manage_office_nodes.yml</code></td>
+<td>Provision productivity applications</td>
+</tr>
+</tbody>
+</table>
+<h3 id="run-automation-scripts">Run automation scripts</h3>
+<p>Use any of the predefined playbooks and customize the default end-state definitions.</p>
+<p>For example, to configure workstations and notebooks for office work run the playbook:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">ansible-playbook playbooks/site/manage_office_nodes.yml
+</code></pre></td></tr></table>
+</div>
+</div><p>Additional playbooks and roles can be added to further customize the platform.</p>
+<h2 id="source-code">Source Code</h2>
+<h3 id="repositories">Repositories</h3>
+<ul>
+<li>Project Documentation: <a href="https://aplatform64.readthedocs.io">https://aplatform64.readthedocs.io</a></li>
+<li>Project GIT repository: <a href="https://github.com/serdigital64/aplatform64">https://github.com/serdigital64/aplatform64</a></li>
+<li>Project Ansible Galaxy repository: <a href="https://galaxy.ansible.com/serdigital64">https://galaxy.ansible.com/serdigital64</a></li>
+</ul>
+
+      </article>
+    </section>
+
+    
+
+    
+
+    
+  </div>
+</div>
+
+
+            <footer class="ui basic center aligned segment" style="background-color: transparent;">
+              
+              <p>© 2021 SerDigital64</p>
+              
+
+              <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</p>
+
+              
+            </footer>
+          </div>
+        </section>
+        <section class="back">
+          <div class="dream-max-width">
+            <header class="ui basic very padded segment dream-header">
+  
+  <div class="ui small circular image">
+    <img src="/about/SerDigital64-Font:ANSIShadow-circle.png" alt="avatar" />
+  </div>
+  
+
+  <div class="content">
+    <h1 class="ui medium header">SerDigital64&#39;s Blog<span class="sub header">Traveler log from my journey through the lands of the ever evolving  digital world</span>
+    </h1>
+
+    <article class="ui horizontal list">
+      
+      <a class="item" href="/categories">
+        <i class="th list icon" title=""></i>
+      </a>
+      <a class="item" href="/tags">
+        <i class="tags icon" title=""></i>
+      </a>
+    </article>
+
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+
+    
+
+    
+
+    
+    
+
+    <div class="tags-with-dropdown">
+      <div class="ui accordion">
+        <div class="title">
+          <div class="ui horizontal list">
+            <a class="item dropdown" href="#">
+              <i class="chevron right icon dropdown-icon"></i>
+            </a>
+          </div>
+          <div class="dream-tags">
+          
+          
+          
+            <a class="ui label" href="/tags/ansible/" title="ansible">
+              ansible
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/automation/" title="automation">
+              automation
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/images/" title="images">
+              images
+            </a>
+          
+          </div>
+        </div>
+        <div class="content">
+    
+          <div class="dream-tags" style="margin-left: 1.5rem;">
+          
+          
+          
+            <a class="ui label" href="/tags/infrastructure-as-code/" title="infrastructure-as-code">
+              infrastructure-as-code
+            </a>
+          
+          </div>
+    
+        </div>
+      </div>
+    </div>
+    
+
+    
+  </div>
+</header>
+
+
+<div class="ui relaxed grid dream-grid dream-back">
+  
+  
+  
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    <article class="ui segment markdown-body">
+      <div class="ui medium header">About SerDigital64</div>
+      <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">
+
+
+███████╗███████╗██████╗                         
+██╔════╝██╔════╝██╔══██╗                        
+███████╗█████╗  ██████╔╝                        
+╚════██║██╔══╝  ██╔══██╗                        
+███████║███████╗██║  ██║                        
+╚══════╝╚══════╝╚═╝  ╚═╝                        
+                                  
+██████╗ ██╗ ██████╗ ██╗████████╗ █████╗ ██╗     
+██╔══██╗██║██╔════╝ ██║╚══██╔══╝██╔══██╗██║     
+██║  ██║██║██║  ███╗██║   ██║   ███████║██║     
+██║  ██║██║██║   ██║██║   ██║   ██╔══██║██║     
+██████╔╝██║╚██████╔╝██║   ██║   ██║  ██║███████╗
+╚═════╝ ╚═╝ ╚═════╝ ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝
+                                  
+██████╗ ██╗  ██╗                               
+██╔════╝ ██║  ██║                               
+███████╗ ███████║                               
+██╔═══██╗╚════██║                               
+╚██████╔╝     ██║                               
+╚═════╝      ╚═╝                               
+
+
+Linux &amp;&amp; OSS advocate
+Solutions Architect = <span style="color:#fff;font-weight:bold">for</span> a living
+SysAdmin &amp;&amp; Developer = <span style="color:#fff;font-weight:bold">for</span> the fun
+Sci-Fi == fan
+Photography &amp;&amp; DIY enthusiast
+                                                
+</code></pre></div>
+    </article>
+  </div>
+  
+
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    <article class="ui segment">
+      <div class="ui medium header"></div>
+      <nav class="ui secondary menu dream-menu dream-socials">
+  
+  <a class="item" href="/index.xml">
+    <i class="large rss square icon" title="RSS"></i>
+  </a>
+  
+
+  
+  <a class="item" href="mailto:serdigital64@gmail.com">
+    <i class="large mail icon" title="Email"></i>
+  </a>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <a class="item" href="https://github.com/https://github.com/serdigital64/" target="_blank">
+    <i class="large github icon" title="GitHub"></i>
+  </a>
+  
+
+  
+
+  
+
+  
+</nav>
+
+    </article>
+  </div>
+
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    
+    <article class="ui segment">
+      Articles in this site are licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/)
+    </article>
+    
+  </div>
+
+  
+</div>
+
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+    
+    <div class="ui segment" id="dream-search">
+  <div class="ui search">
+    <div class="ui transparent input">
+      <input class="prompt" type="text" placeholder="" />
+    </div>
+    <div class="results"></div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $.getJSON('https:\/\/serdigital64.github.io/index.json', function (data) {
+      $('.ui.search').search({
+        source: data,
+        searchFields: ['title'],
+        showNoResults: false,
+      })
+    })
+  })
+</script>
+<script src="/js/search.js"></script>
+
+    
+
+    
+
+    <script>
+  window.background = "#f7f7f7"
+  window.defaultDark =  false 
+  window.backgroundDark = "black"
+  window.backgroundImageDark = "from-serdigital64-flicker/DSC_6388-tall.jpg"
+  window.darkNav =  true 
+  window.maxTags =  3 
+  window.hasTwitterEmbed =  null 
+  window.fixedNav =  true 
+
+  if (window.hasTwitterEmbed) {
+    
+    window.twttr = (function (d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {}
+      if (d.getElementById(id)) return t
+      js = d.createElement(s)
+      js.id = id
+      js.src = 'https://platform.twitter.com/widgets.js'
+      fjs.parentNode.insertBefore(js, fjs)
+
+      t._e = []
+      t.ready = function (f) {
+        t._e.push(f)
+      }
+
+      return t
+    })(document, 'script', 'twitter-wjs')
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@1.13.1/js/jquery.overlayScrollbars.min.js"></script>
+<script src="/js/header.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/theme.js"></script>
+
+    
+
+
+
+<script src="/js/scrollToTop.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1"></script>
+<script src="/js/post.js" defer></script>
+
+
+    
+
+    
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-202533179-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
+  </body>
+</html>
