@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Bash Scripting Concepts: Part 2 of 2 | SerDigital64&#39;s Blog</title>
+
+    
+
+
+
+<meta name="author" content="SerDigital64" />
+<meta name="description" content="Blog dedicated to sharing personal experiences and knowledge on Information Technology topics" />
+
+
+
+<meta name="generator" content="Hugo 0.80.0" />
+
+<link rel="canonical" href="https://serdigital64.github.io/post/bash/bash-scripting-concepts-part2of2/" />
+
+
+<meta property="og:title" content="Bash Scripting Concepts: Part 2 of 2" />
+<meta property="og:description" content="Create automation scripts using Bash (part 2 of 2). Explore key concepts: loops, conditionals, redirection." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://serdigital64.github.io/post/bash/bash-scripting-concepts-part2of2/" />
+<meta property="article:published_time" content="2021-12-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-12-21T00:00:00+00:00" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Bash Scripting Concepts: Part 2 of 2"/>
+<meta name="twitter:description" content="Create automation scripts using Bash (part 2 of 2). Explore key concepts: loops, conditionals, redirection."/>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+<link rel="stylesheet" href="/css/icomoon.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@1.13.1/css/OverlayScrollbars.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css">
+<link rel="stylesheet" href="/css/site.css" />
+
+<style>
+  .ui.header a:not(.item, .ui.button):hover {
+    text-decoration: underline;
+  }
+
+  
+  a:not(.item, .ui.button) {
+    color: seagreen !important;
+  }
+  
+
+  
+  .inverted a:not(.item, .ui.button) {
+     color: darkseagreen !important;
+  }
+  
+
+  
+  body.default {
+    
+    background-color: #f7f7f7;
+    
+
+    
+  }
+  
+
+  
+  body.dark {
+    
+    background-color: black;
+    
+
+    
+  }
+  
+</style>
+
+
+    
+
+
+
+
+
+
+
+    
+    <link rel="stylesheet" href="/css/custom.css" />
+    
+  </head>
+
+  <body class="default">
+    
+<nav class="ui secondary menu dream-menu dream-nav">
+
+  <a class="item dream-flip-toggle" title="">
+    <i class="large link bullseye icon"></i>
+  </a>
+  <a class="item" href="https://serdigital64.github.io" title="">
+    <i class="large link home icon"></i>
+  </a>
+  
+  <a class="item" onclick="themeSwitch(event)">
+    <i class="large link icon theme-switch"></i>
+  </a>
+  
+  
+  <a class="item" title="" onclick="toggleSearch(event)">
+    <i class="large link search icon"></i>
+  </a>
+  
+</nav>
+
+    <div class="flip-container">
+      <div class="flipper">
+        <section class="front">
+          <div class="dream-max-width">
+            
+<div class="ui relaxed centered grid dream-grid dream-grid-single"style="flex-direction: row-reverse;">
+  
+  
+  
+  
+
+  
+  <aside class="sixteen wide mobile sixteen wide tablet three wide computer column dream-single-aside">
+    
+    <div class="ui segment toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#working-with-loops">Working with loops</a>
+      <ul>
+        <li><a href="#command-while">Command: <code>while</code></a></li>
+        <li><a href="#command-until">Command: <code>until</code></a></li>
+        <li><a href="#command-for">Command: <code>for</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#working-with-conditionals">Working with conditionals</a>
+      <ul>
+        <li><a href="#logical-or-">Logical OR: <code>||</code></a></li>
+        <li><a href="#logical-and-">Logical AND: <code>&amp;&amp;</code></a></li>
+        <li><a href="#logical-not-">Logical NOT: <code>!</code></a></li>
+        <li><a href="#arithmetic-expression-evaluation--">Arithmetic Expression Evaluation: <code>(( ))</code></a></li>
+        <li><a href="#expression-evaluation--">Expression Evaluation: <code>[[ ]]</code></a></li>
+        <li><a href="#command-if">Command: <code>if</code></a></li>
+        <li><a href="#command-case">Command: <code>case</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#redirecting-data-flows">Redirecting data flows</a>
+      <ul>
+        <li><a href="#redirection">Redirection</a></li>
+        <li><a href="#pipelines">Pipelines</a></li>
+      </ul>
+    </li>
+    <li><a href="#next-steps">Next Steps</a></li>
+    <li><a href="#copyright-information">Copyright information</a></li>
+    <li><a href="#disclaimer">Disclaimer</a></li>
+  </ul>
+</nav>
+    </div>
+    
+
+    
+    <div class="ui segment">
+  <button
+    class="ui circular icon button save-as-image"
+    title=""
+    onclick="savePostAsImg()">
+    <i class="save icon"></i>
+  </button>
+  <a href="https://twitter.com/intent/tweet?text=Bash%20Scripting%20Concepts%3a%20Part%202%20of%202&url=https%3a%2f%2fserdigital64.github.io%2fpost%2fbash%2fbash-scripting-concepts-part2of2%2f" class="ui circular twitter icon button">
+    <i class="twitter icon"></i>
+  </a>
+  <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fserdigital64.github.io%2fpost%2fbash%2fbash-scripting-concepts-part2of2%2f" class="ui circular facebook icon button">
+    <i class="facebook icon"></i>
+  </a>
+</div>
+
+    
+  </aside>
+  
+  <div class="sixteen wide mobile sixteen wide tablet ten wide computer column markdown-body dream-single" id="dream-save-post-as-img">
+    <section class="ui top attached segment">
+      <header>
+        <h1 class="ui large header">Bash Scripting Concepts: Part 2 of 2<span class="sub header">
+            <span class="left">
+              @
+              
+                SerDigital64
+              
+
+              | 
+                  
+                    Monday, Dec 6, 2021
+                  
+                
+
+              | 6
+
+              
+              | 
+                
+                  
+                    Tuesday, Dec 21, 2021
+                  
+                
+              
+            </span>
+
+            
+          </span>
+        </h1>
+      </header>
+
+      <article class="main">
+        
+        <img class="cover" src="/from-serdigital64-flicker/DSC_8191-wide.jpg" />
+        
+
+        <h2 id="overview">Overview</h2>
+<p>This is the second part of the tutorial. If not done already, please read the first part: <a href="/post/bash/bash-scripting-concepts-part1of2/">Bash Scripting Concepts: Part 1 of 2</a></p>
+<h2 id="working-with-loops">Working with loops</h2>
+<p><strong>Bash</strong> provides three ways of creating loops:</p>
+<ul>
+<li><code>for</code>: loop for a predefined number of times</li>
+<li><code>while</code>: loop while the exit condition is true. The condition is evaluated before executing tasks.</li>
+<li><code>until</code>: loop until the exit condition is true. The condition is evaluated after executing tasks.</li>
+</ul>
+<p>In addition to the loop condition, Bash provides two statements that can be used to control the loop execution flow:</p>
+<ul>
+<li><code>break</code>: forces the loop to stop.</li>
+<li><code>continue</code>: forces the loop to skip remaining tasks and start the next iteration.</li>
+</ul>
+<h3 id="command-while">Command: <code>while</code></h3>
+<p>In the following example, the loop iterates 5 times. The loop condition is evaluated after all commands in the code block are executed:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1"> 1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2"> 2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3"> 3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4"> 4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5"> 5</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6"> 6</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7"> 7</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8"> 8</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="9"><a style="outline: none; text-decoration:none; color:inherit" href="#9"> 9</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="10"><a style="outline: none; text-decoration:none; color:inherit" href="#10">10</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
+</span><span style="color:#0f0;font-weight:bold"></span>
+<span style="color:#fff;font-weight:bold">declare</span> -i count=<span style="color:#ff0;font-weight:bold">1</span>
+<span style="color:#fff;font-weight:bold">declare</span> -i max=<span style="color:#ff0;font-weight:bold">5</span>
+
+<span style="color:#fff;font-weight:bold">while</span> ((count &lt;= max)); <span style="color:#fff;font-weight:bold">do</span>
+  <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;counter: %s\n&#39;</span> <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>count<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
+  count=<span style="color:#fff;font-weight:bold">$((</span>count + <span style="color:#ff0;font-weight:bold">1</span><span style="color:#fff;font-weight:bold">))</span>
+<span style="color:#fff;font-weight:bold">done</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="command-until">Command: <code>until</code></h3>
+<p>Using the same structure as in the <code>while</code> example, notice that now the loop iterates 4 times only. This is because the loop condition is evaluated before executing the code block:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6">6</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7">7</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8">8</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="9"><a style="outline: none; text-decoration:none; color:inherit" href="#9">9</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
+</span><span style="color:#0f0;font-weight:bold"></span>
+<span style="color:#fff;font-weight:bold">declare</span> -i count=<span style="color:#ff0;font-weight:bold">1</span>
+<span style="color:#fff;font-weight:bold">declare</span> -i max=<span style="color:#ff0;font-weight:bold">5</span>
+
+<span style="color:#fff;font-weight:bold">until</span> ((count == max)); <span style="color:#fff;font-weight:bold">do</span>
+  <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;counter: %s\n&#39;</span> <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>count<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
+  count=<span style="color:#fff;font-weight:bold">$((</span>count + <span style="color:#ff0;font-weight:bold">1</span><span style="color:#fff;font-weight:bold">))</span>
+<span style="color:#fff;font-weight:bold">done</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="command-for">Command: <code>for</code></h3>
+<p>In the case of the <code>for</code> loop the iteration is predefined. Instead of having a loop condition, the loop variable <code>count</code> will be assigned each value in the list:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6">6</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7">7</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
+</span><span style="color:#0f0;font-weight:bold"></span>
+<span style="color:#fff;font-weight:bold">declare</span> -i count
+
+<span style="color:#fff;font-weight:bold">for</span> count in <span style="color:#ff0;font-weight:bold">1</span> <span style="color:#ff0;font-weight:bold">2</span> <span style="color:#ff0;font-weight:bold">3</span> <span style="color:#ff0;font-weight:bold">4</span> <span style="color:#ff0;font-weight:bold">5</span> ; <span style="color:#fff;font-weight:bold">do</span>
+  <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;counter: %s\n&#39;</span> <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>count<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
+<span style="color:#fff;font-weight:bold">done</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="working-with-conditionals">Working with conditionals</h2>
+<p>Bash provides the following options for implementing conditional execution:</p>
+<ul>
+<li><code>||</code>: (logical OR) evaluates the execution of two commands and sets the exit status to zero if any associated exit status is zero.</li>
+<li><code>&amp;&amp;</code>: (logical AND) evaluates the execution of two commands and sets the exit status to zero if all associated exit statuses are zero.</li>
+<li><code>\!</code>: (logical NOT) evaluates the execution of a command and sets the exit status to zero if the associated exit status is not zero.</li>
+<li><code>(( ))</code>: performs logical evaluation on the integer expression and sets the exit status to zero if true</li>
+<li><code>[[ ]]</code>: evaluates the literal expression and sets the exit status to zero if true.</li>
+<li><code>if</code>: executes a command and if the exit status is zero then performs additional actions.</li>
+<li><code>case</code>: compares the provided value against a list of patterns and executes the commands upon match.</li>
+</ul>
+<p>As mentioned before, <strong>Bash</strong> interprets the exit status of commands as:</p>
+<ul>
+<li><code>0</code>: true</li>
+<li><code>&gt;0</code>: false</li>
+</ul>
+<p>In the following examples <code>true</code> and <code>false</code> are external commands that emulates true and false values (exist status 0 and 1 respectively)</p>
+<h3 id="logical-or-">Logical OR: <code>||</code></h3>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1"> 1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2"> 2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3"> 3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4"> 4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5"> 5</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6"> 6</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7"> 7</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8"> 8</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="9"><a style="outline: none; text-decoration:none; color:inherit" href="#9"> 9</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="10"><a style="outline: none; text-decoration:none; color:inherit" href="#10">10</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
+</span><span style="color:#0f0;font-weight:bold"></span>
+<span style="color:#fff;font-weight:bold">true</span> || <span style="color:#fff;font-weight:bold">false</span>
+<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;evaluation result of (true || false): %s\n&#39;</span> $?
+<span style="color:#fff;font-weight:bold">true</span> || <span style="color:#fff;font-weight:bold">true</span>
+<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;evaluation result of (true || true): %s\n&#39;</span> $?
+<span style="color:#fff;font-weight:bold">false</span> || <span style="color:#fff;font-weight:bold">false</span>
+<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;evaluation result of (false || false): %s\n&#39;</span> $?
+<span style="color:#fff;font-weight:bold">false</span> || <span style="color:#fff;font-weight:bold">true</span>
+<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;evaluation result of (false || true): %s\n&#39;</span> $?
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="logical-and-">Logical AND: <code>&amp;&amp;</code></h3>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1"> 1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2"> 2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3"> 3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4"> 4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5"> 5</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6"> 6</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7"> 7</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8"> 8</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="9"><a style="outline: none; text-decoration:none; color:inherit" href="#9"> 9</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="10"><a style="outline: none; text-decoration:none; color:inherit" href="#10">10</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
+</span><span style="color:#0f0;font-weight:bold"></span>
+<span style="color:#fff;font-weight:bold">true</span> &amp;&amp; <span style="color:#fff;font-weight:bold">false</span>
+<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;evaluation result of (true &amp;&amp; false): %s\n&#39;</span> $?
+<span style="color:#fff;font-weight:bold">true</span> &amp;&amp; <span style="color:#fff;font-weight:bold">true</span>
+<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;evaluation result of (true &amp;&amp; true): %s\n&#39;</span> $?
+<span style="color:#fff;font-weight:bold">false</span> &amp;&amp; <span style="color:#fff;font-weight:bold">false</span>
+<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;evaluation result of (false &amp;&amp; false): %s\n&#39;</span> $?
+<span style="color:#fff;font-weight:bold">false</span> &amp;&amp; <span style="color:#fff;font-weight:bold">true</span>
+<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;evaluation result of (false &amp;&amp; true): %s\n&#39;</span> $?
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="logical-not-">Logical NOT: <code>!</code></h3>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6">6</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
+</span><span style="color:#0f0;font-weight:bold"></span>
+! <span style="color:#fff;font-weight:bold">true</span>
+<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;evaluation result of (! true): %s\n&#39;</span> $?
+! <span style="color:#fff;font-weight:bold">false</span>
+<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;evaluation result of (! false): %s\n&#39;</span> $?
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="arithmetic-expression-evaluation--">Arithmetic Expression Evaluation: <code>(( ))</code></h3>
+<p>The <code>(( ))</code> form accepts several logical operators. Some of them are:</p>
+<ul>
+<li><code>==</code>: equal</li>
+<li><code>!=</code>: not equal</li>
+<li><code>&gt;</code>: greater than</li>
+<li><code>&lt;</code>: less than</li>
+<li><code>&gt;=</code>: greater than or equal</li>
+<li><code>&lt;=</code>: less than or equal</li>
+</ul>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
+</span><span style="color:#0f0;font-weight:bold"></span>
+<span style="color:#fff;font-weight:bold">declare</span> -i test=$RANDOM
+(( <span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span> &gt; <span style="color:#ff0;font-weight:bold">5000</span> ))
+<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;evaluation result of (( %s &gt; 5000 )): %s\n&#39;</span> <span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span> $?
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="expression-evaluation--">Expression Evaluation: <code>[[ ]]</code></h3>
+<p>The <code>[[ ]]</code> form accepts several logical operators and tests. Some of them are:</p>
+<ul>
+<li><code>==</code>: equal</li>
+<li><code>!=</code>: not equal</li>
+<li><code>-z</code>: string is empty</li>
+<li><code>-n</code>: string is not empty</li>
+<li><code>-f</code>: path is a file</li>
+</ul>
+<p>For <code>==</code> and <code>!=</code> the special character <code>*</code> can be used as a wildcard to match zero or more characters to the right.</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
+</span><span style="color:#0f0;font-weight:bold"></span>
+<span style="color:#fff;font-weight:bold">declare</span> test=<span style="color:#0ff;font-weight:bold">&#34;</span>$RANDOM<span style="color:#0ff;font-weight:bold">&#34;</span>
+[[ <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span> == 1* ]]
+<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;evaluation result of [[ &#34;%s&#34; == 1* ]]: %s\n&#39;</span> <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span> $?
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="command-if">Command: <code>if</code></h3>
+<p>In the following example, arithmetic evaluation is used. Notice that quotes are not required within <code>(( ))</code></p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1"> 1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2"> 2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3"> 3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4"> 4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5"> 5</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6"> 6</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7"> 7</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8"> 8</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="9"><a style="outline: none; text-decoration:none; color:inherit" href="#9"> 9</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="10"><a style="outline: none; text-decoration:none; color:inherit" href="#10">10</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
+</span><span style="color:#0f0;font-weight:bold"></span>
+<span style="color:#fff;font-weight:bold">declare</span> -i test=<span style="color:#0ff;font-weight:bold">${</span>RANDOM<span style="color:#0ff;font-weight:bold">}</span>
+<span style="color:#fff;font-weight:bold">if</span> (( <span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span> &gt;= <span style="color:#ff0;font-weight:bold">10000</span> )); <span style="color:#fff;font-weight:bold">then</span>
+  <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;test value (%s) is equal or greater than 10000\n&#39;</span> <span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span>
+<span style="color:#fff;font-weight:bold">elif</span> (( <span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span> &gt; <span style="color:#ff0;font-weight:bold">5000</span> || <span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span> &lt; <span style="color:#ff0;font-weight:bold">10000</span> )); <span style="color:#fff;font-weight:bold">then</span>
+  <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;test value (%s) is between 5001 and 9999\n&#39;</span> <span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span>
+<span style="color:#fff;font-weight:bold">else</span>
+  <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;test value (%s) is less than than 5001\n&#39;</span> <span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span>
+<span style="color:#fff;font-weight:bold">fi</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="command-case">Command: <code>case</code></h3>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6">6</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7">7</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8">8</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
+</span><span style="color:#0f0;font-weight:bold"></span>
+<span style="color:#fff;font-weight:bold">declare</span> -i test=<span style="color:#0ff;font-weight:bold">${</span>RANDOM<span style="color:#0ff;font-weight:bold">}</span>
+<span style="color:#fff;font-weight:bold">case</span> <span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span> in
+  1*|2*) <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;Random number (%s) starts with 1 or 2\n&#39;</span> <span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span>;;
+  3*) <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;Random number (%s) starts with 3\n&#39;</span> <span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span>;;
+  *) <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;Random number (%s) does not start with 1,2 or 3\n&#39;</span> <span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span>;;
+<span style="color:#fff;font-weight:bold">esac</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="redirecting-data-flows">Redirecting data flows</h2>
+<p>Bash provides two alternatives for establishing data flows:</p>
+<ul>
+<li>Redirection
+<ul>
+<li>Set read source for <strong>STDIN</strong></li>
+<li>Set write destination for <strong>STDOUT</strong></li>
+<li>Set write destination for <strong>STDERR</strong></li>
+</ul>
+</li>
+<li>Pipelines: integrate two commands by plugging the <strong>STDOUT</strong> from the first one to the <strong>STDIN</strong> of the second one</li>
+</ul>
+<h3 id="redirection">Redirection</h3>
+<p>In the following example, two functions will communicate with each other using a common file:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1"> 1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2"> 2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3"> 3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4"> 4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5"> 5</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6"> 6</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7"> 7</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8"> 8</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="9"><a style="outline: none; text-decoration:none; color:inherit" href="#9"> 9</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="10"><a style="outline: none; text-decoration:none; color:inherit" href="#10">10</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="11"><a style="outline: none; text-decoration:none; color:inherit" href="#11">11</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="12"><a style="outline: none; text-decoration:none; color:inherit" href="#12">12</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="13"><a style="outline: none; text-decoration:none; color:inherit" href="#13">13</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="14"><a style="outline: none; text-decoration:none; color:inherit" href="#14">14</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="15"><a style="outline: none; text-decoration:none; color:inherit" href="#15">15</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="16"><a style="outline: none; text-decoration:none; color:inherit" href="#16">16</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="17"><a style="outline: none; text-decoration:none; color:inherit" href="#17">17</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="18"><a style="outline: none; text-decoration:none; color:inherit" href="#18">18</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
+</span><span style="color:#0f0;font-weight:bold"></span>
+<span style="color:#fff;font-weight:bold">readonly</span> DATA_BRIDGE=<span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#fff;font-weight:bold">$(</span>mktemp<span style="color:#fff;font-weight:bold">)</span><span style="color:#0ff;font-weight:bold">&#34;</span>
+
+<span style="color:#fff;font-weight:bold">function</span> produce_data() {
+  <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;produce_data(): write data to the temporary file (%s) by redirectin the STDOUT of the printf command\n&#39;</span> <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>DATA_BRIDGE<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
+  <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;[sample data]\n&#39;</span> &gt;<span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>DATA_BRIDGE<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
+}
+
+<span style="color:#fff;font-weight:bold">function</span> ingest_data() {
+  <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;ingest_data(): read data from the temporary file (%s) by redirecting the STDIN of the cat command: &#39;</span> <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>DATA_BRIDGE<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
+  cat &lt; <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>DATA_BRIDGE<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
+}
+
+produce_data
+ingest_data
+
+rm -f <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>DATA_BRIDGE<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="pipelines">Pipelines</h3>
+<p>This example shows an alternative way of integrating both functions using pipelines:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1"> 1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2"> 2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3"> 3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4"> 4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5"> 5</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6"> 6</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7"> 7</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8"> 8</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="9"><a style="outline: none; text-decoration:none; color:inherit" href="#9"> 9</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="10"><a style="outline: none; text-decoration:none; color:inherit" href="#10">10</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="11"><a style="outline: none; text-decoration:none; color:inherit" href="#11">11</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="12"><a style="outline: none; text-decoration:none; color:inherit" href="#12">12</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="13"><a style="outline: none; text-decoration:none; color:inherit" href="#13">13</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
+</span><span style="color:#0f0;font-weight:bold"></span>
+<span style="color:#fff;font-weight:bold">function</span> produce_data() {
+  <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;[sample data]\n&#39;</span>
+}
+
+<span style="color:#fff;font-weight:bold">function</span> ingest_data() {
+  cat
+}
+
+<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;Integrate functions produce_data() and ingest_data() by piping their STDIN and STDOUT: &#39;</span>
+produce_data | ingest_data
+
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="next-steps">Next Steps</h2>
+<p>Discover advanced features by exploring the <a href="https://www.gnu.org/software/bash/manual/html_node/index.html#SEC_Contents">Bash Reference Manual</a>:</p>
+<ul>
+<li>jobs</li>
+<li>signals</li>
+<li>traps</li>
+<li>parallelism</li>
+<li>error handling</li>
+<li>configuration settings</li>
+</ul>
+<p>Organize your code by choosing a coding style. For example: <a href="https://google.github.io/styleguide/shellguide.html">Google Shell Style Guide
+</a></p>
+<p>Enhance script&rsquo;s quality by incorporating linter and testing tools:</p>
+<ul>
+<li><a href="https://www.shellcheck.net/">Shell Check</a></li>
+<li><a href="https://github.com/bats-core/bats-core">Basts-Core</a></li>
+</ul>
+<h2 id="copyright-information">Copyright information</h2>
+<p>This article is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. For copyright information on the product or products mentioned inhere refer to their respective owner.</p>
+<h2 id="disclaimer">Disclaimer</h2>
+<p>Opinions presented in this article are personal and belong solely to me, and do not represent people or organizations associated with me in a professional or personal way. All the information on this site is provided &ldquo;as is&rdquo; with no guarantee of completeness, accuracy or the results obtained from the use of this information.</p>
+
+      </article>
+    </section>
+
+    
+
+    
+
+    
+  </div>
+</div>
+
+
+            <footer class="ui basic center aligned segment" style="background-color: transparent;">
+              
+              <p>© 2021 SerDigital64&#39;s Blog</p>
+              
+
+              <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</p>
+
+              
+              <p>Articles in this site are licensed under a [Creative Commons Attribution 4.0 International License]</p>
+              
+            </footer>
+          </div>
+        </section>
+        <section class="back">
+          <div class="dream-max-width">
+            <header class="ui basic very padded segment dream-header">
+  
+  <div class="ui small circular image">
+    <img src="/about/SerDigital64-Font:ANSIShadow-circle.png" alt="avatar" />
+  </div>
+  
+
+  <div class="content">
+    <h1 class="ui medium header">SerDigital64&#39;s Blog<span class="sub header">Traveler log from my journey through the lands of the ever evolving  digital world</span>
+    </h1>
+
+    <article class="ui horizontal list">
+      
+      <a class="item" href="/categories">
+        <i class="th list icon" title=""></i>
+      </a>
+      <a class="item" href="/tags">
+        <i class="tags icon" title=""></i>
+      </a>
+    </article>
+
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+
+    
+
+    
+
+    
+    
+
+    <div class="tags-with-dropdown">
+      <div class="ui accordion">
+        <div class="title">
+          <div class="ui horizontal list">
+            <a class="item dropdown" href="#">
+              <i class="chevron right icon dropdown-icon"></i>
+            </a>
+          </div>
+          <div class="dream-tags">
+          
+          
+          
+            <a class="ui label" href="/tags/ansible/" title="ansible">
+              ansible
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/automation/" title="automation">
+              automation
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/bash/" title="bash">
+              bash
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/images/" title="images">
+              images
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/infrastructure-as-code/" title="infrastructure-as-code">
+              infrastructure-as-code
+            </a>
+          
+          </div>
+        </div>
+        <div class="content">
+    
+          <div class="dream-tags" style="margin-left: 1.5rem;">
+          
+          
+          
+            <a class="ui label" href="/tags/landscapes/" title="landscapes">
+              landscapes
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/objects/" title="objects">
+              objects
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/scenarios/" title="scenarios">
+              scenarios
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/scripting/" title="scripting">
+              scripting
+            </a>
+          
+          </div>
+    
+        </div>
+      </div>
+    </div>
+    
+
+    
+  </div>
+</header>
+
+
+<div class="ui relaxed grid dream-grid dream-back">
+  
+  
+  
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    <article class="ui segment markdown-body">
+      <div class="ui medium header">About SerDigital64</div>
+      <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">███████╗███████╗██████╗                         
+██╔════╝██╔════╝██╔══██╗                        
+███████╗█████╗  ██████╔╝                        
+╚════██║██╔══╝  ██╔══██╗                        
+███████║███████╗██║  ██║                        
+╚══════╝╚══════╝╚═╝  ╚═╝                        
+                                  
+██████╗ ██╗ ██████╗ ██╗████████╗ █████╗ ██╗     
+██╔══██╗██║██╔════╝ ██║╚══██╔══╝██╔══██╗██║     
+██║  ██║██║██║  ███╗██║   ██║   ███████║██║     
+██║  ██║██║██║   ██║██║   ██║   ██╔══██║██║     
+██████╔╝██║╚██████╔╝██║   ██║   ██║  ██║███████╗
+╚═════╝ ╚═╝ ╚═════╝ ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝
+                                  
+██████╗ ██╗  ██╗                               
+██╔════╝ ██║  ██║                               
+███████╗ ███████║                               
+██╔═══██╗╚════██║                               
+╚██████╔╝     ██║                               
+╚═════╝      ╚═╝                               
+
+
+Linux &amp;&amp; OSS_advocate
+Solutions_Architect = for_a_living
+SysAdmin &amp;&amp; Developer = for_the_fun
+Sci_Fi = fan
+Photography &amp;&amp; DIY == enthusiast
+</code></pre></div>
+    </article>
+  </div>
+  
+
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    <article class="ui segment">
+      <div class="ui medium header"></div>
+      <nav class="ui secondary menu dream-menu dream-socials">
+  
+  <a class="item" href="/index.xml">
+    <i class="large rss square icon" title="RSS"></i>
+  </a>
+  
+
+  
+  <a class="item" href="mailto:serdigital64@gmail.com">
+    <i class="large mail icon" title="Email"></i>
+  </a>
+  
+
+  
+  <a class="item" href="https://twitter.com/SerDigital64" target="_blank">
+    <i class="large twitter icon" title="Twitter"></i>
+  </a>
+  
+
+  
+
+  
+  <a class="item" href="https://instagram.com/serdigital64" target="_blank">
+    <i class="large instagram icon" title="Instagram"></i>
+  </a>
+  
+
+  
+
+  
+
+  
+  <a class="item" href="https://github.com/serdigital64" target="_blank">
+    <i class="large github icon" title="GitHub"></i>
+  </a>
+  
+
+  
+
+  
+
+  
+</nav>
+
+    </article>
+  </div>
+
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    
+    <article class="ui segment">
+      Articles in this site are licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0)
+    </article>
+    
+  </div>
+
+  
+</div>
+
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+    
+    <div class="ui segment" id="dream-search">
+  <div class="ui search">
+    <div class="ui transparent input">
+      <input class="prompt" type="text" placeholder="" />
+    </div>
+    <div class="results"></div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $.getJSON('https:\/\/serdigital64.github.io/index.json', function (data) {
+      $('.ui.search').search({
+        source: data,
+        searchFields: ['title'],
+        showNoResults: false,
+      })
+    })
+  })
+</script>
+<script src="/js/search.js"></script>
+
+    
+
+    
+    <script src="/js/custom-before.js"></script>
+    
+
+    <script>
+  window.background = "#f7f7f7"
+  window.defaultDark =  false 
+  window.backgroundDark = "black"
+  window.backgroundImageDark =  null 
+  window.darkNav =  true 
+  window.maxTags =  5 
+  window.hasTwitterEmbed =  null 
+  window.fixedNav =  true 
+
+  if (window.hasTwitterEmbed) {
+    
+    window.twttr = (function (d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {}
+      if (d.getElementById(id)) return t
+      js = d.createElement(s)
+      js.id = id
+      js.src = 'https://platform.twitter.com/widgets.js'
+      fjs.parentNode.insertBefore(js, fjs)
+
+      t._e = []
+      t.ready = function (f) {
+        t._e.push(f)
+      }
+
+      return t
+    })(document, 'script', 'twitter-wjs')
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@1.13.1/js/jquery.overlayScrollbars.min.js"></script>
+<script src="/js/header.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/theme.js"></script>
+
+    
+
+
+
+<script src="/js/scrollToTop.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1"></script>
+<script src="/js/post.js" defer></script>
+
+
+    
+    <script src="/js/custom.js"></script>
+    
+
+    
+    
+<script type="application/javascript">
+var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+var doNotTrack = (dnt == "1" || dnt == "yes");
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-202533179-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
+  </body>
+</html>

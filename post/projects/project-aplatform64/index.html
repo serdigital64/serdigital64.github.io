@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>A:Platform64 Project | SerDigital64</title>
+    <title>A:Platform64 Project | SerDigital64&#39;s Blog</title>
 
     
 
@@ -25,7 +25,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://serdigital64.github.io/post/projects/project-aplatform64/" />
 <meta property="article:published_time" content="2021-10-03T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-11-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-12-21T00:00:00+00:00" />
 
 
 
@@ -64,8 +64,6 @@
     
 
     
-    background-image: url(from-serdigital64-flicker/DSC_2253-tall.jpg);
-    
   }
   
 
@@ -75,8 +73,6 @@
     background-color: black;
     
 
-    
-    background-image: url(from-serdigital64-flicker/DSC_2253-tall.jpg);
     
   }
   
@@ -91,6 +87,8 @@
 
 
 
+    
+    <link rel="stylesheet" href="/css/custom.css" />
     
   </head>
 
@@ -157,12 +155,31 @@
     <li><a href="#source-code">Source Code</a>
       <ul>
         <li><a href="#repositories">Repositories</a></li>
+        <li><a href="#contributing">Contributing</a></li>
+        <li><a href="#author">Author</a></li>
       </ul>
     </li>
+    <li><a href="#license">License</a></li>
   </ul>
 </nav>
     </div>
     
+
+    
+    <div class="ui segment">
+  <button
+    class="ui circular icon button save-as-image"
+    title=""
+    onclick="savePostAsImg()">
+    <i class="save icon"></i>
+  </button>
+  <a href="https://twitter.com/intent/tweet?text=A%3aPlatform64%20Project&url=https%3a%2f%2fserdigital64.github.io%2fpost%2fprojects%2fproject-aplatform64%2f" class="ui circular twitter icon button">
+    <i class="twitter icon"></i>
+  </a>
+  <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fserdigital64.github.io%2fpost%2fprojects%2fproject-aplatform64%2f" class="ui circular facebook icon button">
+    <i class="facebook icon"></i>
+  </a>
+</div>
 
     
   </aside>
@@ -189,24 +206,11 @@
               | 
                 
                   
-                    Sunday, Nov 21, 2021
+                    Tuesday, Dec 21, 2021
                   
                 
               
             </span>
-
-            
-            <span class="dream-share">
-  <a href="#" class="save-as-image" title="" onclick="savePostAsImg()">
-    <i class="save icon"></i>
-  </a>
-  <a href="https://twitter.com/intent/tweet?text=A%3aPlatform64%20Project&url=https%3a%2f%2fserdigital64.github.io%2fpost%2fprojects%2fproject-aplatform64%2f" title="Twitter">
-    <i class="twitter icon"></i>
-  </a>
-  <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fserdigital64.github.io%2fpost%2fprojects%2fproject-aplatform64%2f" title="Facebook">
-    <i class="facebook icon"></i>
-  </a>
-</span>
 
             
           </span>
@@ -246,8 +250,9 @@
 <h3 id="architecture">Architecture</h3>
 <p>The platform defines the following components:</p>
 <ul>
-<li>Control Node: compute node that will host the Ansible engine and the <strong>A:Platform64</strong> platform.</li>
-<li>Management Node: compute nodes that will me managed by <strong>A:Platform64</strong></li>
+<li><strong>Control Node</strong>: compute node that will host the Ansible engine and the <strong>A:Platform64</strong> platform.</li>
+<li><strong>Management Node</strong>: compute nodes that will me managed by <strong>A:Platform64</strong></li>
+<li><strong>Site</strong>: group of hosts that shares a set of configuration files. Sites can be used to isolated environments (e.g.: prod, dev, test, etc.)</li>
 </ul>
 <p>Communication between the <strong>Control Node</strong> and the <strong>Management Nodes</strong> will be done using OpenSSH and regular Linux user accounts with public/private key pairs.
 Root privilege will be provided by Sudo.</p>
@@ -303,6 +308,14 @@ Root privilege will be provided by Sudo.</p>
 <tr>
 <td>var/</td>
 <td>Variable and temporal data store</td>
+</tr>
+<tr>
+<td>bin/</td>
+<td>Shell scripts</td>
+</tr>
+<tr>
+<td>docs/</td>
+<td>Repository for storing site-specific documentation</td>
 </tr>
 </tbody>
 </table>
@@ -374,9 +387,9 @@ Root privilege will be provided by Sudo.</p>
 <p>Services are implemented in the form of Ansible playbooks.
 Each playbook will integrate the roles needed to implement the service along with their own set of end-state and inventory configurations:</p>
 <ul>
-<li>Playbooks location: <code>playbooks/site/</code></li>
-<li>End-State configuration location: <code>inventories/site/group_vars/GROUP_NAME/</code></li>
-<li>Inventory definition: <code>inventories/site/GROUP_NAME.ini</code></li>
+<li>Playbooks location: <code>playbooks/&lt;SITE&gt;/</code></li>
+<li>End-State configuration location: <code>inventories/&lt;SITE&gt;/group_vars/&lt;GROUP_NAME&gt;/</code></li>
+<li>Inventory definition: <code>inventories/&lt;SITE&gt;/&lt;INVENTORY&gt;.ini</code></li>
 </ul>
 <table>
 <thead>
@@ -404,7 +417,7 @@ Each playbook will integrate the roles needed to implement the service along wit
 </tr>
 <tr>
 <td><a href="https://aplatform64.readthedocs.io/en/latest/playbooks/manage_cloud_realm/">manage_cloud_realm</a></td>
-<td>Manage cloud provider accounts, IAM objects and organizations as a single entity</td>
+<td>Manage cloud provider accounts, users and organizations as a single entity</td>
 </tr>
 <tr>
 <td><a href="https://aplatform64.readthedocs.io/en/latest/playbooks/manage_dev_nodes/">manage_dev_nodes</a></td>
@@ -427,8 +440,16 @@ Each playbook will integrate the roles needed to implement the service along wit
 <td>Manage Jenkins Worker nodes</td>
 </tr>
 <tr>
+<td><a href="https://aplatform64.readthedocs.io/en/latest/playbooks/manage_linux_workstations/">manage_linux_workstations</a></td>
+<td>Manage Linux Workstations</td>
+</tr>
+<tr>
 <td><a href="https://aplatform64.readthedocs.io/en/latest/playbooks/manage_office_nodes/">manage_office_nodes</a></td>
 <td>Provision office productivity applications</td>
+</tr>
+<tr>
+<td><a href="https://aplatform64.readthedocs.io/en/latest/playbooks/manage_test_nodes/">manage_test_nodes</a></td>
+<td>Provision software testing tools</td>
 </tr>
 </tbody>
 </table>
@@ -441,6 +462,8 @@ Each playbook will integrate the roles needed to implement the service along wit
 <li>Ubuntu20</li>
 <li>Ubuntu21</li>
 <li>Fedora33</li>
+<li>Debian10</li>
+<li>Debian11</li>
 </ul>
 <p>Roles in the A:Platform64 collections have their own compatibility matrix. Refer to the role documentation for further details.</p>
 <h3 id="prerequisites">Prerequisites</h3>
@@ -463,11 +486,12 @@ Each playbook will integrate the roles needed to implement the service along wit
 </li>
 </ul>
 <h3 id="installation">Installation</h3>
-<p>Download the installation scripts:</p>
+<p>Download the installation script and resources:</p>
 <ul>
 <li><a href="https://raw.githubusercontent.com/serdigital64/aplatform64/main/collections/serdigital64/automation/roles/auto_aplatform64/files/installer/install.sh">install.sh</a></li>
 <li><a href="https://raw.githubusercontent.com/serdigital64/aplatform64/main/collections/serdigital64/automation/roles/auto_aplatform64/files/installer/install_helper.sh">install_helper.sh</a></li>
 <li><a href="https://raw.githubusercontent.com/serdigital64/aplatform64/main/collections/serdigital64/automation/roles/auto_aplatform64/files/installer/install_helper.yml">install_helper.yml</a></li>
+<li><a href="https://raw.githubusercontent.com/serdigital64/aplatform64/main/collections/serdigital64/automation/roles/auto_aplatform64/files/scripts/bashlib64.bash">bashlib64.bash</a></li>
 </ul>
 <div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -477,43 +501,25 @@ Each playbook will integrate the roles needed to implement the service along wit
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6">6</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7">7</a>
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">APLATFORM64_INSTALLER=<span style="color:#0ff;font-weight:bold">&#39;https://raw.githubusercontent.com/serdigital64/aplatform64/main/collections/serdigital64/automation/roles/auto_aplatform64/files/installer&#39;</span>
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">APLATFORM64_INSTALLER=<span style="color:#0ff;font-weight:bold">&#39;https://raw.githubusercontent.com/serdigital64/aplatform64/main/collections/serdigital64/automation/roles/auto_aplatform64/files&#39;</span>
 curl <span style="color:#0ff;font-weight:bold">\
-</span><span style="color:#0ff;font-weight:bold"></span>  -O <span style="color:#0ff;font-weight:bold">&#34;</span>$APLATFORM64_INSTALLER<span style="color:#0ff;font-weight:bold">/install.sh&#34;</span> <span style="color:#0ff;font-weight:bold">\
-</span><span style="color:#0ff;font-weight:bold"></span>  -O <span style="color:#0ff;font-weight:bold">&#34;</span>$APLATFORM64_INSTALLER<span style="color:#0ff;font-weight:bold">/install_helper.sh&#34;</span> <span style="color:#0ff;font-weight:bold">\
-</span><span style="color:#0ff;font-weight:bold"></span>  -O <span style="color:#0ff;font-weight:bold">&#34;</span>$APLATFORM64_INSTALLER<span style="color:#0ff;font-weight:bold">/install_helper.yml&#34;</span>
+</span><span style="color:#0ff;font-weight:bold"></span>  -O <span style="color:#0ff;font-weight:bold">&#34;</span>$APLATFORM64_INSTALLER<span style="color:#0ff;font-weight:bold">/scripts/bashlib64.bash&#34;</span> <span style="color:#0ff;font-weight:bold">\
+</span><span style="color:#0ff;font-weight:bold"></span>  -O <span style="color:#0ff;font-weight:bold">&#34;</span>$APLATFORM64_INSTALLER<span style="color:#0ff;font-weight:bold">/installer/install.sh&#34;</span> <span style="color:#0ff;font-weight:bold">\
+</span><span style="color:#0ff;font-weight:bold"></span>  -O <span style="color:#0ff;font-weight:bold">&#34;</span>$APLATFORM64_INSTALLER<span style="color:#0ff;font-weight:bold">/installer/install_helper.sh&#34;</span> <span style="color:#0ff;font-weight:bold">\
+</span><span style="color:#0ff;font-weight:bold"></span>  -O <span style="color:#0ff;font-weight:bold">&#34;</span>$APLATFORM64_INSTALLER<span style="color:#0ff;font-weight:bold">/installer/install_helper.yml&#34;</span>
 chmod <span style="color:#ff0;font-weight:bold">755</span> install.sh install_helper.sh
 </code></pre></td></tr></table>
 </div>
-</div><p>Define installation options:</p>
-<ul>
-<li><code>-y PYTHON</code> : Python3.9 interpreter path. Default: <code>/usr/bin/python3.9</code></li>
-<li><code>-v VENV</code> : Python virtual environment name where Ansible will be installed to. Must be new. Default: <code>aplatform64</code></li>
-<li><code>-m USER</code> : Control node account login name. Default: <code>$USER</code> (current user)</li>
-<li><code>-r PATH</code> : Install path. Default: <code>${HOME}/aplatform64</code> (current user&rsquo;s home directory)</li>
-<li><code>-o PATH</code> : Variable data path. Default: <code>${HOME}/aplatform64/var</code> (current user&rsquo;s home directory)</li>
-<li><code>-t SITE</code> : Site name. Default: <code>site</code></li>
-<li><code>-k</code> : use this flag if the user requires password to use sudo</li>
-</ul>
-<p>Run the installation script:</p>
+</div><p>Run the installation script with the default options. See the <a href="https://aplatform64.readthedocs.io/en/latest/bin/install/">documentation</a> for more options</p>
 <div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6">6</a>
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">APLATFORM64_SITE=<span style="color:#0ff;font-weight:bold">&#39;site&#39;</span>
-APLATFORM64_MANAGER=<span style="color:#0ff;font-weight:bold">&#39;sitectl&#39;</span>
-./install.sh <span style="color:#0ff;font-weight:bold">\
-</span><span style="color:#0ff;font-weight:bold"></span>  -p -w -u -m <span style="color:#0ff;font-weight:bold">&#34;</span>$APLATFORM64_MANAGER<span style="color:#0ff;font-weight:bold">&#34;</span> <span style="color:#0ff;font-weight:bold">\
-</span><span style="color:#0ff;font-weight:bold"></span>  -s -a -r <span style="color:#0ff;font-weight:bold">&#39;/opt/aplatform64&#39;</span> -o <span style="color:#0ff;font-weight:bold">&#39;/var/opt/aplatform64&#39;</span> <span style="color:#0ff;font-weight:bold">\
-</span><span style="color:#0ff;font-weight:bold"></span>  -v <span style="color:#0ff;font-weight:bold">&#39;aplatform64&#39;</span> -6 -t <span style="color:#0ff;font-weight:bold">&#34;</span>$APLATFORM64_SITE<span style="color:#0ff;font-weight:bold">&#34;</span>
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">./install.sh -x
 </code></pre></td></tr></table>
 </div>
 </div><p>Done. The <strong>A:Platform64</strong> platform is now installed.</p>
@@ -537,37 +543,14 @@ APLATFORM64_MANAGER=<span style="color:#0ff;font-weight:bold">&#39;sitectl&#39;<
 sudo su - <span style="color:#0ff;font-weight:bold">&#34;</span>$APLATFORM64_MANAGER<span style="color:#0ff;font-weight:bold">&#34;</span>
 
 <span style="color:#007f7f"># Set the environment for Ansible</span>
-<span style="color:#fff;font-weight:bold">source</span> /opt/aplatform64/load_environment-site.sh
+<span style="color:#fff;font-weight:bold">source</span> /opt/aplatform64/bin/site/ansible_control.env
 workon aplatform64
 
 <span style="color:#007f7f"># Go to the install location</span>
 <span style="color:#fff;font-weight:bold">cd</span> /opt/aplatform64/
 </code></pre></td></tr></table>
 </div>
-</div><p>Review and adjust default settings:</p>
-<table>
-<thead>
-<tr>
-<th>Configuration File</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>load_environment-site.sh</code></td>
-<td>Set global Ansible shell variables and Python virtual environment</td>
-</tr>
-<tr>
-<td><code>etc/cfg/site/ansible.cfg</code></td>
-<td>Set global Ansible runtime configuration settings</td>
-</tr>
-<tr>
-<td><code>inventories/site/group_vars/all/ansible_site.yml</code></td>
-<td>Set site specific Ansible options, common to all playbooks</td>
-</tr>
-</tbody>
-</table>
-<h3 id="register-managed-hosts">Register managed hosts</h3>
+</div><h3 id="register-managed-hosts">Register managed hosts</h3>
 <p>Register the target remote host in the bootstrap process by adding it to the inventory:</p>
 <ul>
 <li>file: <code>inventories/site/ansible_service.ini</code></li>
@@ -592,13 +575,9 @@ workon aplatform64
 <div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">ansible-playbook <span style="color:#0ff;font-weight:bold">\
-</span><span style="color:#0ff;font-weight:bold"></span>  -i <span style="color:#0ff;font-weight:bold">&#34;inventories/</span><span style="color:#0ff;font-weight:bold">${</span>APLATFORM64_SITE<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">/ansible_service.ini&#34;</span> <span style="color:#0ff;font-weight:bold">\
-</span><span style="color:#0ff;font-weight:bold"></span>  <span style="color:#0ff;font-weight:bold">&#34;playbooks/</span><span style="color:#0ff;font-weight:bold">${</span>APLATFORM64_SITE<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">/bootstrap_ansible_managed_nodes.yml&#34;</span>
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">/opt/aplatform64/bin/ap64.sh -n -p bootstrap_ansible_managed_nodes -s <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>APLATFORM64_SITE<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>The host is now ready for Ansible. Promote the hostname by removing it from the <code>[bootstrap_ansible_managed_nodes_distro]</code> group and adding it to:</p>
@@ -627,6 +606,13 @@ workon aplatform64
 </code></pre></td></tr></table>
 </div>
 </div><p>Additional playbooks and roles can be added to further customize the platform.</p>
+<p>In addition to the standard ansible CLI commands, A:Platform64 provides the <a href="https://aplatform64.readthedocs.io/en/latest/bin/ap64/">bin/ap64.sh</a> CLI that can be used for:</p>
+<ul>
+<li>List/Run playbooks</li>
+<li>List/Create sites</li>
+<li>Upgrade collections</li>
+<li>Update sites configurations</li>
+</ul>
 <h2 id="source-code">Source Code</h2>
 <h3 id="repositories">Repositories</h3>
 <ul>
@@ -634,6 +620,15 @@ workon aplatform64
 <li>Project Ansible Galaxy repository: <a href="https://galaxy.ansible.com/serdigital64">https://galaxy.ansible.com/serdigital64</a></li>
 <li>Project Documentation: <a href="https://aplatform64.readthedocs.io">https://aplatform64.readthedocs.io</a></li>
 </ul>
+<h3 id="contributing">Contributing</h3>
+<p>Help on implementing new features and maintaining the code base is welcomed.</p>
+<p>Please see the <a href="contributing/guidelines.md">guidelines</a> for further details and the <a href="contributing/cod.md">code of condact</a>.</p>
+<h3 id="author">Author</h3>
+<ul>
+<li><a href="https://serdigital64.github.io/">SerDigital64</a></li>
+</ul>
+<h2 id="license">License</h2>
+<p><a href="https://www.gnu.org/licenses/gpl-3.0.txt">GPL-3.0-or-later</a></p>
 
       </article>
     </section>
@@ -649,11 +644,13 @@ workon aplatform64
 
             <footer class="ui basic center aligned segment" style="background-color: transparent;">
               
-              <p>© 2021 SerDigital64</p>
+              <p>© 2021 SerDigital64&#39;s Blog</p>
               
 
               <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</p>
 
+              
+              <p>Articles in this site are licensed under a [Creative Commons Attribution 4.0 International License]</p>
               
             </footer>
           </div>
@@ -685,6 +682,16 @@ workon aplatform64
     
     
     
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
     
       
     
@@ -727,8 +734,20 @@ workon aplatform64
           
           
           
+            <a class="ui label" href="/tags/bash/" title="bash">
+              bash
+            </a>
+          
+          
+          
             <a class="ui label" href="/tags/images/" title="images">
               images
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/infrastructure-as-code/" title="infrastructure-as-code">
+              infrastructure-as-code
             </a>
           
           </div>
@@ -739,8 +758,26 @@ workon aplatform64
           
           
           
-            <a class="ui label" href="/tags/infrastructure-as-code/" title="infrastructure-as-code">
-              infrastructure-as-code
+            <a class="ui label" href="/tags/landscapes/" title="landscapes">
+              landscapes
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/objects/" title="objects">
+              objects
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/scenarios/" title="scenarios">
+              scenarios
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/scripting/" title="scripting">
+              scripting
             </a>
           
           </div>
@@ -762,10 +799,7 @@ workon aplatform64
   <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
     <article class="ui segment markdown-body">
       <div class="ui medium header">About SerDigital64</div>
-      <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">
-
-
-███████╗███████╗██████╗                         
+      <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">███████╗███████╗██████╗                         
 ██╔════╝██╔════╝██╔══██╗                        
 ███████╗█████╗  ██████╔╝                        
 ╚════██║██╔══╝  ██╔══██╗                        
@@ -792,7 +826,6 @@ Solutions_Architect = for_a_living
 SysAdmin &amp;&amp; Developer = for_the_fun
 Sci_Fi = fan
 Photography &amp;&amp; DIY == enthusiast
-                                                
 </code></pre></div>
     </article>
   </div>
@@ -815,9 +848,17 @@ Photography &amp;&amp; DIY == enthusiast
   
 
   
+  <a class="item" href="https://twitter.com/SerDigital64" target="_blank">
+    <i class="large twitter icon" title="Twitter"></i>
+  </a>
+  
 
   
 
+  
+  <a class="item" href="https://instagram.com/serdigital64" target="_blank">
+    <i class="large instagram icon" title="Instagram"></i>
+  </a>
   
 
   
@@ -843,7 +884,7 @@ Photography &amp;&amp; DIY == enthusiast
   <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
     
     <article class="ui segment">
-      Articles in this site are licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/)
+      Articles in this site are licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0)
     </article>
     
   </div>
@@ -884,14 +925,16 @@ Photography &amp;&amp; DIY == enthusiast
     
 
     
+    <script src="/js/custom-before.js"></script>
+    
 
     <script>
   window.background = "#f7f7f7"
   window.defaultDark =  false 
   window.backgroundDark = "black"
-  window.backgroundImageDark = "from-serdigital64-flicker/DSC_2253-tall.jpg"
+  window.backgroundImageDark =  null 
   window.darkNav =  true 
-  window.maxTags =  3 
+  window.maxTags =  5 
   window.hasTwitterEmbed =  null 
   window.fixedNav =  true 
 
@@ -934,15 +977,18 @@ Photography &amp;&amp; DIY == enthusiast
 
 
     
+    <script src="/js/custom.js"></script>
+    
 
     
     
 <script type="application/javascript">
-var doNotTrack = false;
+var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+var doNotTrack = (dnt == "1" || dnt == "yes");
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 	ga('create', 'UA-202533179-1', 'auto');
-	
+	ga('set', 'anonymizeIp', true);
 	ga('send', 'pageview');
 }
 </script>

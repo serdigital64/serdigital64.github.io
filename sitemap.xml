@@ -3,58 +3,78 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://serdigital64.github.io/post/projects/project-aplatform64/</loc>
-    <lastmod>2021-11-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://serdigital64.github.io/tags/ansible/</loc>
-    <lastmod>2021-11-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://serdigital64.github.io/tags/automation/</loc>
-    <lastmod>2021-11-21T00:00:00+00:00</lastmod>
+    <lastmod>2021-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://serdigital64.github.io/tags/bash/</loc>
+    <lastmod>2021-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://serdigital64.github.io/post/bash/bash-scripting-concepts-part1of2/</loc>
+    <lastmod>2021-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://serdigital64.github.io/post/bash/bash-scripting-concepts-part2of2/</loc>
+    <lastmod>2021-12-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://serdigital64.github.io/categories/</loc>
-    <lastmod>2021-11-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://serdigital64.github.io/tags/infrastructure-as-code/</loc>
-    <lastmod>2021-11-21T00:00:00+00:00</lastmod>
+    <lastmod>2021-12-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://serdigital64.github.io/post/</loc>
-    <lastmod>2021-11-21T00:00:00+00:00</lastmod>
+    <lastmod>2021-12-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://serdigital64.github.io/categories/projects/</loc>
-    <lastmod>2021-11-21T00:00:00+00:00</lastmod>
+    <loc>https://serdigital64.github.io/tags/scripting/</loc>
+    <lastmod>2021-12-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://serdigital64.github.io/</loc>
-    <lastmod>2021-11-21T00:00:00+00:00</lastmod>
+    <lastmod>2021-12-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://serdigital64.github.io/tags/</loc>
-    <lastmod>2021-11-21T00:00:00+00:00</lastmod>
+    <lastmod>2021-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://serdigital64.github.io/categories/tutorials/</loc>
+    <lastmod>2021-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://serdigital64.github.io/post/projects/project-aplatform64/</loc>
+    <lastmod>2021-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://serdigital64.github.io/tags/ansible/</loc>
+    <lastmod>2021-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://serdigital64.github.io/tags/infrastructure-as-code/</loc>
+    <lastmod>2021-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://serdigital64.github.io/categories/projects/</loc>
+    <lastmod>2021-12-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://serdigital64.github.io/post/ansible/implementing-infrastructure-as-code-with-ansible-and-git/</loc>
     <lastmod>2021-09-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://serdigital64.github.io/categories/tutorials/</loc>
-    <lastmod>2021-10-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -64,22 +84,42 @@
   
   <url>
     <loc>https://serdigital64.github.io/categories/gallery/</loc>
-    <lastmod>2021-11-02T00:00:00+00:00</lastmod>
+    <lastmod>2021-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://serdigital64.github.io/post/gallery/landscapes/</loc>
-    <lastmod>2021-11-02T00:00:00+00:00</lastmod>
+    <lastmod>2021-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://serdigital64.github.io/post/gallery/objects/</loc>
-    <lastmod>2021-10-06T00:00:00+00:00</lastmod>
+    <lastmod>2021-12-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://serdigital64.github.io/post/gallery/scenarios/</loc>
+    <lastmod>2021-12-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://serdigital64.github.io/tags/images/</loc>
-    <lastmod>2021-11-02T00:00:00+00:00</lastmod>
+    <lastmod>2021-12-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://serdigital64.github.io/tags/landscapes/</loc>
+    <lastmod>2021-12-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://serdigital64.github.io/tags/objects/</loc>
+    <lastmod>2021-12-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://serdigital64.github.io/tags/scenarios/</loc>
+    <lastmod>2021-12-18T00:00:00+00:00</lastmod>
   </url>
   
 </urlset>
