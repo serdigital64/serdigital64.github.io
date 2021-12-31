@@ -7,7 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Articles in this site are licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0)</copyright>
-    <lastBuildDate>Mon, 06 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://serdigital64.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://serdigital64.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Terraform Scripting Concepts: Part 1 of 2</title>
+      <link>https://serdigital64.github.io/post/terraform/terraform-scripting-concepts-part1of2/</link>
+      <pubDate>Mon, 27 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://serdigital64.github.io/post/terraform/terraform-scripting-concepts-part1of2/</guid>
+      <description>Create infrastructure provisioning scripts using Terraform (part 1 or 2). Explore key concepts: CLI installation, running scripts, script structure, variables</description>
+    </item>
+    
+    <item>
+      <title>Terraform Scripting Concepts: Part 2 of 2</title>
+      <link>https://serdigital64.github.io/post/terraform/terraform-scripting-concepts-part2of2/</link>
+      <pubDate>Mon, 27 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://serdigital64.github.io/post/terraform/terraform-scripting-concepts-part2of2/</guid>
+      <description>Create infrastructure provisioning scripts using Terraform (part 2 or 2). Explore key concepts: functions, providers, resources</description>
+    </item>
+    
     <item>
       <title>Bash Scripting Concepts: Part 1 of 2</title>
       <link>https://serdigital64.github.io/post/bash/bash-scripting-concepts-part1of2/</link>
