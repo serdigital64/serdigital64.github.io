@@ -4,17 +4,17 @@
   
   <url>
     <loc>https://serdigital64.github.io/tags/automation/</loc>
-    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
+    <lastmod>2022-01-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://serdigital64.github.io/categories/</loc>
-    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
+    <lastmod>2022-01-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://serdigital64.github.io/post/</loc>
-    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
+    <lastmod>2022-01-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -24,12 +24,12 @@
   
   <url>
     <loc>https://serdigital64.github.io/</loc>
-    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
+    <lastmod>2022-01-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://serdigital64.github.io/tags/</loc>
-    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
+    <lastmod>2022-01-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -54,7 +54,17 @@
   
   <url>
     <loc>https://serdigital64.github.io/tags/bash/</loc>
-    <lastmod>2021-12-21T00:00:00+00:00</lastmod>
+    <lastmod>2022-01-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://serdigital64.github.io/post/projects/project-bashlib64/</loc>
+    <lastmod>2022-01-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://serdigital64.github.io/categories/projects/</loc>
+    <lastmod>2022-01-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -65,6 +75,11 @@
   <url>
     <loc>https://serdigital64.github.io/post/bash/bash-scripting-concepts-part2of2/</loc>
     <lastmod>2021-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://serdigital64.github.io/post/projects/project-container64/</loc>
+    <lastmod>2022-01-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -79,11 +94,6 @@
   
   <url>
     <loc>https://serdigital64.github.io/tags/infrastructure-as-code/</loc>
-    <lastmod>2021-12-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://serdigital64.github.io/categories/projects/</loc>
     <lastmod>2021-12-21T00:00:00+00:00</lastmod>
   </url>
   
