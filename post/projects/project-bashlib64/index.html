@@ -24,14 +24,18 @@
 <meta property="og:description" content="Bash functions for facilitating and accelerating development of scripts and code snippets" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://serdigital64.github.io/post/projects/project-bashlib64/" />
+<meta property="og:image" content="https://serdigital64.github.io/from-serdigital64-flicker/DSC_8063-wide.jpg" />
 <meta property="article:published_time" content="2021-12-10T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-01-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-01-23T00:00:00+00:00" />
 
 
 
-<meta name="twitter:card" content="summary"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://serdigital64.github.io/from-serdigital64-flicker/DSC_8063-wide.jpg"/>
+
 <meta name="twitter:title" content="BashLib64 Project"/>
 <meta name="twitter:description" content="Bash functions for facilitating and accelerating development of scripts and code snippets"/>
+<meta name="twitter:site" content="@SerDigital64"/>
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
@@ -131,19 +135,30 @@
     <div class="ui segment toc">
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#overview">Overview</a></li>
+    <li><a href="#overview">Overview</a>
+      <ul>
+        <li><a href="#container-collection-ansible-node">Container collection: Ansible Node</a></li>
+        <li><a href="#container-collection-bash-test">Container collection: Bash Test</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a>
+      <ul>
+        <li><a href="#podman">Podman</a></li>
+      </ul>
+    </li>
     <li><a href="#deployment">Deployment</a>
       <ul>
-        <li><a href="#os-compatibility">OS Compatibility</a></li>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#podman-1">Podman</a></li>
       </ul>
     </li>
     <li><a href="#development">Development</a>
       <ul>
         <li><a href="#repositories">Repositories</a></li>
         <li><a href="#contributing">Contributing</a></li>
-        <li><a href="#license">License</a></li>
+      </ul>
+    </li>
+    <li><a href="#license">License</a>
+      <ul>
         <li><a href="#author">Author</a></li>
       </ul>
     </li>
@@ -193,7 +208,7 @@
               | 
                 
                   
-                    Sunday, Jan 9, 2022
+                    Sunday, Jan 23, 2022
                   
                 
               
@@ -219,95 +234,137 @@
 
 
 </code></pre></div><h2 id="overview">Overview</h2>
-<p>BashLib64 is a project for creating <strong>Bash</strong> functions that can facilitate and accelerate the development of Bash scripts and code snippets such as the ones used to create container images.</p>
-<h2 id="deployment">Deployment</h2>
-<h3 id="os-compatibility">OS Compatibility</h3>
-<p>The library has been tested on the following operating systems:</p>
+<p><strong>Container64</strong> is project for building and sharing OCI compliant container images that can be used for testing infrastructure management tools.</p>
+<h3 id="container-collection-ansible-node">Container collection: Ansible Node</h3>
 <ul>
-<li>CentOS8</li>
-<li>OracleLinux8</li>
-<li>Ubuntu20</li>
-<li>Ubuntu21</li>
-<li>Fedora33</li>
-<li>Debian10</li>
-<li>Debian11</li>
-</ul>
-<h3 id="prerequisites">Prerequisites</h3>
-<ul>
-<li>Minimum Bash version: 5</li>
-</ul>
-<h3 id="installation">Installation</h3>
-<h4 id="add-library-to-existing-script">Add library to existing script</h4>
-<ul>
-<li>Download the library to the project directory
-<blockquote>
-<p><code>cd &lt;PROJECT_DIR&gt;; wget https://raw.githubusercontent.com/serdigital64/bashlib64/main/bashlib64.bash</code></p>
-</blockquote>
-</li>
-<li>Add the library loader to the target script:
-<blockquote>
-<p><code>source &quot;&lt;PROJECT_DIR&gt;/bashlib64.bash&quot;</code></p>
-</blockquote>
-</li>
-</ul>
-<h4 id="create-new-script">Create new script</h4>
-<ul>
-<li>Download the library to the project directory
-<blockquote>
-<p><code>cd &lt;PROJECT_DIR&gt;; wget https://raw.githubusercontent.com/serdigital64/bashlib64/main/bashlib64.bash</code></p>
-</blockquote>
-</li>
-<li>Download the skeleton script:
-<blockquote>
-<p><code>wget https://raw.githubusercontent.com/serdigital64/bashlib64/main/skel/generic</code></p>
-</blockquote>
-</li>
-<li>Customize the script by adding new content and replacing the predefined tags:</li>
+<li>Purpose: Ansible node testing</li>
+<li>Packages: SystemD, Sudo, Python3</li>
 </ul>
 <table>
 <thead>
 <tr>
-<th>Tag</th>
-<th>Purpose</th>
+<th>Image:Tag</th>
+<th>OS</th>
+<th>Base Image</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>X_AUTHOR_ALIAS_X</code></td>
-<td>Author alias, short-name, or AKA</td>
+<td><code>ubuntu-20.4-ansible-node:0.1.0</code></td>
+<td>ubuntu</td>
+<td><code>docker.io/library/ubuntu:20.04</code></td>
 </tr>
 <tr>
-<td><code>X_AUTHOR_GIT_URL_X</code></td>
-<td>Author&rsquo;s GIT repo</td>
+<td><code>ubuntu-21.4-ansible-node:0.1.0</code></td>
+<td>ubuntu</td>
+<td><code>docker.io/library/ubuntu:21.04</code></td>
 </tr>
 <tr>
-<td><code>X_APP_INFO_X</code></td>
-<td>Program, script, app short description</td>
+<td><code>debian-10-ansible-node:0.1.0</code></td>
+<td>debian</td>
+<td><code>docker.io/library/debian:buster</code></td>
 </tr>
 <tr>
-<td><code>X_APP_VERSION_X</code></td>
-<td>Code version</td>
+<td><code>debian-11-ansible-node:0.1.0</code></td>
+<td>debian</td>
+<td><code>docker.io/library/debian:bullseye</code></td>
 </tr>
 <tr>
-<td><code>X_APP_NAMESPACE_X</code></td>
-<td>Script namespace</td>
+<td><code>oraclelinux-8-ansible-node:0.1.0</code></td>
+<td>oraclelinux</td>
+<td><code>docker.io/library/oraclelinux:8</code></td>
 </tr>
 <tr>
-<td><code>X_PROJECT_GIT_URL_X</code></td>
-<td>Project GIT Repo URL</td>
+<td><code>fedora-33-ansible-node:0.1.0</code></td>
+<td>fedora</td>
+<td><code>docker.io/library/fedora:33</code></td>
+</tr>
+<tr>
+<td><code>fedora-35-ansible-node:0.1.0</code></td>
+<td>fedora</td>
+<td><code>docker.io/library/fedora:35</code></td>
+</tr>
+<tr>
+<td><code>centos-8-ansible-node:0.1.0</code></td>
+<td>centos</td>
+<td><code>docker.io/library/centos:8</code></td>
 </tr>
 </tbody>
 </table>
+<h3 id="container-collection-bash-test">Container collection: Bash Test</h3>
+<ul>
+<li>Purpose: Bash scripts testing</li>
+<li>Packages: Bash, Bats Core, Bash Core plugins</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Image:Tag</th>
+<th>OS</th>
+<th>Base Image</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ubuntu-20.4-bash-test:0.2.0</code></td>
+<td>ubuntu</td>
+<td><code>docker.io/library/ubuntu:20.04</code></td>
+</tr>
+<tr>
+<td><code>ubuntu-21.4-bash-test:0.2.0</code></td>
+<td>ubuntu</td>
+<td><code>docker.io/library/ubuntu:21.04</code></td>
+</tr>
+<tr>
+<td><code>debian-10-bash-test:0.2.0</code></td>
+<td>debian</td>
+<td><code>docker.io/library/debian:buster</code></td>
+</tr>
+<tr>
+<td><code>debian-11-bash-test:0.2.0</code></td>
+<td>debian</td>
+<td><code>docker.io/library/debian:bullseye</code></td>
+</tr>
+<tr>
+<td><code>oraclelinux-8-bash-test:0.2.0</code></td>
+<td>oraclelinux</td>
+<td><code>docker.io/library/oraclelinux:8</code></td>
+</tr>
+<tr>
+<td><code>fedora-33-bash-test:0.2.0</code></td>
+<td>fedora</td>
+<td><code>docker.io/library/fedora:33</code></td>
+</tr>
+<tr>
+<td><code>fedora-35-bash-test:0.2.0</code></td>
+<td>fedora</td>
+<td><code>docker.io/library/fedora:35</code></td>
+</tr>
+<tr>
+<td><code>centos-8-bash-test:0.2.0</code></td>
+<td>centos</td>
+<td><code>docker.io/library/centos:8</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="usage">Usage</h2>
+<h3 id="podman">Podman</h3>
+<p>Run a command inside the container:</p>
+<p><code>podman run ghcr.io/serdigital64/&lt;IMAGE&gt; &lt;COMMAND&gt;</code></p>
+<h2 id="deployment">Deployment</h2>
+<h3 id="podman-1">Podman</h3>
+<p>Download the image to the local registry:</p>
+<p><code>podman pull ghcr.io/serdigital64/&lt;IMAGE&gt;</code></p>
 <h2 id="development">Development</h2>
 <h3 id="repositories">Repositories</h3>
 <ul>
-<li>Project GIT repository: <a href="https://github.com/serdigital64/bashlib64">https://github.com/serdigital64/bashlib64</a></li>
-<li>Project Documentation: <a href="https://serdigital64.github.io/bashlib64/">https://serdigital64.github.io/bashlib64/</a></li>
+<li>Project GIT repository: <a href="https://github.com/serdigital64/container64">https://github.com/serdigital64/container64</a></li>
+<li>Project Documentation: <a href="https://serdigital64.github.io/container64/">https://serdigital64.github.io/container64/</a></li>
 </ul>
 <h3 id="contributing">Contributing</h3>
 <p>Help on implementing new features and maintaining the code base is welcomed.</p>
-<p><a href="https://serdigital64.github.io/bashlib64/cod/">Contributor Covenant Code of Conduct</a></p>
-<h3 id="license">License</h3>
+<p><a href="https://serdigital64.github.io/container64/cod/">Contributor Covenant Code of Conduct</a></p>
+<h2 id="license">License</h2>
 <p><a href="https://www.gnu.org/licenses/gpl-3.0.txt">GPL-3.0-or-later</a></p>
 <h3 id="author">Author</h3>
 <ul>
@@ -627,7 +684,7 @@ Photography &amp;&amp; DIY == enthusiast
   window.backgroundImageDark =  null 
   window.darkNav =  true 
   window.maxTags =  4 
-  window.hasTwitterEmbed =  null 
+  window.hasTwitterEmbed =  true 
   window.fixedNav =  true 
 
   if (window.hasTwitterEmbed) {
