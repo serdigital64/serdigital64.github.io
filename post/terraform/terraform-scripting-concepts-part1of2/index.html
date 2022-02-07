@@ -26,7 +26,7 @@
 <meta property="og:url" content="https://serdigital64.github.io/post/terraform/terraform-scripting-concepts-part1of2/" />
 <meta property="og:image" content="https://serdigital64.github.io/from-serdigital64-flicker/DSC_8203-wide.jpg" />
 <meta property="article:published_time" content="2021-12-27T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-12-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-06T00:00:00+00:00" />
 
 
 
@@ -201,7 +201,7 @@
               | 
                 
                   
-                    Thursday, Dec 30, 2021
+                    Sunday, Feb 6, 2022
                   
                 
               
@@ -321,13 +321,13 @@ terraform apply
 </ul>
 <p>The following list shows common built-in block types:</p>
 <ul>
-<li><code>variable</code></li>
-<li><code>output</code></li>
-<li><code>local</code></li>
-<li><code>terraform</code></li>
-<li><code>provider</code></li>
-<li><code>resource</code></li>
-<li><code>data</code></li>
+<li><code>variable</code>: declare input parameter.</li>
+<li><code>output</code>: declare module output variable.</li>
+<li><code>local</code>: declare local variable.</li>
+<li><code>terraform</code>: provide project-wide terraform configuration settings.</li>
+<li><code>provider</code>: define and configure a terraform provider.</li>
+<li><code>resource</code>: configure a provider&rsquo;s resource.</li>
+<li><code>data</code>: provided run-time information for a provider&rsquo;s resource</li>
 </ul>
 <p>Additional types and subtypes are implemented through <strong>Terraform Providers</strong>. For example:</p>
 <ul>
@@ -500,14 +500,15 @@ terraform validate
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="retreive-variables-value">Retreive variable&rsquo;s value</h3>
-<p>In general, any block attribute can be referenced from within other blocks by using the following structure: <code>BLOCK_TYPE.ATTRIBUTE</code> or <code>BLOCK_TYPE.BLOCK_LABEL.ATTRIBUTE</code></p>
+<p>In general, block attributes (variables) can be referenced from within other blocks by using the following structure: <code>BLOCK_TYPE.ATTRIBUTE</code> or <code>BLOCK_TYPE.BLOCK_LABEL.ATTRIBUTE</code></p>
 <p>In addition to the generic format there are special cases to consider:</p>
 <ul>
 <li>Locals: use <code>local</code> instead of <code>locals</code>: <code>local.ATTRIBUTE</code></li>
 <li>Parameters: use the short form <code>var</code> instead of the full type name <code>variable</code>: <code>var.ATTRIBUTE</code></li>
-<li>Outputs: requires the module name where the output is declared: <code>module.MODULE NAME.OUTPUT_NAME</code></li>
+<li>Outputs: prepend <code>module</code> to module name where the output is declared: <code>module.MODULE_NAME.OUTPUT_NAME</code></li>
+<li>Data: prepend <code>data</code> to the data block name that provides the attribute: <code>data.DATA_BLOCK_NAME.ATTRIBUTE</code></li>
 </ul>
-<p>Variables can also be used in <strong>String Templates</strong> (simple programming code that can be embedded inside string declarations): <code>&quot;${BLOCK_TYPE.ATTRIBUTE}&quot;</code></p>
+<p>Variables can also be used in <strong>String Templates</strong> (simple programming code that can be embedded inside string declarations): <code>&quot;${BLOCK_TYPE.ATTRIBUTE}&quot;</code>. The resulting string will replace the <code>${}</code> expression with the value of the variable.</p>
 <p>The following example shows the three variable types seen so far:</p>
 <div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
