@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>terraform | SerDigital64&#39;s Blog</title>
+    <title>Terra4AWS64 Project | SerDigital64&#39;s Blog</title>
 
     
 
@@ -17,20 +17,24 @@
 
 <meta name="generator" content="Hugo 0.80.0" />
 
-<link rel="canonical" href="https://serdigital64.github.io/tags/terraform/" />
+<link rel="canonical" href="https://serdigital64.github.io/post/projects/project-terra4aws64/" />
 
 
-<meta property="og:title" content="terraform" />
-<meta property="og:description" content="Blog dedicated to sharing personal experiences and knowledge on Information Technology topics" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://serdigital64.github.io/tags/terraform/" />
-<meta property="og:updated_time" content="2022-02-13T00:00:00+00:00" />
+<meta property="og:title" content="Terra4AWS64 Project" />
+<meta property="og:description" content="Collection of Terraform AWS modules for deploying common infrastructure landscapes" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://serdigital64.github.io/post/projects/project-terra4aws64/" />
+<meta property="og:image" content="https://serdigital64.github.io/from-serdigital64-flicker/DSC_1031-wide.jpg" />
+<meta property="article:published_time" content="2022-02-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-13T00:00:00+00:00" />
 
 
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="terraform"/>
-<meta name="twitter:description" content="Blog dedicated to sharing personal experiences and knowledge on Information Technology topics"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://serdigital64.github.io/from-serdigital64-flicker/DSC_1031-wide.jpg"/>
+
+<meta name="twitter:title" content="Terra4AWS64 Project"/>
+<meta name="twitter:description" content="Collection of Terraform AWS modules for deploying common infrastructure landscapes"/>
 <meta name="twitter:site" content="@SerDigital64"/>
 
 
@@ -79,7 +83,13 @@
 </style>
 
 
-     
+    
+
+
+
+
+
+
 
     
     <link rel="stylesheet" href="/css/custom.css" />
@@ -113,260 +123,214 @@
         <section class="front">
           <div class="dream-max-width">
             
-
-<header class="ui basic very padded segment dream-header">
+<div class="ui relaxed centered grid dream-grid dream-grid-single"style="flex-direction: row-reverse;">
   
-  <div class="ui small circular image">
-    <img src="/about/SerDigital64-Font:ANSIShadow-circle.png" alt="avatar" />
-  </div>
+  
+  
   
 
-  <div class="content">
-    <h1 class="ui medium header">SerDigital64&#39;s Blog<span class="sub header">Traveler log from my journey through the lands of the ever evolving  digital world</span>
-    </h1>
-
-    <article class="ui horizontal list">
-      
-      <a class="item" href="/categories">
-        <i class="th list icon" title=""></i>
-      </a>
-      <a class="item" href="/tags">
-        <i class="tags icon" title=""></i>
-      </a>
-    </article>
-
+  
+  <aside class="sixteen wide mobile sixteen wide tablet three wide computer column dream-single-aside">
     
-    
-    
-    
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-    
-
-    
-
-    
-
-    
-    
-
-    <div class="tags-with-dropdown">
-      <div class="ui accordion">
-        <div class="title">
-          <div class="ui horizontal list">
-            <a class="item dropdown" href="#">
-              <i class="chevron right icon dropdown-icon"></i>
-            </a>
-          </div>
-          <div class="dream-tags">
-          
-          
-          
-            <a class="ui label" href="/tags/ansible/" title="ansible">
-              ansible
-            </a>
-          
-          
-          
-            <a class="ui label" href="/tags/automation/" title="automation">
-              automation
-            </a>
-          
-          
-          
-            <a class="ui label" href="/tags/bash/" title="bash">
-              bash
-            </a>
-          
-          
-          
-            <a class="ui label" href="/tags/images/" title="images">
-              images
-            </a>
-          
-          </div>
-        </div>
-        <div class="content">
-    
-          <div class="dream-tags" style="margin-left: 1.5rem;">
-          
-          
-          
-            <a class="ui label" href="/tags/infrastructure-as-code/" title="infrastructure-as-code">
-              infrastructure-as-code
-            </a>
-          
-          
-          
-            <a class="ui label" href="/tags/landscapes/" title="landscapes">
-              landscapes
-            </a>
-          
-          
-          
-            <a class="ui label" href="/tags/objects/" title="objects">
-              objects
-            </a>
-          
-          
-          
-            <a class="ui label" href="/tags/scenarios/" title="scenarios">
-              scenarios
-            </a>
-          
-          
-          
-            <a class="ui label" href="/tags/scripting/" title="scripting">
-              scripting
-            </a>
-          
-          
-          
-            <a class="ui label" href="/tags/terraform/" title="terraform">
-              terraform
-            </a>
-          
-          </div>
-    
-        </div>
-      </div>
+    <div class="ui segment toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#development">Development</a>
+      <ul>
+        <li><a href="#repositories">Repositories</a></li>
+        <li><a href="#environment">Environment</a></li>
+        <li><a href="#contributing">Contributing</a></li>
+        <li><a href="#license">License</a></li>
+        <li><a href="#author">Author</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
     
 
     
-  </div>
-</header>
+  </aside>
+  
+  <div class="sixteen wide mobile sixteen wide tablet ten wide computer column markdown-body dream-single" id="dream-save-post-as-img">
+    <section class="ui segment">
+      <header>
+        <h1 class="ui large header">Terra4AWS64 Project<span class="sub header">
+            <span class="left">
+              @
+              
+                SerDigital64
+              
 
+              | 
+                  
+                    Sunday, Feb 13, 2022
+                  
+                
 
-<div class="ui relaxed grid dream-grid">
-  
-  
-  <div class="sixteen wide mobile eight wide tablet eight wide computer four wide large screen four wide widescreen column dream-column">
-    <article class="ui attached segment card dream-card">
-  
-  <a class="image" href="https://serdigital64.github.io/post/projects/project-terra4aws64/">
-    
-    <img src="/from-serdigital64-flicker/DSC_1031-wide.jpg" alt="Terra4AWS64 Project" />
-    
+              | 2
+
+              
+              | 
+                
+                  
+                    Sunday, Feb 13, 2022
+                  
+                
+              
+            </span>
+
+            
+            <span class="dream-share">
+  <a href="#" class="save-as-image" title="" onclick="savePostAsImg()">
+    <i class="save icon"></i>
   </a>
-  
-
-  
-  <div class="content">
-  
-    <h2 class="ui medium header">
-      <a href="/post/projects/project-terra4aws64/">Terra4AWS64 Project</a>
-    </h2>
-    <div class="meta">
-      <p class="date">
-        Sunday, Feb 13, 2022
-      </p>
-    </div>
-    <div class="description">
-      Collection of Terraform AWS modules for deploying common infrastructure landscapes
-    </div>
-  </div>
-
-  <div class="extra content">
-    <div class="author">@&nbsp;SerDigital64</div>
-    <div class="reading-time">
-      <i class="clock icon"></i>2</div>
-  </div>
-</article>
-
-  </div>
-  
-  <div class="sixteen wide mobile eight wide tablet eight wide computer four wide large screen four wide widescreen column dream-column">
-    <article class="ui attached segment card dream-card">
-  
-  <a class="image" href="https://serdigital64.github.io/post/terraform/terraform-scripting-concepts-part1of2/">
-    
-    <img src="/from-serdigital64-flicker/DSC_8203-wide.jpg" alt="Terraform Scripting Concepts: Part 1 of 2" />
-    
+  <a href="https://twitter.com/intent/tweet?text=Terra4AWS64%20Project&url=https%3a%2f%2fserdigital64.github.io%2fpost%2fprojects%2fproject-terra4aws64%2f" title="Twitter">
+    <i class="twitter icon"></i>
   </a>
-  
-
-  
-  <div class="content">
-  
-    <h2 class="ui medium header">
-      <a href="/post/terraform/terraform-scripting-concepts-part1of2/">Terraform Scripting Concepts: Part 1 of 2</a>
-    </h2>
-    <div class="meta">
-      <p class="date">
-        Monday, Dec 27, 2021
-      </p>
-    </div>
-    <div class="description">
-      Create infrastructure provisioning scripts using Terraform (part 1 or 2). Explore key concepts: CLI installation, running scripts, script structure, variables
-    </div>
-  </div>
-
-  <div class="extra content">
-    <div class="author">@&nbsp;SerDigital64</div>
-    <div class="reading-time">
-      <i class="clock icon"></i>7</div>
-  </div>
-</article>
-
-  </div>
-  
-  <div class="sixteen wide mobile eight wide tablet eight wide computer four wide large screen four wide widescreen column dream-column">
-    <article class="ui attached segment card dream-card">
-  
-  <a class="image" href="https://serdigital64.github.io/post/terraform/terraform-scripting-concepts-part2of2/">
-    
-    <img src="/from-serdigital64-flicker/DSC_8203-wide.jpg" alt="Terraform Scripting Concepts: Part 2 of 2" />
-    
+  <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fserdigital64.github.io%2fpost%2fprojects%2fproject-terra4aws64%2f" title="Facebook">
+    <i class="facebook icon"></i>
   </a>
-  
+</span>
 
-  
-  <div class="content">
-  
-    <h2 class="ui medium header">
-      <a href="/post/terraform/terraform-scripting-concepts-part2of2/">Terraform Scripting Concepts: Part 2 of 2</a>
-    </h2>
-    <div class="meta">
-      <p class="date">
-        Monday, Dec 27, 2021
-      </p>
-    </div>
-    <div class="description">
-      Create infrastructure provisioning scripts using Terraform (part 2 or 2). Explore key concepts: functions, providers, resources
-    </div>
+            
+          </span>
+        </h1>
+      </header>
+
+      <article class="main">
+        
+        <img class="cover" src="/from-serdigital64-flicker/DSC_1031-wide.jpg" />
+        
+
+        <h2 id="overview">Overview</h2>
+<p>Collection of Terraform AWS modules for deploying common infrastructure landscapes.</p>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/terra4aws64/terraform-aws-ami">terraform-aws-ami</a></td>
+<td>Terraform module for creating a curated catalog of AWS AMIs</td>
+</tr>
+<tr>
+<td><a href="https://github.com/terra4aws64/terraform-aws-aurora">terraform-aws-aurora</a></td>
+<td>Terraform module for creating AWS RDS Aurora clusters</td>
+</tr>
+<tr>
+<td><a href="https://github.com/terra4aws64/terraform-aws-bastion">terraform-aws-bastion</a></td>
+<td>Terraform module for creating a dedicated Bastion host for managing private hosts in the target AWS VPC</td>
+</tr>
+<tr>
+<td><a href="https://github.com/terra4aws64/terraform-aws-ec2">terraform-aws-ec2</a></td>
+<td>Terraform module for creating AWS EC2 instances</td>
+</tr>
+<tr>
+<td><a href="https://github.com/terra4aws64/terraform-aws-ec2-as">terraform-aws-ec2-as</a></td>
+<td>Terraform module for creating AWS EC2 Auto Scaling Groups</td>
+</tr>
+<tr>
+<td><a href="https://github.com/terra4aws64/terraform-aws-vpc">terraform-aws-vpc</a></td>
+<td>Terraform module for creating AWS VPCs</td>
+</tr>
+</tbody>
+</table>
+<h2 id="development">Development</h2>
+<h3 id="repositories">Repositories</h3>
+<ul>
+<li>Project GIT repository: <a href="https://github.com/serdigital64/terra4aws64">https://github.com/serdigital64/terra4aws64</a></li>
+<li>Project Documentation: <a href="https://github.com/serdigital64/terra4aws64">https://github.com/serdigital64/terra4aws64</a></li>
+<li>Terraform Namespace: <a href="https://registry.terraform.io/namespaces/terra4aws64">https://registry.terraform.io/namespaces/terra4aws64</a></li>
+</ul>
+<h3 id="environment">Environment</h3>
+<ul>
+<li>
+<p>Prepare dev tools:</p>
+<ul>
+<li>Install the latest version of the <a href="https://www.terraform.io/downloads">Terraform CLI</a></li>
+<li>Install GIT</li>
+<li>(Optional) Install Git Flow</li>
+</ul>
+</li>
+<li>
+<p>Create GIT repositories</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1"> 1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2"> 2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3"> 3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4"> 4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5"> 5</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6"> 6</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7"> 7</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8"> 8</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="9"><a style="outline: none; text-decoration:none; color:inherit" href="#9"> 9</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="10"><a style="outline: none; text-decoration:none; color:inherit" href="#10">10</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="11"><a style="outline: none; text-decoration:none; color:inherit" href="#11">11</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#007f7f"># Create the main repository</span>
+<span style="color:#fff;font-weight:bold">cd</span> &lt;YOUR_PROJECTS_PATH&gt;
+git clone https://github.com/serdigital64/terra4aws64.git
+<span style="color:#007f7f"># Create module repositories as git submodules</span>
+git submodule init
+<span style="color:#007f7f"># Update modules</span>
+git submodule update
+<span style="color:#007f7f"># Enable main branch</span>
+git submodule foreach <span style="color:#0ff;font-weight:bold">&#34;git checkout main&#34;</span>; git submodule foreach <span style="color:#0ff;font-weight:bold">&#34;git checkout develop&#34;</span>
+<span style="color:#007f7f"># (Optional) Initialize git flow</span>
+git submodule foreach <span style="color:#0ff;font-weight:bold">&#34;git flow init -d&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>Adjust environment variables to reflect your configuration:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#007f7f"># Copy environment definition files from templates:</span>
+cp dot.local .local
+cp dot.secrets .secrets
+<span style="color:#007f7f"># Review and update content for both files</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>Initialize dev environment variables</p>
+<blockquote>
+<p><code>source bin/devta64-set</code></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="contributing">Contributing</h3>
+<p>Help on implementing new features and maintaining the code base is welcomed.</p>
+<p><a href="./CODE_OF_CONDUCT.md">Contributor Covenant Code of Conduct</a></p>
+<h3 id="license">License</h3>
+<p><a href="https://www.gnu.org/licenses/gpl-3.0.txt">GPL-3.0-or-later</a></p>
+<h3 id="author">Author</h3>
+<ul>
+<li><a href="https://serdigital64.github.io/">SerDigital64</a></li>
+</ul>
+
+      </article>
+    </section>
+
+    
+
+    
+
+    
   </div>
-
-  <div class="extra content">
-    <div class="author">@&nbsp;SerDigital64</div>
-    <div class="reading-time">
-      <i class="clock icon"></i>4</div>
-  </div>
-</article>
-
-  </div>
-  
-
-  
 </div>
 
 
@@ -704,9 +668,12 @@ Photography &amp;&amp; DIY == enthusiast
 
 
 
-<script src="/js/imagesloaded.pkgd.min.js"></script>
-<script src="/js/masonry.pkgd.min.js"></script>
-<script src="/js/grid.js"></script>
+<script src="/js/scrollToTop.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1/dist/html2canvas.min.js" integrity="sha256-uacRffSSMP9qpvNWhVmYLykBv9YKMA1d/VSIN1AmfyQ=" crossorigin="anonymous"></script>
+<script src="/js/post.js" defer></script>
 
 
     

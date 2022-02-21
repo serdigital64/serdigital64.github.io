@@ -26,7 +26,7 @@
 <meta property="og:url" content="https://serdigital64.github.io/post/projects/project-bashlib64/" />
 <meta property="og:image" content="https://serdigital64.github.io/from-serdigital64-flicker/DSC_8063-wide.jpg" />
 <meta property="article:published_time" content="2021-12-10T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-01-23T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-20T00:00:00+00:00" />
 
 
 
@@ -38,9 +38,9 @@
 <meta name="twitter:site" content="@SerDigital64"/>
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" integrity="sha256-UXesixbeLkB/UYxVTzuj/gg3+LMzgwAmg3zD+C4ZASQ=" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/icomoon.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@1.13.1/css/OverlayScrollbars.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@1.13.1/css/OverlayScrollbars.min.css" integrity="sha256-WKijf8KI68sbq8Znd6yMepIuFF0wdWfIt6gk3JWcQfk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css">
 <link rel="stylesheet" href="/css/site.css" />
 
@@ -51,20 +51,20 @@
 
   
   a:not(.item, .ui.button) {
-    color: seagreen !important;
+    color: DarkSlateGray !important;
   }
   
 
   
   .inverted a:not(.item, .ui.button) {
-     color: darkseagreen !important;
+     color: lavender !important;
   }
   
 
   
   body.default {
     
-    background-color: #f7f7f7;
+    background-color: GhostWhite;
     
 
     
@@ -74,7 +74,7 @@
   
   body.dark {
     
-    background-color: black;
+    background-color: gray;
     
 
     
@@ -135,30 +135,19 @@
     <div class="ui segment toc">
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#overview">Overview</a>
-      <ul>
-        <li><a href="#container-collection-ansible-node">Container collection: Ansible Node</a></li>
-        <li><a href="#container-collection-bash-test">Container collection: Bash Test</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a>
-      <ul>
-        <li><a href="#podman">Podman</a></li>
-      </ul>
-    </li>
+    <li><a href="#overview">Overview</a></li>
     <li><a href="#deployment">Deployment</a>
       <ul>
-        <li><a href="#podman-1">Podman</a></li>
+        <li><a href="#os-compatibility">OS Compatibility</a></li>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
     <li><a href="#development">Development</a>
       <ul>
         <li><a href="#repositories">Repositories</a></li>
         <li><a href="#contributing">Contributing</a></li>
-      </ul>
-    </li>
-    <li><a href="#license">License</a>
-      <ul>
+        <li><a href="#license">License</a></li>
         <li><a href="#author">Author</a></li>
       </ul>
     </li>
@@ -168,26 +157,10 @@
     
 
     
-    <div class="ui segment">
-  <button
-    class="ui circular icon button save-as-image"
-    title=""
-    onclick="savePostAsImg()">
-    <i class="save icon"></i>
-  </button>
-  <a href="https://twitter.com/intent/tweet?text=BashLib64%20Project&url=https%3a%2f%2fserdigital64.github.io%2fpost%2fprojects%2fproject-bashlib64%2f" class="ui circular twitter icon button">
-    <i class="twitter icon"></i>
-  </a>
-  <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fserdigital64.github.io%2fpost%2fprojects%2fproject-bashlib64%2f" class="ui circular facebook icon button">
-    <i class="facebook icon"></i>
-  </a>
-</div>
-
-    
   </aside>
   
   <div class="sixteen wide mobile sixteen wide tablet ten wide computer column markdown-body dream-single" id="dream-save-post-as-img">
-    <section class="ui top attached segment">
+    <section class="ui segment">
       <header>
         <h1 class="ui large header">BashLib64 Project<span class="sub header">
             <span class="left">
@@ -202,17 +175,30 @@
                   
                 
 
-              | 1
+              | 2
 
               
               | 
                 
                   
-                    Sunday, Jan 23, 2022
+                    Sunday, Feb 20, 2022
                   
                 
               
             </span>
+
+            
+            <span class="dream-share">
+  <a href="#" class="save-as-image" title="" onclick="savePostAsImg()">
+    <i class="save icon"></i>
+  </a>
+  <a href="https://twitter.com/intent/tweet?text=BashLib64%20Project&url=https%3a%2f%2fserdigital64.github.io%2fpost%2fprojects%2fproject-bashlib64%2f" title="Twitter">
+    <i class="twitter icon"></i>
+  </a>
+  <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fserdigital64.github.io%2fpost%2fprojects%2fproject-bashlib64%2f" title="Facebook">
+    <i class="facebook icon"></i>
+  </a>
+</span>
 
             
           </span>
@@ -224,147 +210,148 @@
         <img class="cover" src="/from-serdigital64-flicker/DSC_8063-wide.jpg" />
         
 
-        <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-text" data-lang="text">
-██████╗  █████╗ ███████╗██╗  ██╗██╗     ██╗██████╗  ██████╗ ██╗  ██╗
-██╔══██╗██╔══██╗██╔════╝██║  ██║██║     ██║██╔══██╗██╔════╝ ██║  ██║
-██████╔╝███████║███████╗███████║██║     ██║██████╔╝███████╗ ███████║
-██╔══██╗██╔══██║╚════██║██╔══██║██║     ██║██╔══██╗██╔═══██╗╚════██║
-██████╔╝██║  ██║███████║██║  ██║███████╗██║██████╔╝╚██████╔╝     ██║
-╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚═╝╚═════╝  ╚═════╝      ╚═╝
-
-
-</code></pre></div><h2 id="overview">Overview</h2>
-<p><strong>Container64</strong> is project for building and sharing OCI compliant container images that can be used for testing infrastructure management tools.</p>
-<h3 id="container-collection-ansible-node">Container collection: Ansible Node</h3>
-<ul>
-<li>Purpose: Ansible node testing</li>
-<li>Packages: SystemD, Sudo, Python3</li>
-</ul>
+        <h2 id="overview">Overview</h2>
+<p>BashLib64 is a project for creating <strong>Bash</strong> functions that can facilitate and accelerate the development of Bash scripts and code snippets such as the ones used to create container images.</p>
+<p>The library is a stand-alone file build from modules that can be easily distributed and included into existing or new bash scripts:</p>
 <table>
 <thead>
 <tr>
-<th>Image:Tag</th>
-<th>OS</th>
-<th>Base Image</th>
+<th>Module</th>
+<th>Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>ubuntu-20.4-ansible-node:0.1.0</code></td>
-<td>ubuntu</td>
-<td><code>docker.io/library/ubuntu:20.04</code></td>
+<td><a href="https://serdigital64.github.io/bashlib64/bl64-arc/">bl64-arc</a></td>
+<td>Manipulate archive files</td>
 </tr>
 <tr>
-<td><code>ubuntu-21.4-ansible-node:0.1.0</code></td>
-<td>ubuntu</td>
-<td><code>docker.io/library/ubuntu:21.04</code></td>
+<td><a href="https://serdigital64.github.io/bashlib64/bl64-check/">bl64-check</a></td>
+<td>Check for conditions and report status</td>
 </tr>
 <tr>
-<td><code>debian-10-ansible-node:0.1.0</code></td>
-<td>debian</td>
-<td><code>docker.io/library/debian:buster</code></td>
+<td><a href="https://serdigital64.github.io/bashlib64/bl64-core/">bl64-core</a></td>
+<td>Setup script run-time environment</td>
 </tr>
 <tr>
-<td><code>debian-11-ansible-node:0.1.0</code></td>
-<td>debian</td>
-<td><code>docker.io/library/debian:bullseye</code></td>
+<td><a href="https://serdigital64.github.io/bashlib64/bl64-fmt/">bl64-fmt</a></td>
+<td>Format text data</td>
 </tr>
 <tr>
-<td><code>oraclelinux-8-ansible-node:0.1.0</code></td>
-<td>oraclelinux</td>
-<td><code>docker.io/library/oraclelinux:8</code></td>
+<td><a href="https://serdigital64.github.io/bashlib64/bl64-log/">bl64-log</a></td>
+<td>Write messages to logs</td>
 </tr>
 <tr>
-<td><code>fedora-33-ansible-node:0.1.0</code></td>
-<td>fedora</td>
-<td><code>docker.io/library/fedora:33</code></td>
+<td><a href="https://serdigital64.github.io/bashlib64/bl64-msg/">bl64-msg</a></td>
+<td>Display messages</td>
 </tr>
 <tr>
-<td><code>fedora-35-ansible-node:0.1.0</code></td>
-<td>fedora</td>
-<td><code>docker.io/library/fedora:35</code></td>
+<td><a href="https://serdigital64.github.io/bashlib64/bl64-os/">bl64-os</a></td>
+<td>Identify OS attributes and provide command aliases</td>
 </tr>
 <tr>
-<td><code>centos-8-ansible-node:0.1.0</code></td>
-<td>centos</td>
-<td><code>docker.io/library/centos:8</code></td>
+<td><a href="https://serdigital64.github.io/bashlib64/bl64-pkg/">bl64-pkg</a></td>
+<td>Install native OS packages</td>
+</tr>
+<tr>
+<td><a href="https://serdigital64.github.io/bashlib64/bl64-sudo/">bl64-sudo</a></td>
+<td>Manipulate sudo configuration</td>
+</tr>
+<tr>
+<td><a href="https://serdigital64.github.io/bashlib64/bl64-vcs/">bl64-vcs</a></td>
+<td>Version Control System interface</td>
 </tr>
 </tbody>
 </table>
-<h3 id="container-collection-bash-test">Container collection: Bash Test</h3>
-<ul>
-<li>Purpose: Bash scripts testing</li>
-<li>Packages: Bash, Bats Core, Bash Core plugins</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Image:Tag</th>
-<th>OS</th>
-<th>Base Image</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>ubuntu-20.4-bash-test:0.2.0</code></td>
-<td>ubuntu</td>
-<td><code>docker.io/library/ubuntu:20.04</code></td>
-</tr>
-<tr>
-<td><code>ubuntu-21.4-bash-test:0.2.0</code></td>
-<td>ubuntu</td>
-<td><code>docker.io/library/ubuntu:21.04</code></td>
-</tr>
-<tr>
-<td><code>debian-10-bash-test:0.2.0</code></td>
-<td>debian</td>
-<td><code>docker.io/library/debian:buster</code></td>
-</tr>
-<tr>
-<td><code>debian-11-bash-test:0.2.0</code></td>
-<td>debian</td>
-<td><code>docker.io/library/debian:bullseye</code></td>
-</tr>
-<tr>
-<td><code>oraclelinux-8-bash-test:0.2.0</code></td>
-<td>oraclelinux</td>
-<td><code>docker.io/library/oraclelinux:8</code></td>
-</tr>
-<tr>
-<td><code>fedora-33-bash-test:0.2.0</code></td>
-<td>fedora</td>
-<td><code>docker.io/library/fedora:33</code></td>
-</tr>
-<tr>
-<td><code>fedora-35-bash-test:0.2.0</code></td>
-<td>fedora</td>
-<td><code>docker.io/library/fedora:35</code></td>
-</tr>
-<tr>
-<td><code>centos-8-bash-test:0.2.0</code></td>
-<td>centos</td>
-<td><code>docker.io/library/centos:8</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="usage">Usage</h2>
-<h3 id="podman">Podman</h3>
-<p>Run a command inside the container:</p>
-<p><code>podman run ghcr.io/serdigital64/&lt;IMAGE&gt; &lt;COMMAND&gt;</code></p>
 <h2 id="deployment">Deployment</h2>
-<h3 id="podman-1">Podman</h3>
-<p>Download the image to the local registry:</p>
-<p><code>podman pull ghcr.io/serdigital64/&lt;IMAGE&gt;</code></p>
+<h3 id="os-compatibility">OS Compatibility</h3>
+<p>The library has been tested on the following operating systems:</p>
+<ul>
+<li>CentOS8</li>
+<li>OracleLinux8</li>
+<li>Ubuntu20</li>
+<li>Ubuntu21</li>
+<li>Fedora33</li>
+<li>Fedora35</li>
+<li>Debian10</li>
+<li>Debian11</li>
+</ul>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Minimum Bash version: 5</li>
+</ul>
+<h3 id="installation">Installation</h3>
+<h4 id="add-library-to-existing-script">Add library to existing script</h4>
+<ul>
+<li>Download the library to the project directory
+<blockquote>
+<p><code>#!shell cd &lt;PROJECT_DIR&gt;; wget https://raw.githubusercontent.com/serdigital64/bashlib64/main/bashlib64.bash</code></p>
+</blockquote>
+</li>
+<li>Add the library loader to the target script:
+<blockquote>
+<p><code>#!shell source &quot;&lt;PROJECT_DIR&gt;/bashlib64.bash&quot;</code></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="create-new-script">Create new script</h4>
+<ul>
+<li>Download the library to the project directory
+<blockquote>
+<p><code>#!shell cd &lt;PROJECT_DIR&gt;; wget https://raw.githubusercontent.com/serdigital64/bashlib64/main/bashlib64.bash</code></p>
+</blockquote>
+</li>
+<li>Download the skeleton script:
+<blockquote>
+<p><code>#!shell wget https://raw.githubusercontent.com/serdigital64/bashlib64/main/skel/generic</code></p>
+</blockquote>
+</li>
+<li>Customize the script by adding new content and replacing the predefined tags:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X_AUTHOR_ALIAS_X</code></td>
+<td>Author alias, short-name, or AKA</td>
+</tr>
+<tr>
+<td><code>X_AUTHOR_GIT_URL_X</code></td>
+<td>Author&rsquo;s GIT repo</td>
+</tr>
+<tr>
+<td><code>X_APP_INFO_X</code></td>
+<td>Program, script, app short description</td>
+</tr>
+<tr>
+<td><code>X_APP_VERSION_X</code></td>
+<td>Code version</td>
+</tr>
+<tr>
+<td><code>X_APP_NAMESPACE_X</code></td>
+<td>Script namespace</td>
+</tr>
+<tr>
+<td><code>X_PROJECT_GIT_URL_X</code></td>
+<td>Project GIT Repo URL</td>
+</tr>
+</tbody>
+</table>
 <h2 id="development">Development</h2>
 <h3 id="repositories">Repositories</h3>
 <ul>
-<li>Project GIT repository: <a href="https://github.com/serdigital64/container64">https://github.com/serdigital64/container64</a></li>
-<li>Project Documentation: <a href="https://serdigital64.github.io/container64/">https://serdigital64.github.io/container64/</a></li>
+<li>Project GIT repository: <a href="https://github.com/serdigital64/bashlib64">https://github.com/serdigital64/bashlib64</a></li>
+<li>Project Documentation: <a href="https://serdigital64.github.io/bashlib64/">https://serdigital64.github.io/bashlib64/</a></li>
 </ul>
 <h3 id="contributing">Contributing</h3>
 <p>Help on implementing new features and maintaining the code base is welcomed.</p>
-<p><a href="https://serdigital64.github.io/container64/cod/">Contributor Covenant Code of Conduct</a></p>
-<h2 id="license">License</h2>
+<p><a href="https://serdigital64.github.io/bashlib64/cod/">Contributor Covenant Code of Conduct</a></p>
+<h3 id="license">License</h3>
 <p><a href="https://www.gnu.org/licenses/gpl-3.0.txt">GPL-3.0-or-later</a></p>
 <h3 id="author">Author</h3>
 <ul>
@@ -391,7 +378,7 @@
               <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</p>
 
               
-              <p>Articles in this site are licensed under a [Creative Commons Attribution 4.0 International License]</p>
+              <p>Articles in this site are licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0)</p>
               
             </footer>
           </div>
@@ -605,7 +592,7 @@ Photography &amp;&amp; DIY == enthusiast
   
 
   
-  <a class="item" href="https://instagram.com/serdigital64" target="_blank">
+  <a class="item" href="https://instagram.com/SerDigital64" target="_blank">
     <i class="large instagram icon" title="Instagram"></i>
   </a>
   
@@ -615,7 +602,7 @@ Photography &amp;&amp; DIY == enthusiast
   
 
   
-  <a class="item" href="https://github.com/serdigital64" target="_blank">
+  <a class="item" href="https://github.com/SerDigital64" target="_blank">
     <i class="large github icon" title="GitHub"></i>
   </a>
   
@@ -646,8 +633,8 @@ Photography &amp;&amp; DIY == enthusiast
       </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js" integrity="sha256-CgSoWC9w5wNmI1aN8dIMK+6DPelUEtvDr+Bc2m/0Nx8=" crossorigin="anonymous"></script>
 
     
     <div class="ui segment" id="dream-search">
@@ -678,14 +665,14 @@ Photography &amp;&amp; DIY == enthusiast
     
 
     <script>
-  window.background = "#f7f7f7"
+  window.background = "GhostWhite"
   window.defaultDark =  false 
-  window.backgroundDark = "black"
+  window.backgroundDark = "gray"
   window.backgroundImageDark =  null 
   window.darkNav =  true 
   window.maxTags =  4 
   window.hasTwitterEmbed =  true 
-  window.fixedNav =  true 
+  window.fixedNav =  false 
 
   if (window.hasTwitterEmbed) {
     
@@ -708,7 +695,7 @@ Photography &amp;&amp; DIY == enthusiast
     })(document, 'script', 'twitter-wjs')
   }
 </script>
-<script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@1.13.1/js/jquery.overlayScrollbars.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@1.13.1/js/jquery.overlayScrollbars.min.js" integrity="sha256-tBd38uWlvgfps3zHPrUb2ePBg+Z8EjMf0QloFONzpvU=" crossorigin="anonymous"></script>
 <script src="/js/header.js"></script>
 <script src="/js/main.js"></script>
 <script src="/js/theme.js"></script>
@@ -721,7 +708,7 @@ Photography &amp;&amp; DIY == enthusiast
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1/dist/html2canvas.min.js" integrity="sha256-uacRffSSMP9qpvNWhVmYLykBv9YKMA1d/VSIN1AmfyQ=" crossorigin="anonymous"></script>
 <script src="/js/post.js" defer></script>
 
 
