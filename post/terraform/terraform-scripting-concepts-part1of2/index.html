@@ -222,7 +222,7 @@
 <li><strong>Terraform Script</strong>: text file with <strong>Terraform Language</strong> code used to describe the required end-state of the <strong>Managed Resources</strong>.</li>
 <li><strong>Managed Resource</strong>: logical representation of a real infrastructure resource in the target infrastructure.</li>
 <li><strong>Terraform Provider</strong>: stand-alone apps (plugins) that are used by the <strong>Terraform CLI</strong> to interact with <strong>Managed Resources</strong>.</li>
-<li><strong>Terraform Workspace</strong>: working directory where <strong>Terraform Scripts</strong> are located and where the <strong>Terraform CLI</strong> stores data files (state, temporary, plugins, etc.)</li>
+<li><strong>Terraform Workspace</strong>: working directory in which <strong>Terraform Scripts</strong> are located and the <strong>Terraform CLI</strong> stores data files (state, temporary, plugins, etc.)</li>
 </ul>
 <h2 id="using-terraform">Using Terraform</h2>
 <h3 id="cli-installation">CLI Installation</h3>
@@ -253,7 +253,7 @@ ZIP_PACKAGE=<span style="color:#0ff;font-weight:bold">&#39;terraform_1.1.2_linux
 <li><code>plan</code>: creates/updates state information of managed resources and executes a dry-run to create the change plan. For already existing resources, if the provider is unable to modify attributes on the fly it will propose a destructive change (remove and recreate the resource with the new end-state).</li>
 <li><code>apply</code>: executes the change plan, and updates resource state information. The provider will modify the target infrastructure by creating, updating and removing resources until the end-state is reached.</li>
 </ol>
-<p>To execute the script the <strong>Terraform</strong> CLI must be already inside the workspace directory:</p>
+<p>To execute the script the <strong>Terraform CLI</strong> must be already inside the workspace directory:</p>
 <div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
@@ -473,7 +473,7 @@ terraform validate
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="output">Output</h3>
-<p>In addition to the <code>local</code> and <code>variable</code> block types <strong>Terraform</strong> provides the <code>output</code> type to define variables that will be exported and made available to external apps and scripts. The following attributes are available:</p>
+<p>In addition to the <code>local</code> and <code>variable</code> block types, <strong>Terraform</strong> provides the <code>output</code> type to define variables that will be exported and made available to external apps and scripts. The following attributes are available:</p>
 <ul>
 <li><code>value</code>: the value assigned to the variable.</li>
 <li><code>description</code>: describe what the value represents.</li>
@@ -753,11 +753,14 @@ terraform validate
 ╚═════╝      ╚═╝                               
 
 
+Solutions_Architect &amp;&amp; SysAdmin &amp;&amp; DevOpsEngineer == for_a_living
+Developer = for_the_fun
 Linux &amp;&amp; OSS_advocate
-Solutions_Architect = for_a_living
-SysAdmin &amp;&amp; Developer = for_the_fun
 Sci_Fi = fan
 Photography &amp;&amp; DIY == enthusiast
+
+hire_me(<span style="color:#0ff;font-weight:bold">&#39;https://www.linkedin.com/in/max64morales&#39;</span>)
+
 </code></pre></div>
     </article>
   </div>
