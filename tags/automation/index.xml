@@ -7,7 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Articles in this site are licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0)</copyright>
-    <lastBuildDate>Mon, 27 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://serdigital64.github.io/tags/automation/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://serdigital64.github.io/tags/automation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CodeSkel64 Project</title>
+      <link>https://serdigital64.github.io/post/projects/project-codeskel64/</link>
+      <pubDate>Sun, 10 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://serdigital64.github.io/post/projects/project-codeskel64/</guid>
+      <description>Simple tool for creating initial project structures and code from skeletons. Skeletons can be single-file templates with replaceable tags or complex directory structures.</description>
+    </item>
+    
+    <item>
+      <title>TestManSH Project</title>
+      <link>https://serdigital64.github.io/post/projects/project-testmansh/</link>
+      <pubDate>Sun, 10 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://serdigital64.github.io/post/projects/project-testmansh/</guid>
+      <description>Simple tool for testing Bash scripts in either native environment or purpose-build container images.</description>
+    </item>
+    
     <item>
       <title>Terraform Scripting Concepts: Part 1 of 2</title>
       <link>https://serdigital64.github.io/post/terraform/terraform-scripting-concepts-part1of2/</link>
@@ -32,7 +50,7 @@
       <pubDate>Fri, 10 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://serdigital64.github.io/post/projects/project-bashlib64/</guid>
-      <description>Bash functions for facilitating and accelerating development of scripts and code snippets</description>
+      <description>Bash library that provides a simple abstraction layer for developing multi-platform scripts</description>
     </item>
     
     <item>
@@ -59,7 +77,7 @@
       <pubDate>Thu, 18 Nov 2021 00:00:00 +0000</pubDate>
       
       <guid>https://serdigital64.github.io/post/projects/project-container64/</guid>
-      <description>OCI compliant container images that can be used for testing infrastructure management tools</description>
+      <description>OCI compliant container images for testing infrastructure management tools</description>
     </item>
     
     <item>

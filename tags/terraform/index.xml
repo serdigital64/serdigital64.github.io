@@ -7,16 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Articles in this site are licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0)</copyright>
-    <lastBuildDate>Sun, 13 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://serdigital64.github.io/tags/terraform/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Terra4AWS64 Project</title>
-      <link>https://serdigital64.github.io/post/projects/project-terra4aws64/</link>
-      <pubDate>Sun, 13 Feb 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://serdigital64.github.io/post/projects/project-terra4aws64/</guid>
-      <description>Collection of Terraform AWS modules for deploying common infrastructure landscapes</description>
-    </item>
-    
+    <lastBuildDate>Mon, 27 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://serdigital64.github.io/tags/terraform/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Terraform Scripting Concepts: Part 1 of 2</title>
       <link>https://serdigital64.github.io/post/terraform/terraform-scripting-concepts-part1of2/</link>

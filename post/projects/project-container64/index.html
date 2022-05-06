@@ -21,12 +21,12 @@
 
 
 <meta property="og:title" content="Container64 Project" />
-<meta property="og:description" content="OCI compliant container images that can be used for testing infrastructure management tools" />
+<meta property="og:description" content="OCI compliant container images for testing infrastructure management tools" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://serdigital64.github.io/post/projects/project-container64/" />
 <meta property="og:image" content="https://serdigital64.github.io/from-serdigital64-flicker/DSC_5196-wide.jpg" />
 <meta property="article:published_time" content="2021-11-18T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-01-23T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-10T00:00:00+00:00" />
 
 
 
@@ -34,7 +34,7 @@
 <meta name="twitter:image" content="https://serdigital64.github.io/from-serdigital64-flicker/DSC_5196-wide.jpg"/>
 
 <meta name="twitter:title" content="Container64 Project"/>
-<meta name="twitter:description" content="OCI compliant container images that can be used for testing infrastructure management tools"/>
+<meta name="twitter:description" content="OCI compliant container images for testing infrastructure management tools"/>
 <meta name="twitter:site" content="@SerDigital64"/>
 
 
@@ -130,39 +130,6 @@
   
 
   
-  <aside class="sixteen wide mobile sixteen wide tablet three wide computer column dream-single-aside">
-    
-    <div class="ui segment toc">
-      <nav id="TableOfContents">
-  <ul>
-    <li><a href="#overview">Overview</a>
-      <ul>
-        <li><a href="#container-collection-ansible-node">Container collection: Ansible Node</a></li>
-        <li><a href="#container-collection-bash-test">Container collection: Bash Test</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#deployment">Deployment</a></li>
-    <li><a href="#development">Development</a>
-      <ul>
-        <li><a href="#environment">Environment</a></li>
-        <li><a href="#repositories">Repositories</a></li>
-        <li><a href="#contributing">Contributing</a></li>
-      </ul>
-    </li>
-    <li><a href="#license">License</a>
-      <ul>
-        <li><a href="#author">Author</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-    </div>
-    
-
-    
-  </aside>
-  
   <div class="sixteen wide mobile sixteen wide tablet ten wide computer column markdown-body dream-single" id="dream-save-post-as-img">
     <section class="ui segment">
       <header>
@@ -185,7 +152,7 @@
               | 
                 
                   
-                    Sunday, Jan 23, 2022
+                    Sunday, Apr 10, 2022
                   
                 
               
@@ -215,7 +182,7 @@
         
 
         <h2 id="overview">Overview</h2>
-<p><strong>Container64</strong> is project for building and sharing OCI compliant container images that can be used for testing infrastructure management tools.</p>
+<p><strong>Container64</strong> is project for building and sharing OCI compliant container images for testing infrastructure management tools.</p>
 <h3 id="container-collection-ansible-node">Container collection: Ansible Node</h3>
 <ul>
 <li>Purpose: Ansible node testing</li>
@@ -307,9 +274,24 @@
 <td><code>docker.io/library/alpine:3</code></td>
 </tr>
 <tr>
+<td><code>centos-7-bash-test</code></td>
+<td>centos</td>
+<td><code>quay.io/centos/centos:centos7</code></td>
+</tr>
+<tr>
 <td><code>centos-8-bash-test</code></td>
 <td>centos</td>
-<td><code>docker.io/library/centos:8</code></td>
+<td><code>quay.io/centos/centos:8</code></td>
+</tr>
+<tr>
+<td><code>centos-9-bash-test</code></td>
+<td>centos</td>
+<td><code>quay.io/centos/centos:stream9</code></td>
+</tr>
+<tr>
+<td><code>debian-9-bash-test</code></td>
+<td>debian</td>
+<td><code>docker.io/library/debian:stretch</code></td>
 </tr>
 <tr>
 <td><code>debian-10-bash-test</code></td>
@@ -327,9 +309,19 @@
 <td><code>docker.io/library/fedora:33</code></td>
 </tr>
 <tr>
+<td><code>fedora-34-bash-test</code></td>
+<td>fedora</td>
+<td><code>docker.io/library/fedora:34</code></td>
+</tr>
+<tr>
 <td><code>fedora-35-bash-test</code></td>
 <td>fedora</td>
 <td><code>docker.io/library/fedora:35</code></td>
+</tr>
+<tr>
+<td><code>oraclelinux-7-bash-test</code></td>
+<td>oraclelinux</td>
+<td><code>docker.io/library/oraclelinux:7</code></td>
 </tr>
 <tr>
 <td><code>oraclelinux-8-bash-test</code></td>
@@ -353,6 +345,48 @@
 </tr>
 </tbody>
 </table>
+<h3 id="container-collection-terraform-test">Container collection: Terraform test</h3>
+<ul>
+<li>Purpose: Terraform code testing</li>
+<li>Packages: TFSec</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Image</th>
+<th>OS</th>
+<th>Base Image</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>oraclelinux-8-terraform-test</code></td>
+<td>oraclelinux</td>
+<td><code>docker.io/library/oraclelinux:8</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="container-collection-bash-linter">Container collection: Bash Linter</h3>
+<ul>
+<li>Purpose: Unix Shell scripts linting</li>
+<li>Packages: ShellCheck, OS utilities</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Image</th>
+<th>OS</th>
+<th>Base Image</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>alpine-3-shell-lint</code></td>
+<td>alpine</td>
+<td><code>docker.io/library/alpine:3</code></td>
+</tr>
+</tbody>
+</table>
 <h2 id="usage">Usage</h2>
 <p>Run a command inside the container:</p>
 <div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
@@ -370,7 +404,17 @@ podman run ghcr.io/serdigital64/&lt;IMAGE&gt; &lt;COMMAND&gt;
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="deployment">Deployment</h2>
-<p>Download the image to the local registry:</p>
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li>Container engine
+<ul>
+<li>docker or podman</li>
+</ul>
+</li>
+<li>Bash</li>
+</ul>
+<h3 id="installation">Installation</h3>
+<p>Download the target image to the local registry:</p>
 <div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
@@ -385,8 +429,8 @@ docker pull ghcr.io/serdigital64/&lt;IMAGE&gt;
 podman pull ghcr.io/serdigital64/&lt;IMAGE&gt;<span style="color:#0ff;font-weight:bold">`</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="development">Development</h2>
-<h3 id="environment">Environment</h3>
+</div><h2 id="contributing">Contributing</h2>
+<h3 id="prepare-development-environment">Prepare Development Environment</h3>
 <ul>
 <li>
 <p>Prepare dev tools</p>
@@ -434,18 +478,42 @@ cp dot.secrets .secrets
 </code></pre></td></tr></table>
 </div>
 </div></li>
+<li>
+<p>Download the latest version of <a href="https://github.com/serdigital64/bashlib64">BashLib64</a> to: <code>lib/</code> and &lsquo;src/loader&rsquo;</p>
+</li>
 </ul>
-<h3 id="repositories">Repositories</h3>
+<h3 id="update-source-code">Update source code</h3>
+<ul>
+<li>Add/Edit source code in: <code>src/dockerfiles</code></li>
+<li>Build container image</li>
+</ul>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">./cntbuild -b -c CONTAINER_NAME -e TAG
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Publish container image</li>
+</ul>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">./cntbuild -u -c CONTAINER_NAME -e TAG
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="repositories">Repositories</h2>
 <ul>
 <li>Project GIT repository: <a href="https://github.com/serdigital64/container64">https://github.com/serdigital64/container64</a></li>
 <li>Project Documentation: <a href="https://serdigital64.github.io/container64/">https://serdigital64.github.io/container64/</a></li>
 </ul>
-<h3 id="contributing">Contributing</h3>
-<p>Help on implementing new features and maintaining the code base is welcomed.</p>
-<p><a href="https://serdigital64.github.io/container64/cod/">Contributor Covenant Code of Conduct</a></p>
 <h2 id="license">License</h2>
 <p><a href="https://www.gnu.org/licenses/gpl-3.0.txt">GPL-3.0-or-later</a></p>
-<h3 id="author">Author</h3>
+<h2 id="author">Author</h2>
 <ul>
 <li><a href="https://github.com/serdigital64">SerDigital64</a></li>
 </ul>
@@ -641,7 +709,7 @@ cp dot.secrets .secrets
 ██████╔╝██║╚██████╔╝██║   ██║   ██║  ██║███████╗
 ╚═════╝ ╚═╝ ╚═════╝ ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝
                                   
-██████╗ ██╗  ██╗                               
+██████╗  ██╗  ██╗                               
 ██╔════╝ ██║  ██║                               
 ███████╗ ███████║                               
 ██╔═══██╗╚════██║                               
@@ -649,14 +717,13 @@ cp dot.secrets .secrets
 ╚═════╝      ╚═╝                               
 
 
-Solutions_Architect &amp;&amp; SysAdmin &amp;&amp; DevOpsEngineer == for_a_living
-Developer = for_the_fun
+Solutions_Architect &amp;&amp; SysAdmin &amp;&amp; DevOpsEngineer
+Developer = <span style="color:#0ff;font-weight:bold">&#39;for_the_fun&#39;</span>
 Linux &amp;&amp; OSS_advocate
-Sci_Fi = fan
-Photography &amp;&amp; DIY == enthusiast
+Sci_Fi = <span style="color:#0ff;font-weight:bold">&#39;fan&#39;</span>
+Photography &amp;&amp; DIY == enthusiast()
 
-hire_me(<span style="color:#0ff;font-weight:bold">&#39;https://www.linkedin.com/in/max64morales&#39;</span>)
-
+eMail(<span style="color:#0ff;font-weight:bold">&#39;serdigital64@gmail.com&#39;</span>)
 </code></pre></div>
     </article>
   </div>

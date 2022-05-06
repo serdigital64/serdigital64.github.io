@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Terra4AWS64 Project | SerDigital64&#39;s Blog</title>
+    <title>CodeSkel64 Project | SerDigital64&#39;s Blog</title>
 
     
 
@@ -17,24 +17,24 @@
 
 <meta name="generator" content="Hugo 0.80.0" />
 
-<link rel="canonical" href="https://serdigital64.github.io/post/projects/project-terra4aws64/" />
+<link rel="canonical" href="https://serdigital64.github.io/post/projects/project-codeskel64/" />
 
 
-<meta property="og:title" content="Terra4AWS64 Project" />
-<meta property="og:description" content="Collection of Terraform AWS modules for deploying common infrastructure landscapes" />
+<meta property="og:title" content="CodeSkel64 Project" />
+<meta property="og:description" content="Simple tool for creating initial project structures and code from skeletons. Skeletons can be single-file templates with replaceable tags or complex directory structures." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://serdigital64.github.io/post/projects/project-terra4aws64/" />
-<meta property="og:image" content="https://serdigital64.github.io/from-serdigital64-flicker/DSC_1031-wide.jpg" />
-<meta property="article:published_time" content="2022-02-13T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-02-13T00:00:00+00:00" />
+<meta property="og:url" content="https://serdigital64.github.io/post/projects/project-codeskel64/" />
+<meta property="og:image" content="https://serdigital64.github.io/from-serdigital64-flicker/DSC_0116-wide.jpg" />
+<meta property="article:published_time" content="2022-04-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-10T00:00:00+00:00" />
 
 
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://serdigital64.github.io/from-serdigital64-flicker/DSC_1031-wide.jpg"/>
+<meta name="twitter:image" content="https://serdigital64.github.io/from-serdigital64-flicker/DSC_0116-wide.jpg"/>
 
-<meta name="twitter:title" content="Terra4AWS64 Project"/>
-<meta name="twitter:description" content="Collection of Terraform AWS modules for deploying common infrastructure landscapes"/>
+<meta name="twitter:title" content="CodeSkel64 Project"/>
+<meta name="twitter:description" content="Simple tool for creating initial project structures and code from skeletons. Skeletons can be single-file templates with replaceable tags or complex directory structures."/>
 <meta name="twitter:site" content="@SerDigital64"/>
 
 
@@ -130,33 +130,10 @@
   
 
   
-  <aside class="sixteen wide mobile sixteen wide tablet three wide computer column dream-single-aside">
-    
-    <div class="ui segment toc">
-      <nav id="TableOfContents">
-  <ul>
-    <li><a href="#overview">Overview</a></li>
-    <li><a href="#development">Development</a>
-      <ul>
-        <li><a href="#repositories">Repositories</a></li>
-        <li><a href="#environment">Environment</a></li>
-        <li><a href="#contributing">Contributing</a></li>
-        <li><a href="#license">License</a></li>
-        <li><a href="#author">Author</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-    </div>
-    
-
-    
-  </aside>
-  
   <div class="sixteen wide mobile sixteen wide tablet ten wide computer column markdown-body dream-single" id="dream-save-post-as-img">
     <section class="ui segment">
       <header>
-        <h1 class="ui large header">Terra4AWS64 Project<span class="sub header">
+        <h1 class="ui large header">CodeSkel64 Project<span class="sub header">
             <span class="left">
               @
               
@@ -165,17 +142,17 @@
 
               | 
                   
-                    Sunday, Feb 13, 2022
+                    Sunday, Apr 10, 2022
                   
                 
 
-              | 2
+              | 3
 
               
               | 
                 
                   
-                    Sunday, Feb 13, 2022
+                    Sunday, Apr 10, 2022
                   
                 
               
@@ -186,10 +163,10 @@
   <a href="#" class="save-as-image" title="" onclick="savePostAsImg()">
     <i class="save icon"></i>
   </a>
-  <a href="https://twitter.com/intent/tweet?text=Terra4AWS64%20Project&url=https%3a%2f%2fserdigital64.github.io%2fpost%2fprojects%2fproject-terra4aws64%2f" title="Twitter">
+  <a href="https://twitter.com/intent/tweet?text=CodeSkel64%20Project&url=https%3a%2f%2fserdigital64.github.io%2fpost%2fprojects%2fproject-codeskel64%2f" title="Twitter">
     <i class="twitter icon"></i>
   </a>
-  <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fserdigital64.github.io%2fpost%2fprojects%2fproject-terra4aws64%2f" title="Facebook">
+  <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fserdigital64.github.io%2fpost%2fprojects%2fproject-codeskel64%2f" title="Facebook">
     <i class="facebook icon"></i>
   </a>
 </span>
@@ -201,64 +178,95 @@
 
       <article class="main">
         
-        <img class="cover" src="/from-serdigital64-flicker/DSC_1031-wide.jpg" />
+        <img class="cover" src="/from-serdigital64-flicker/DSC_0116-wide.jpg" />
         
 
         <h2 id="overview">Overview</h2>
-<p>Collection of Terraform AWS modules for deploying common infrastructure landscapes.</p>
+<p><strong>CodeSkel64</strong> is a simple tool for creating initial project structures and code from skeletons.
+Skeletons can be single-file templates with replaceable tags or complex directory structures.</p>
+<p>The current catalog is available on GitHub and open for contributions:</p>
 <table>
 <thead>
 <tr>
-<th>Module</th>
-<th>Purpose</th>
+<th>Collection</th>
+<th>Content</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://github.com/terra4aws64/terraform-aws-ami">terraform-aws-ami</a></td>
-<td>Terraform module for creating a curated catalog of AWS AMIs</td>
+<td><a href="src/catalog/Ansible">Ansible</a></td>
+<td>Ansible assets</td>
 </tr>
 <tr>
-<td><a href="https://github.com/terra4aws64/terraform-aws-aurora">terraform-aws-aurora</a></td>
-<td>Terraform module for creating AWS RDS Aurora clusters</td>
+<td><a href="src/catalog/Bash">Bash</a></td>
+<td>Bash assets</td>
 </tr>
 <tr>
-<td><a href="https://github.com/terra4aws64/terraform-aws-bastion">terraform-aws-bastion</a></td>
-<td>Terraform module for creating a dedicated Bastion host for managing private hosts in the target AWS VPC</td>
+<td><a href="src/catalog/Container">Container</a></td>
+<td>Container assets</td>
 </tr>
 <tr>
-<td><a href="https://github.com/terra4aws64/terraform-aws-ec2">terraform-aws-ec2</a></td>
-<td>Terraform module for creating AWS EC2 instances</td>
+<td><a href="src/catalog/GIT">GIT</a></td>
+<td>GIT assets</td>
 </tr>
 <tr>
-<td><a href="https://github.com/terra4aws64/terraform-aws-ec2-as">terraform-aws-ec2-as</a></td>
-<td>Terraform module for creating AWS EC2 Auto Scaling Groups</td>
+<td><a href="src/catalog/Licenses">Licenses</a></td>
+<td>Software Licenses</td>
 </tr>
 <tr>
-<td><a href="https://github.com/terra4aws64/terraform-aws-vpc">terraform-aws-vpc</a></td>
-<td>Terraform module for creating AWS VPCs</td>
+<td><a href="src/catalog/MarkDown">MarkDown</a></td>
+<td>MarkDown assets</td>
+</tr>
+<tr>
+<td><a href="src/catalog/MkDocs">MkDocs</a></td>
+<td>MkDoc assets</td>
+</tr>
+<tr>
+<td><a href="src/catalog/VSCode">VSCode</a></td>
+<td>VSCode assets</td>
+</tr>
+<tr>
+<td><a href="src/catalog/YAML">YAML</a></td>
+<td>YAML assets</td>
+</tr>
+<tr>
+<td><a href="src/catalog/Python">Python</a></td>
+<td>Python assets</td>
+</tr>
+<tr>
+<td><a href="src/catalog/Terraform">Terraforkm</a></td>
+<td>Terraform assets</td>
 </tr>
 </tbody>
 </table>
-<h2 id="development">Development</h2>
-<h3 id="repositories">Repositories</h3>
-<ul>
-<li>Project GIT repository: <a href="https://github.com/serdigital64/terra4aws64">https://github.com/serdigital64/terra4aws64</a></li>
-<li>Project Documentation: <a href="https://github.com/serdigital64/terra4aws64">https://github.com/serdigital64/terra4aws64</a></li>
-<li>Terraform Namespace: <a href="https://registry.terraform.io/namespaces/terra4aws64">https://registry.terraform.io/namespaces/terra4aws64</a></li>
-</ul>
-<h3 id="environment">Environment</h3>
-<ul>
-<li>
-<p>Prepare dev tools:</p>
-<ul>
-<li>Install the latest version of the <a href="https://www.terraform.io/downloads">Terraform CLI</a></li>
-<li>Install GIT</li>
-<li>(Optional) Install Git Flow</li>
-</ul>
-</li>
-<li>
-<p>Clone GIT repositories</p>
+<p>In addition to single files and directories skeletons can be grouped together in the form of <em>combos</em> to allow the creation of complete project structures:</p>
+<table>
+<thead>
+<tr>
+<th>Combo</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>aplatform64-role</td>
+<td>Ansible A:Platform64 role</td>
+</tr>
+<tr>
+<td>git-generic</td>
+<td>GIT repository for generic project</td>
+</tr>
+<tr>
+<td>git-terraform-module</td>
+<td>GIT repository for Terraform Module</td>
+</tr>
+<tr>
+<td>git-shellscript</td>
+<td>GIT repository for generic shell script project</td>
+</tr>
+</tbody>
+</table>
+<h2 id="usage">Usage</h2>
 <div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1"> 1</a>
@@ -273,25 +281,155 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="10"><a style="outline: none; text-decoration:none; color:inherit" href="#10">10</a>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="11"><a style="outline: none; text-decoration:none; color:inherit" href="#11">11</a>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="12"><a style="outline: none; text-decoration:none; color:inherit" href="#12">12</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="13"><a style="outline: none; text-decoration:none; color:inherit" href="#13">13</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="14"><a style="outline: none; text-decoration:none; color:inherit" href="#14">14</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="15"><a style="outline: none; text-decoration:none; color:inherit" href="#15">15</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="16"><a style="outline: none; text-decoration:none; color:inherit" href="#16">16</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="17"><a style="outline: none; text-decoration:none; color:inherit" href="#17">17</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="18"><a style="outline: none; text-decoration:none; color:inherit" href="#18">18</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="19"><a style="outline: none; text-decoration:none; color:inherit" href="#19">19</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="20"><a style="outline: none; text-decoration:none; color:inherit" href="#20">20</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="21"><a style="outline: none; text-decoration:none; color:inherit" href="#21">21</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="22"><a style="outline: none; text-decoration:none; color:inherit" href="#22">22</a>
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#007f7f"># Create the main repository</span>
-<span style="color:#fff;font-weight:bold">cd</span> &lt;YOUR_PROJECTS_PATH&gt;
-git clone https://github.com/serdigital64/terra4aws64.git
-<span style="color:#fff;font-weight:bold">cd</span> terra4aws64
-<span style="color:#007f7f"># Create module repositories as git submodules</span>
-git submodule init
-<span style="color:#007f7f"># Update modules</span>
-git submodule update
-<span style="color:#007f7f"># Enable main branch on submodules</span>
-git submodule foreach <span style="color:#0ff;font-weight:bold">&#34;git checkout main&#34;</span>; git submodule foreach <span style="color:#0ff;font-weight:bold">&#34;git checkout develop&#34;</span>
-<span style="color:#007f7f"># (Optional) Initialize git flow. Production branch:main, use defaults for the remaining branches</span>
-git submodule foreach <span style="color:#0ff;font-weight:bold">&#34;git flow init&#34;</span>
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-text" data-lang="text">Usage: codeskel64 &lt;-d|-l|-c&gt; [-w] [-o Collection] [-k Skeleton] [-t Project] [-g Target] [-a Library] [-h]
+
+Create initial structure from skeletons and templates
+
+Commands
+
+    -d           : Download catalog to LIBRARY
+    -l           : List collection and skeletons from LIBRARY
+    -c           : Create initial code structure
+
+Flags
+
+    -w           : Overwrite target
+    -h           : Show help
+
+Parameters
+
+    -o Collection: Collection name
+    -k Skeleton  : Skeleton name
+    -t Project   : Destination full path
+    -g Target    : New structure name. Default: skeleton&#39;s default
+    -a Library   : Library location. Default: XDG_DATA_HOME/codeskel64
 </code></pre></td></tr></table>
 </div>
-</div></li>
-<li>
-<p>Adjust environment variables to reflect your configuration:</p>
+</div><h3 id="create-new-project-or-code-template">Create new project or code template</h3>
+<p>Use this option to create new files or projects.</p>
+<p>For example:</p>
+<ul>
+<li>Create new bash script:</li>
+</ul>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">codeskel64 -c -o Bash -k script-generic -t ~/MyBashProject -g new-bash-script
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="list-collections-and-skeletons">List collections and skeletons</h3>
+<p>Use this option to list available options from the local library</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">codeskel64 -l
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="update-local-catalog">Update local catalog</h3>
+<p>Use this option to download the latest collections and skeletons from the CodeSkel64 GitHub repo</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">codeskel64 -d
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="deployment">Deployment</h2>
+<h3 id="os-compatibility">OS Compatibility</h3>
+<ul>
+<li>AlmaLinux8</li>
+<li>Alpine3</li>
+<li>CentOS7</li>
+<li>CentOS8</li>
+<li>CentOS9</li>
+<li>Debian9</li>
+<li>Debian10</li>
+<li>Debian11</li>
+<li>Fedora33</li>
+<li>Fedora34</li>
+<li>Fedora35</li>
+<li>MacOS12
+<ul>
+<li>Requires Bash4 (e.g. homebrew install bash)</li>
+</ul>
+</li>
+<li>OracleLinux7</li>
+<li>OracleLinux8</li>
+<li>RedHatLinux8</li>
+<li>Ubuntu20</li>
+<li>Ubuntu21</li>
+</ul>
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li>Minimum Bash version: 4</li>
+</ul>
+<h3 id="installation">Installation</h3>
+<ul>
+<li>Download <em>codeskel64</em> from the source GitHub repository:</li>
+</ul>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">curl -O https://raw.githubusercontent.com/serdigital64/codeskel64/main/codeskel64
+chmod <span style="color:#ff0;font-weight:bold">0755</span> codeskel64
+<span style="color:#007f7f"># Optional: move to searchable path</span>
+mv codeskel64 ~/.local/bin
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Update the skeleton library:</li>
+</ul>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">codeskel64 -d
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="contributing">Contributing</h2>
+<h3 id="prepare-development-environment">Prepare Development Environment</h3>
+<ul>
+<li>Prepare dev tools
+<ul>
+<li>Install GIT</li>
+</ul>
+</li>
+<li>Clone GIT repository</li>
+</ul>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">git clone https://github.com/serdigital64/codeskel64.git
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Adjust environment variables to reflect your configuration:</li>
+</ul>
 <div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
@@ -306,25 +444,55 @@ cp dot.secrets .secrets
 <span style="color:#007f7f"># Review and update content for both files</span>
 </code></pre></td></tr></table>
 </div>
-</div></li>
-<li>
-<p>Initialize dev environment variables</p>
+</div><ul>
+<li>Initialize dev environment variables</li>
+</ul>
 <div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#fff;font-weight:bold">source</span> bin/devta-set
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#fff;font-weight:bold">source</span> bin/devcs-set
 </code></pre></td></tr></table>
 </div>
-</div></li>
+</div><h3 id="update-source-code">Update source code</h3>
+<ul>
+<li>CLI
+<ul>
+<li>Add/Edit source code in: <code>src/cli</code></li>
+<li>Build CLI:</li>
 </ul>
-<h3 id="contributing">Contributing</h3>
-<p>Help on implementing new features and maintaining the code base is welcomed.</p>
-<p><a href="./CODE_OF_CONDUCT.md">Contributor Covenant Code of Conduct</a></p>
-<h3 id="license">License</h3>
+</li>
+</ul>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">./bin/devcs-build<span style="color:#0ff;font-weight:bold">`</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Catalog
+<ul>
+<li>Add/Edit templates in: <code>src/catalog</code></li>
+<li>Update template catalog:
+<ul>
+<li><code>src/catalog/inventory.csv</code>: individual templates</li>
+<li><code>src/catalog/combos.csv</code>: combination of templates</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="repositories">Repositories</h3>
+<ul>
+<li>Project GIT repository: <a href="https://github.com/serdigital64/codeskel64">https://github.com/serdigital64/codeskel64</a></li>
+<li>Project Documentation: <a href="https://github.com/serdigital64/codeskel64">https://github.com/serdigital64/codeskel64</a></li>
+</ul>
+<h2 id="license">License</h2>
 <p><a href="https://www.gnu.org/licenses/gpl-3.0.txt">GPL-3.0-or-later</a></p>
-<h3 id="author">Author</h3>
+<h2 id="author">Author</h2>
 <ul>
 <li><a href="https://serdigital64.github.io/">SerDigital64</a></li>
 </ul>
@@ -520,7 +688,7 @@ cp dot.secrets .secrets
 ██████╔╝██║╚██████╔╝██║   ██║   ██║  ██║███████╗
 ╚═════╝ ╚═╝ ╚═════╝ ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝
                                   
-██████╗ ██╗  ██╗                               
+██████╗  ██╗  ██╗                               
 ██╔════╝ ██║  ██║                               
 ███████╗ ███████║                               
 ██╔═══██╗╚════██║                               
@@ -528,14 +696,13 @@ cp dot.secrets .secrets
 ╚═════╝      ╚═╝                               
 
 
-Solutions_Architect &amp;&amp; SysAdmin &amp;&amp; DevOpsEngineer == for_a_living
-Developer = for_the_fun
+Solutions_Architect &amp;&amp; SysAdmin &amp;&amp; DevOpsEngineer
+Developer = <span style="color:#0ff;font-weight:bold">&#39;for_the_fun&#39;</span>
 Linux &amp;&amp; OSS_advocate
-Sci_Fi = fan
-Photography &amp;&amp; DIY == enthusiast
+Sci_Fi = <span style="color:#0ff;font-weight:bold">&#39;fan&#39;</span>
+Photography &amp;&amp; DIY == enthusiast()
 
-hire_me(<span style="color:#0ff;font-weight:bold">&#39;https://www.linkedin.com/in/max64morales&#39;</span>)
-
+eMail(<span style="color:#0ff;font-weight:bold">&#39;serdigital64@gmail.com&#39;</span>)
 </code></pre></div>
     </article>
   </div>
