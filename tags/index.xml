@@ -7,31 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Articles in this site are licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0)</copyright>
-    <lastBuildDate>Sun, 10 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://serdigital64.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>automation</title>
-      <link>https://serdigital64.github.io/tags/automation/</link>
-      <pubDate>Sun, 10 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://serdigital64.github.io/tags/automation/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Sat, 07 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://serdigital64.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>bash</title>
       <link>https://serdigital64.github.io/tags/bash/</link>
-      <pubDate>Sun, 10 Apr 2022 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 07 May 2022 00:00:00 +0000</pubDate>
       
       <guid>https://serdigital64.github.io/tags/bash/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>scripting</title>
-      <link>https://serdigital64.github.io/tags/scripting/</link>
-      <pubDate>Mon, 27 Dec 2021 00:00:00 +0000</pubDate>
+      <title>development</title>
+      <link>https://serdigital64.github.io/tags/development/</link>
+      <pubDate>Sun, 10 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://serdigital64.github.io/tags/scripting/</guid>
+      <guid>https://serdigital64.github.io/tags/development/</guid>
       <description></description>
     </item>
     
@@ -45,56 +36,20 @@
     </item>
     
     <item>
+      <title>containers</title>
+      <link>https://serdigital64.github.io/tags/containers/</link>
+      <pubDate>Thu, 18 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://serdigital64.github.io/tags/containers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>ansible</title>
       <link>https://serdigital64.github.io/tags/ansible/</link>
       <pubDate>Sun, 03 Oct 2021 00:00:00 +0000</pubDate>
       
       <guid>https://serdigital64.github.io/tags/ansible/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>infrastructure-as-code</title>
-      <link>https://serdigital64.github.io/tags/infrastructure-as-code/</link>
-      <pubDate>Sun, 03 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://serdigital64.github.io/tags/infrastructure-as-code/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>images</title>
-      <link>https://serdigital64.github.io/tags/images/</link>
-      <pubDate>Sat, 17 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://serdigital64.github.io/tags/images/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>landscapes</title>
-      <link>https://serdigital64.github.io/tags/landscapes/</link>
-      <pubDate>Sat, 17 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://serdigital64.github.io/tags/landscapes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>objects</title>
-      <link>https://serdigital64.github.io/tags/objects/</link>
-      <pubDate>Sat, 17 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://serdigital64.github.io/tags/objects/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>scenarios</title>
-      <link>https://serdigital64.github.io/tags/scenarios/</link>
-      <pubDate>Sat, 17 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://serdigital64.github.io/tags/scenarios/</guid>
       <description></description>
     </item>
     

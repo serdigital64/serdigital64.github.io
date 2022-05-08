@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Bash Scripting Concepts: Part 2 of 2 | SerDigital64&#39;s Blog</title>
+    <title>Testing bash scripts | SerDigital64&#39;s Blog</title>
 
     
 
@@ -17,24 +17,24 @@
 
 <meta name="generator" content="Hugo 0.80.0" />
 
-<link rel="canonical" href="https://serdigital64.github.io/post/bash/bash-scripting-concepts-part2of2/" />
+<link rel="canonical" href="https://serdigital64.github.io/post/bash/testing-bash-scripts/" />
 
 
-<meta property="og:title" content="Bash Scripting Concepts: Part 2 of 2" />
-<meta property="og:description" content="Create automation scripts using Bash (part 2 of 2). Explore key concepts: loops, conditionals, redirection." />
+<meta property="og:title" content="Testing bash scripts" />
+<meta property="og:description" content="Explore how to create, organize and run test cases for Bash scripts. Hands-on guide using bats-core and testmansh tools." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://serdigital64.github.io/post/bash/bash-scripting-concepts-part2of2/" />
-<meta property="og:image" content="https://serdigital64.github.io/from-serdigital64-flicker/DSC_8191-wide.jpg" />
-<meta property="article:published_time" content="2021-12-06T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-12-21T00:00:00+00:00" />
+<meta property="og:url" content="https://serdigital64.github.io/post/bash/testing-bash-scripts/" />
+<meta property="og:image" content="https://serdigital64.github.io/from-serdigital64-flicker/DSC_7609-wide.jpg" />
+<meta property="article:published_time" content="2022-05-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-07T00:00:00+00:00" />
 
 
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://serdigital64.github.io/from-serdigital64-flicker/DSC_8191-wide.jpg"/>
+<meta name="twitter:image" content="https://serdigital64.github.io/from-serdigital64-flicker/DSC_7609-wide.jpg"/>
 
-<meta name="twitter:title" content="Bash Scripting Concepts: Part 2 of 2"/>
-<meta name="twitter:description" content="Create automation scripts using Bash (part 2 of 2). Explore key concepts: loops, conditionals, redirection."/>
+<meta name="twitter:title" content="Testing bash scripts"/>
+<meta name="twitter:description" content="Explore how to create, organize and run test cases for Bash scripts. Hands-on guide using bats-core and testmansh tools."/>
 <meta name="twitter:site" content="@SerDigital64"/>
 
 
@@ -133,7 +133,7 @@
   <div class="sixteen wide mobile sixteen wide tablet ten wide computer column markdown-body dream-single" id="dream-save-post-as-img">
     <section class="ui segment">
       <header>
-        <h1 class="ui large header">Bash Scripting Concepts: Part 2 of 2<span class="sub header">
+        <h1 class="ui large header">Testing bash scripts<span class="sub header">
             <span class="left">
               @
               
@@ -142,17 +142,17 @@
 
               | 
                   
-                    Monday, Dec 6, 2021
+                    Saturday, May 7, 2022
                   
                 
 
-              | 6
+              | 7
 
               
               | 
                 
                   
-                    Tuesday, Dec 21, 2021
+                    Saturday, May 7, 2022
                   
                 
               
@@ -163,10 +163,10 @@
   <a href="#" class="save-as-image" title="" onclick="savePostAsImg()">
     <i class="save icon"></i>
   </a>
-  <a href="https://twitter.com/intent/tweet?text=Bash%20Scripting%20Concepts%3a%20Part%202%20of%202&url=https%3a%2f%2fserdigital64.github.io%2fpost%2fbash%2fbash-scripting-concepts-part2of2%2f" title="Twitter">
+  <a href="https://twitter.com/intent/tweet?text=Testing%20bash%20scripts&url=https%3a%2f%2fserdigital64.github.io%2fpost%2fbash%2ftesting-bash-scripts%2f" title="Twitter">
     <i class="twitter icon"></i>
   </a>
-  <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fserdigital64.github.io%2fpost%2fbash%2fbash-scripting-concepts-part2of2%2f" title="Facebook">
+  <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fserdigital64.github.io%2fpost%2fbash%2ftesting-bash-scripts%2f" title="Facebook">
     <i class="facebook icon"></i>
   </a>
 </span>
@@ -178,199 +178,28 @@
 
       <article class="main">
         
-        <img class="cover" src="/from-serdigital64-flicker/DSC_8191-wide.jpg" />
+        <img class="cover" src="/from-serdigital64-flicker/DSC_7609-wide.jpg" />
         
 
-        <h2 id="overview">Overview</h2>
-<p>This is the second part of the tutorial. If not done already, please read the first part: <a href="/post/bash/bash-scripting-concepts-part1of2/">Bash Scripting Concepts: Part 1 of 2</a></p>
-<h2 id="working-with-loops">Working with loops</h2>
-<p><strong>Bash</strong> provides three ways of creating loops:</p>
+        <h2 id="introduction">Introduction</h2>
+<p>Testing is an important component of the development process of Bash scripts that contributes to the final product&rsquo;s quality.</p>
+<p>In general, the test procedure consists of identifying core components of the target script and creating <strong>test cases</strong> that will verify the expected outcome is right. This process is iterative and must be executed every time the source code is changed.</p>
+<p>Since creating and managing <strong>test cases</strong> can quickly become a challenge it&rsquo;s recommended to adopt automated testing tools that can provide:</p>
 <ul>
-<li><code>for</code>: loop for a predefined number of times</li>
-<li><code>while</code>: loop while the exit condition is true. The condition is evaluated before executing tasks.</li>
-<li><code>until</code>: loop until the exit condition is true. The condition is evaluated after executing tasks.</li>
+<li>bash functions for common test-patterns</li>
+<li>standard reporting formats</li>
+<li>integration with CI-CD tools</li>
+<li>integration with container engines</li>
+<li>test cases execution management</li>
 </ul>
-<p>In addition to the loop condition, Bash provides two statements that can be used to control the loop execution flow:</p>
+<p>It&rsquo;s also a best practice to separate test and dev environments by using purpose-built VMs or containers. This approach becomes crucial when working on scenarios that require the installation of additional OS packages and/or 3rd party applications, run privileged commands that can alter or destroy the environment, etc.</p>
+<p>The &ldquo;Testing bash scripts&rdquo; document is a hands-on guide to exploring how to create, organize and run test cases using the <strong>bats-core</strong> and <strong>testmansh</strong> tools:</p>
 <ul>
-<li><code>break</code>: forces the loop to stop.</li>
-<li><code>continue</code>: forces the loop to skip remaining tasks and start the next iteration.</li>
+<li><a href="https://github.com/bats-core/bats-core">bats-core</a>: testing framework that provides bash functions for common test patterns and execution/reporting capabilities</li>
+<li><a href="https://github.com/serdigital64/testmansh">testmansh</a>: test case manager that integrates shellcheck and bats-core with container-based testing</li>
 </ul>
-<h3 id="command-while">Command: <code>while</code></h3>
-<p>In the following example, the loop iterates 5 times. The loop condition is evaluated after all commands in the code block are executed:</p>
-<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1"> 1</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2"> 2</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3"> 3</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4"> 4</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5"> 5</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6"> 6</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7"> 7</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8"> 8</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="9"><a style="outline: none; text-decoration:none; color:inherit" href="#9"> 9</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="10"><a style="outline: none; text-decoration:none; color:inherit" href="#10">10</a>
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
-</span><span style="color:#0f0;font-weight:bold"></span>
-<span style="color:#fff;font-weight:bold">declare</span> -i count=<span style="color:#ff0;font-weight:bold">1</span>
-<span style="color:#fff;font-weight:bold">declare</span> -i max=<span style="color:#ff0;font-weight:bold">5</span>
-
-<span style="color:#fff;font-weight:bold">while</span> ((count &lt;= max)); <span style="color:#fff;font-weight:bold">do</span>
-  <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;counter: %s\n&#39;</span> <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>count<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
-  count=<span style="color:#fff;font-weight:bold">$((</span>count + <span style="color:#ff0;font-weight:bold">1</span><span style="color:#fff;font-weight:bold">))</span>
-<span style="color:#fff;font-weight:bold">done</span>
-
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="command-until">Command: <code>until</code></h3>
-<p>Using the same structure as in the <code>while</code> example, notice that now the loop iterates 4 times only. This is because the loop condition is evaluated before executing the code block:</p>
-<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6">6</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7">7</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8">8</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="9"><a style="outline: none; text-decoration:none; color:inherit" href="#9">9</a>
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
-</span><span style="color:#0f0;font-weight:bold"></span>
-<span style="color:#fff;font-weight:bold">declare</span> -i count=<span style="color:#ff0;font-weight:bold">1</span>
-<span style="color:#fff;font-weight:bold">declare</span> -i max=<span style="color:#ff0;font-weight:bold">5</span>
-
-<span style="color:#fff;font-weight:bold">until</span> ((count == max)); <span style="color:#fff;font-weight:bold">do</span>
-  <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;counter: %s\n&#39;</span> <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>count<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
-  count=<span style="color:#fff;font-weight:bold">$((</span>count + <span style="color:#ff0;font-weight:bold">1</span><span style="color:#fff;font-weight:bold">))</span>
-<span style="color:#fff;font-weight:bold">done</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="command-for">Command: <code>for</code></h3>
-<p>In the case of the <code>for</code> loop the iteration is predefined. Instead of having a loop condition, the loop variable <code>count</code> will be assigned each value in the list:</p>
-<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6">6</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7">7</a>
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
-</span><span style="color:#0f0;font-weight:bold"></span>
-<span style="color:#fff;font-weight:bold">declare</span> -i count
-
-<span style="color:#fff;font-weight:bold">for</span> count in <span style="color:#ff0;font-weight:bold">1</span> <span style="color:#ff0;font-weight:bold">2</span> <span style="color:#ff0;font-weight:bold">3</span> <span style="color:#ff0;font-weight:bold">4</span> <span style="color:#ff0;font-weight:bold">5</span> ; <span style="color:#fff;font-weight:bold">do</span>
-  <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;counter: %s\n&#39;</span> <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>count<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
-<span style="color:#fff;font-weight:bold">done</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="working-with-conditionals">Working with conditionals</h2>
-<p>Bash provides the following options for implementing conditional execution:</p>
-<ul>
-<li><code>||</code>: (logical OR) evaluates the execution of two commands and sets the exit status to zero if any associated exit status is zero.</li>
-<li><code>&amp;&amp;</code>: (logical AND) evaluates the execution of two commands and sets the exit status to zero if all associated exit statuses are zero.</li>
-<li><code>\!</code>: (logical NOT) evaluates the execution of a command and sets the exit status to zero if the associated exit status is not zero.</li>
-<li><code>(( ))</code>: performs logical evaluation on the integer expression and sets the exit status to zero if true</li>
-<li><code>[[ ]]</code>: evaluates the literal expression and sets the exit status to zero if true.</li>
-<li><code>if</code>: executes a command and if the exit status is zero then performs additional actions.</li>
-<li><code>case</code>: compares the provided value against a list of patterns and executes the commands upon match.</li>
-</ul>
-<p>As mentioned before, <strong>Bash</strong> interprets the exit status of commands as:</p>
-<ul>
-<li><code>0</code>: true</li>
-<li><code>&gt;0</code>: false</li>
-</ul>
-<p>In the following examples <code>true</code> and <code>false</code> are external commands that emulates true and false values (exist status 0 and 1 respectively)</p>
-<h3 id="logical-or-">Logical OR: <code>||</code></h3>
-<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1"> 1</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2"> 2</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3"> 3</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4"> 4</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5"> 5</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6"> 6</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7"> 7</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8"> 8</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="9"><a style="outline: none; text-decoration:none; color:inherit" href="#9"> 9</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="10"><a style="outline: none; text-decoration:none; color:inherit" href="#10">10</a>
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
-</span><span style="color:#0f0;font-weight:bold"></span>
-<span style="color:#fff;font-weight:bold">true</span> || <span style="color:#fff;font-weight:bold">false</span>
-<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;evaluation result of (true || false): %s\n&#39;</span> $?
-<span style="color:#fff;font-weight:bold">true</span> || <span style="color:#fff;font-weight:bold">true</span>
-<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;evaluation result of (true || true): %s\n&#39;</span> $?
-<span style="color:#fff;font-weight:bold">false</span> || <span style="color:#fff;font-weight:bold">false</span>
-<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;evaluation result of (false || false): %s\n&#39;</span> $?
-<span style="color:#fff;font-weight:bold">false</span> || <span style="color:#fff;font-weight:bold">true</span>
-<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;evaluation result of (false || true): %s\n&#39;</span> $?
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="logical-and-">Logical AND: <code>&amp;&amp;</code></h3>
-<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1"> 1</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2"> 2</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3"> 3</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4"> 4</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5"> 5</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6"> 6</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7"> 7</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8"> 8</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="9"><a style="outline: none; text-decoration:none; color:inherit" href="#9"> 9</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="10"><a style="outline: none; text-decoration:none; color:inherit" href="#10">10</a>
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
-</span><span style="color:#0f0;font-weight:bold"></span>
-<span style="color:#fff;font-weight:bold">true</span> &amp;&amp; <span style="color:#fff;font-weight:bold">false</span>
-<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;evaluation result of (true &amp;&amp; false): %s\n&#39;</span> $?
-<span style="color:#fff;font-weight:bold">true</span> &amp;&amp; <span style="color:#fff;font-weight:bold">true</span>
-<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;evaluation result of (true &amp;&amp; true): %s\n&#39;</span> $?
-<span style="color:#fff;font-weight:bold">false</span> &amp;&amp; <span style="color:#fff;font-weight:bold">false</span>
-<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;evaluation result of (false &amp;&amp; false): %s\n&#39;</span> $?
-<span style="color:#fff;font-weight:bold">false</span> &amp;&amp; <span style="color:#fff;font-weight:bold">true</span>
-<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;evaluation result of (false &amp;&amp; true): %s\n&#39;</span> $?
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="logical-not-">Logical NOT: <code>!</code></h3>
-<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6">6</a>
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
-</span><span style="color:#0f0;font-weight:bold"></span>
-! <span style="color:#fff;font-weight:bold">true</span>
-<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;evaluation result of (! true): %s\n&#39;</span> $?
-! <span style="color:#fff;font-weight:bold">false</span>
-<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;evaluation result of (! false): %s\n&#39;</span> $?
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="arithmetic-expression-evaluation--">Arithmetic Expression Evaluation: <code>(( ))</code></h3>
-<p>The <code>(( ))</code> form accepts several logical operators. Some of them are:</p>
-<ul>
-<li><code>==</code>: equal</li>
-<li><code>!=</code>: not equal</li>
-<li><code>&gt;</code>: greater than</li>
-<li><code>&lt;</code>: less than</li>
-<li><code>&gt;=</code>: greater than or equal</li>
-<li><code>&lt;=</code>: less than or equal</li>
-</ul>
+<h2 id="organizing-test-cases">Organizing test cases</h2>
+<p>Let&rsquo;s start with a simple folder structure used both for source and testing code:</p>
 <div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
@@ -380,104 +209,32 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
-</span><span style="color:#0f0;font-weight:bold"></span>
-<span style="color:#fff;font-weight:bold">declare</span> -i test=$RANDOM
-(( <span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span> &gt; <span style="color:#ff0;font-weight:bold">5000</span> ))
-<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;evaluation result of (( %s &gt; 5000 )): %s\n&#39;</span> <span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span> $?
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">mkdir <span style="color:#0ff;font-weight:bold">&#39;tst_prj/&#39;</span>               <span style="color:#007f7f"># project base directory</span>
+mkdir <span style="color:#0ff;font-weight:bold">&#39;tst_prj/bin/&#39;</span>           <span style="color:#007f7f"># base directory for development time tools</span>
+mkdir <span style="color:#0ff;font-weight:bold">&#39;tst_prj/src/&#39;</span>           <span style="color:#007f7f"># base directory for source code</span>
+mkdir <span style="color:#0ff;font-weight:bold">&#39;tst_prj/test/&#39;</span>          <span style="color:#007f7f"># base directory for testing code</span>
+mkdir <span style="color:#0ff;font-weight:bold">&#39;tst_prj/test/batscore&#39;</span>  <span style="color:#007f7f"># test cases written in bats-core sintax</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="expression-evaluation--">Expression Evaluation: <code>[[ ]]</code></h3>
-<p>The <code>[[ ]]</code> form accepts several logical operators and tests. Some of them are:</p>
-<ul>
-<li><code>==</code>: equal</li>
-<li><code>!=</code>: not equal</li>
-<li><code>-z</code>: string is empty</li>
-<li><code>-n</code>: string is not empty</li>
-<li><code>-f</code>: path is a file</li>
-</ul>
-<p>For <code>==</code> and <code>!=</code> the special character <code>*</code> can be used as a wildcard to match zero or more characters to the right.</p>
+</div><p>Additional subdirectories can be created in <code>tst_prj/test/</code> to group test cases by modules, services, test types, etc.</p>
+<h2 id="preparing-the-test-environment">Preparing the test environment</h2>
+<p>Although optional, it&rsquo;s highly recommended to use containers to run tests. Verify that <code>docker</code> or <code>podman</code> are installed in your machine and ready to run.</p>
+<p>Deploy the <strong>testmansh</strong> tool to <code>tst_prj/bin/</code>:</p>
 <div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
-</span><span style="color:#0f0;font-weight:bold"></span>
-<span style="color:#fff;font-weight:bold">declare</span> test=<span style="color:#0ff;font-weight:bold">&#34;</span>$RANDOM<span style="color:#0ff;font-weight:bold">&#34;</span>
-[[ <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span> == 1* ]]
-<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;evaluation result of [[ &#34;%s&#34; == 1* ]]: %s\n&#39;</span> <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span> $?
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#fff;font-weight:bold">cd</span> tst_prj/bin/
+curl -O https://raw.githubusercontent.com/serdigital64/testmansh/main/testmansh
+chmod <span style="color:#ff0;font-weight:bold">0755</span> testmansh
+<span style="color:#fff;font-weight:bold">cd</span> ..
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="command-if">Command: <code>if</code></h3>
-<p>In the following example, arithmetic evaluation is used. Notice that quotes are not required within <code>(( ))</code></p>
-<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1"> 1</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2"> 2</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3"> 3</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4"> 4</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5"> 5</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6"> 6</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7"> 7</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8"> 8</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="9"><a style="outline: none; text-decoration:none; color:inherit" href="#9"> 9</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="10"><a style="outline: none; text-decoration:none; color:inherit" href="#10">10</a>
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
-</span><span style="color:#0f0;font-weight:bold"></span>
-<span style="color:#fff;font-weight:bold">declare</span> -i test=<span style="color:#0ff;font-weight:bold">${</span>RANDOM<span style="color:#0ff;font-weight:bold">}</span>
-<span style="color:#fff;font-weight:bold">if</span> (( <span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span> &gt;= <span style="color:#ff0;font-weight:bold">10000</span> )); <span style="color:#fff;font-weight:bold">then</span>
-  <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;test value (%s) is equal or greater than 10000\n&#39;</span> <span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span>
-<span style="color:#fff;font-weight:bold">elif</span> (( <span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span> &gt; <span style="color:#ff0;font-weight:bold">5000</span> || <span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span> &lt; <span style="color:#ff0;font-weight:bold">10000</span> )); <span style="color:#fff;font-weight:bold">then</span>
-  <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;test value (%s) is between 5001 and 9999\n&#39;</span> <span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span>
-<span style="color:#fff;font-weight:bold">else</span>
-  <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;test value (%s) is less than than 5001\n&#39;</span> <span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span>
-<span style="color:#fff;font-weight:bold">fi</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="command-case">Command: <code>case</code></h3>
-<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6">6</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7">7</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8">8</a>
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
-</span><span style="color:#0f0;font-weight:bold"></span>
-<span style="color:#fff;font-weight:bold">declare</span> -i test=<span style="color:#0ff;font-weight:bold">${</span>RANDOM<span style="color:#0ff;font-weight:bold">}</span>
-<span style="color:#fff;font-weight:bold">case</span> <span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span> in
-  1*|2*) <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;Random number (%s) starts with 1 or 2\n&#39;</span> <span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span>;;
-  3*) <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;Random number (%s) starts with 3\n&#39;</span> <span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span>;;
-  *) <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;Random number (%s) does not start with 1,2 or 3\n&#39;</span> <span style="color:#0ff;font-weight:bold">${</span>test<span style="color:#0ff;font-weight:bold">}</span>;;
-<span style="color:#fff;font-weight:bold">esac</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="redirecting-data-flows">Redirecting data flows</h2>
-<p>Bash provides two alternatives for establishing data flows:</p>
-<ul>
-<li>Redirection
-<ul>
-<li>Set read source for <strong>STDIN</strong></li>
-<li>Set write destination for <strong>STDOUT</strong></li>
-<li>Set write destination for <strong>STDERR</strong></li>
-</ul>
-</li>
-<li>Pipelines: integrate two commands by plugging the <strong>STDOUT</strong> from the first one to the <strong>STDIN</strong> of the second one</li>
-</ul>
-<h3 id="redirection">Redirection</h3>
-<p>In the following example, two functions will communicate with each other using a common file:</p>
+</div><p>Now create the test target bash script:</p>
 <div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1"> 1</a>
@@ -498,30 +255,158 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="16"><a style="outline: none; text-decoration:none; color:inherit" href="#16">16</a>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="17"><a style="outline: none; text-decoration:none; color:inherit" href="#17">17</a>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="18"><a style="outline: none; text-decoration:none; color:inherit" href="#18">18</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="19"><a style="outline: none; text-decoration:none; color:inherit" href="#19">19</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="20"><a style="outline: none; text-decoration:none; color:inherit" href="#20">20</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="21"><a style="outline: none; text-decoration:none; color:inherit" href="#21">21</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="22"><a style="outline: none; text-decoration:none; color:inherit" href="#22">22</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="23"><a style="outline: none; text-decoration:none; color:inherit" href="#23">23</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="24"><a style="outline: none; text-decoration:none; color:inherit" href="#24">24</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="25"><a style="outline: none; text-decoration:none; color:inherit" href="#25">25</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="26"><a style="outline: none; text-decoration:none; color:inherit" href="#26">26</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="27"><a style="outline: none; text-decoration:none; color:inherit" href="#27">27</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="28"><a style="outline: none; text-decoration:none; color:inherit" href="#28">28</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="29"><a style="outline: none; text-decoration:none; color:inherit" href="#29">29</a>
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
-</span><span style="color:#0f0;font-weight:bold"></span>
-<span style="color:#fff;font-weight:bold">readonly</span> DATA_BRIDGE=<span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#fff;font-weight:bold">$(</span>mktemp<span style="color:#fff;font-weight:bold">)</span><span style="color:#0ff;font-weight:bold">&#34;</span>
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#fff;font-weight:bold">echo</span> <span style="color:#0ff;font-weight:bold">&#39;#!/usr/bin/env bash
+</span><span style="color:#0ff;font-weight:bold">
+</span><span style="color:#0ff;font-weight:bold"># Show package manager version
+</span><span style="color:#0ff;font-weight:bold">function show_package_manager() {
+</span><span style="color:#0ff;font-weight:bold">  /sbin/apk --version
+</span><span style="color:#0ff;font-weight:bold">}
+</span><span style="color:#0ff;font-weight:bold">
+</span><span style="color:#0ff;font-weight:bold"># Convert strings to lowercase
+</span><span style="color:#0ff;font-weight:bold">function transform_to_lowercase() {
+</span><span style="color:#0ff;font-weight:bold">  local input=&#34;$1&#34;
+</span><span style="color:#0ff;font-weight:bold">
+</span><span style="color:#0ff;font-weight:bold">  [[ -z &#34;$input&#34; ]] &amp;&amp; return 1
+</span><span style="color:#0ff;font-weight:bold">  echo &#34;${input,,}&#34;
+</span><span style="color:#0ff;font-weight:bold">}
+</span><span style="color:#0ff;font-weight:bold">&#39;</span> &gt; src/example_script-functions
 
-<span style="color:#fff;font-weight:bold">function</span> produce_data() {
-  <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;produce_data(): write data to the temporary file (%s) by redirectin the STDOUT of the printf command\n&#39;</span> <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>DATA_BRIDGE<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
-  <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;[sample data]\n&#39;</span> &gt;<span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>DATA_BRIDGE<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
-}
+<span style="color:#fff;font-weight:bold">echo</span> <span style="color:#0ff;font-weight:bold">&#39;#!/usr/bin/env bash
+</span><span style="color:#0ff;font-weight:bold">
+</span><span style="color:#0ff;font-weight:bold"># Load project-wide functions
+</span><span style="color:#0ff;font-weight:bold">source &#34;${BASH_SOURCE[0]%/*}/example_script-functions&#34;
+</span><span style="color:#0ff;font-weight:bold">
+</span><span style="color:#0ff;font-weight:bold"># Check parameters
+</span><span style="color:#0ff;font-weight:bold">[[ -z &#34;$1&#34; ]] &amp;&amp; exit 1
+</span><span style="color:#0ff;font-weight:bold">
+</span><span style="color:#0ff;font-weight:bold"># Main
+</span><span style="color:#0ff;font-weight:bold">transform_to_lowercase &#34;$1&#34;
+</span><span style="color:#0ff;font-weight:bold">&#39;</span> &gt; src/example_script
 
-<span style="color:#fff;font-weight:bold">function</span> ingest_data() {
-  <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;ingest_data(): read data from the temporary file (%s) by redirecting the STDIN of the cat command: &#39;</span> <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>DATA_BRIDGE<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
-  cat &lt; <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>DATA_BRIDGE<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
-}
-
-produce_data
-ingest_data
-
-rm -f <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>DATA_BRIDGE<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
+chmod <span style="color:#ff0;font-weight:bold">755</span> src/example_script
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="pipelines">Pipelines</h3>
-<p>This example shows an alternative way of integrating both functions using pipelines:</p>
+</div><h2 id="defining-the-test-strategy">Defining the test strategy</h2>
+<p>Before any test-case is created it&rsquo;s advised to establish the testing scope. For example:</p>
+<ul>
+<li>scope: key script commands, key script functions, key functions from project-wide libraries</li>
+<li>out-of-scope: external bash libraries managed by their development process (e.g. OSS libraries, etc)</li>
+</ul>
+<p>Once the general scope is defined identify what test cases are needed and the expected outcome:</p>
+<ul>
+<li><code>test-case-1</code>: running the <code>example</code> script with no arguments should cancel execution and return exit status = 1</li>
+<li><code>test-case-2</code>: running the <code>example</code> script with the required argument should complete with exit status = 0</li>
+<li><code>test-case-3</code>: calling the <code>transform_to_lowercase</code> function with a mixed case parameter should print via STDOUT the same string converted to lowercase</li>
+<li><code>test-case-4</code>: calling the <code>show_package_manager</code> function should print current package version via STDOUT</li>
+</ul>
+<h2 id="understanding-bats-core-test-case-syntax">Understanding bats-core test-case syntax</h2>
+<p>The <strong>bats-core</strong> tool uses text files written in bash to define test cases.</p>
+<p>Each file may contain one or more test cases with optional pre-test and post-test tasks:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1"> 1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2"> 2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3"> 3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4"> 4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5"> 5</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6"> 6</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7"> 7</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8"> 8</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="9"><a style="outline: none; text-decoration:none; color:inherit" href="#9"> 9</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="10"><a style="outline: none; text-decoration:none; color:inherit" href="#10">10</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="11"><a style="outline: none; text-decoration:none; color:inherit" href="#11">11</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">setup() {
+  <span style="color:#007f7f"># (Optional) Predefined function name that is called by bats-core before test cases</span>
+}
+
+@test <span style="color:#0ff;font-weight:bold">&#39;test-case-name: test case description&#39;</span> {
+  <span style="color:#007f7f"># @test is bats-core defined keyword used to declare the test-case</span>
+}
+
+teardown(){
+  <span style="color:#007f7f"># (Optional) Predefined function name that is called by bats-core after test cases</span>
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>Additional keywords are available to include in the test-case definition:</p>
+<ul>
+<li><code>skip</code>: use to skip test-case execution without raising an error</li>
+<li><code>run</code>: use to execute external commands or functions and capture result in shell variables:
+<ul>
+<li><code>status</code>: exit status of the executed command or function</li>
+<li><code>output</code>: combined content of the command&rsquo;s or function&rsquo;s standard-output (STDOUT) and standard-error (STDERR)</li>
+</ul>
+</li>
+</ul>
+<h2 id="creating-test-cases">Creating test cases</h2>
+<p>Let&rsquo;s implement the first test-case: probe that running the script with no args will raise an error:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1"> 1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2"> 2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3"> 3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4"> 4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5"> 5</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6"> 6</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7"> 7</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8"> 8</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="9"><a style="outline: none; text-decoration:none; color:inherit" href="#9"> 9</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="10"><a style="outline: none; text-decoration:none; color:inherit" href="#10">10</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#fff;font-weight:bold">echo</span> <span style="color:#0ff;font-weight:bold">&#39;
+</span><span style="color:#0ff;font-weight:bold">@test &#34;run with no parameters&#34; {
+</span><span style="color:#0ff;font-weight:bold">
+</span><span style="color:#0ff;font-weight:bold">  # Use the keyword &#34;run&#34; to execute the shell script &#34;src/example_script&#34;
+</span><span style="color:#0ff;font-weight:bold">  run &#34;${BATS_TEST_DIRNAME}/../../src/example_script&#34;
+</span><span style="color:#0ff;font-weight:bold">
+</span><span style="color:#0ff;font-weight:bold">  # Verify that the script rised an error (exist status != 0)
+</span><span style="color:#0ff;font-weight:bold">  ((status != 0))
+</span><span style="color:#0ff;font-weight:bold">}
+</span><span style="color:#0ff;font-weight:bold">&#39;</span> &gt; test/batscore/test-case-1.bats
+</code></pre></td></tr></table>
+</div>
+</div><p>The second test-case will check that calling the script with the required argument runs successfully:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6">6</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7">7</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8">8</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="9"><a style="outline: none; text-decoration:none; color:inherit" href="#9">9</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#fff;font-weight:bold">echo</span> <span style="color:#0ff;font-weight:bold">&#39;
+</span><span style="color:#0ff;font-weight:bold">@test &#34;run with required parameter&#34; {
+</span><span style="color:#0ff;font-weight:bold">
+</span><span style="color:#0ff;font-weight:bold">  run &#34;${BATS_TEST_DIRNAME}/../../src/example_script&#34; &#34;Hello World&#34;
+</span><span style="color:#0ff;font-weight:bold">
+</span><span style="color:#0ff;font-weight:bold">  # Verify that the script finished successfully
+</span><span style="color:#0ff;font-weight:bold">  ((status == 0))
+</span><span style="color:#0ff;font-weight:bold">}
+</span><span style="color:#0ff;font-weight:bold">&#39;</span> &gt; test/batscore/test-case-2.bats
+</code></pre></td></tr></table>
+</div>
+</div><p>For the thirst test-case verify that the function <code>transform_to_lowercase</code> successfully converts cases in 2 different scenarios:</p>
 <div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1"> 1</a>
@@ -537,38 +422,150 @@ rm -f <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="11"><a style="outline: none; text-decoration:none; color:inherit" href="#11">11</a>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="12"><a style="outline: none; text-decoration:none; color:inherit" href="#12">12</a>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="13"><a style="outline: none; text-decoration:none; color:inherit" href="#13">13</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="14"><a style="outline: none; text-decoration:none; color:inherit" href="#14">14</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="15"><a style="outline: none; text-decoration:none; color:inherit" href="#15">15</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="16"><a style="outline: none; text-decoration:none; color:inherit" href="#16">16</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="17"><a style="outline: none; text-decoration:none; color:inherit" href="#17">17</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="18"><a style="outline: none; text-decoration:none; color:inherit" href="#18">18</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="19"><a style="outline: none; text-decoration:none; color:inherit" href="#19">19</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="20"><a style="outline: none; text-decoration:none; color:inherit" href="#20">20</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="21"><a style="outline: none; text-decoration:none; color:inherit" href="#21">21</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="22"><a style="outline: none; text-decoration:none; color:inherit" href="#22">22</a>
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#0f0;font-weight:bold">#!/bin/bash
-</span><span style="color:#0f0;font-weight:bold"></span>
-<span style="color:#fff;font-weight:bold">function</span> produce_data() {
-  <span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;[sample data]\n&#39;</span>
-}
-
-<span style="color:#fff;font-weight:bold">function</span> ingest_data() {
-  cat
-}
-
-<span style="color:#fff;font-weight:bold">printf</span> <span style="color:#0ff;font-weight:bold">&#39;Integrate functions produce_data() and ingest_data() by piping their STDIN and STDOUT: &#39;</span>
-produce_data | ingest_data
-
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#fff;font-weight:bold">echo</span> <span style="color:#0ff;font-weight:bold">&#39;
+</span><span style="color:#0ff;font-weight:bold">setup() {
+</span><span style="color:#0ff;font-weight:bold">  # Load project-wide functions
+</span><span style="color:#0ff;font-weight:bold">  source &#34;${BATS_TEST_DIRNAME}/../../src/example_script-functions&#34;
+</span><span style="color:#0ff;font-weight:bold">}
+</span><span style="color:#0ff;font-weight:bold">
+</span><span style="color:#0ff;font-weight:bold">@test &#34;convert all caps&#34; {
+</span><span style="color:#0ff;font-weight:bold">
+</span><span style="color:#0ff;font-weight:bold">  run transform_to_lowercase &#34;HellO WorlD&#34;
+</span><span style="color:#0ff;font-weight:bold">
+</span><span style="color:#0ff;font-weight:bold">  # Verify that the result is right
+</span><span style="color:#0ff;font-weight:bold">  [[ &#34;$output&#34; == &#34;hello world&#34; ]]
+</span><span style="color:#0ff;font-weight:bold">}
+</span><span style="color:#0ff;font-weight:bold">
+</span><span style="color:#0ff;font-weight:bold">@test &#34;convert mixed caps&#34; {
+</span><span style="color:#0ff;font-weight:bold">
+</span><span style="color:#0ff;font-weight:bold">  run transform_to_lowercase &#34;HELLO World&#34;
+</span><span style="color:#0ff;font-weight:bold">
+</span><span style="color:#0ff;font-weight:bold">  # Verify that the result is right
+</span><span style="color:#0ff;font-weight:bold">  [[ &#34;$output&#34; == &#34;hello world&#34; ]]
+</span><span style="color:#0ff;font-weight:bold">}
+</span><span style="color:#0ff;font-weight:bold">&#39;</span> &gt; test/batscore/test-case-3.bats
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="next-steps">Next Steps</h2>
-<p>Discover advanced features by exploring the <a href="https://www.gnu.org/software/bash/manual/html_node/index.html#SEC_Contents">Bash Reference Manual</a>:</p>
+</div><p>Lastly, the fourth test-case will check that the function generates output (no matter what)</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1"> 1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2"> 2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3"> 3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4"> 4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5"> 5</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6"> 6</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7"> 7</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8"> 8</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="9"><a style="outline: none; text-decoration:none; color:inherit" href="#9"> 9</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="10"><a style="outline: none; text-decoration:none; color:inherit" href="#10">10</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="11"><a style="outline: none; text-decoration:none; color:inherit" href="#11">11</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="12"><a style="outline: none; text-decoration:none; color:inherit" href="#12">12</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="13"><a style="outline: none; text-decoration:none; color:inherit" href="#13">13</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="14"><a style="outline: none; text-decoration:none; color:inherit" href="#14">14</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#fff;font-weight:bold">echo</span> <span style="color:#0ff;font-weight:bold">&#39;
+</span><span style="color:#0ff;font-weight:bold">setup() {
+</span><span style="color:#0ff;font-weight:bold">  # Load project-wide functions
+</span><span style="color:#0ff;font-weight:bold">  source &#34;${BATS_TEST_DIRNAME}/../../src/example_script-functions&#34;
+</span><span style="color:#0ff;font-weight:bold">}
+</span><span style="color:#0ff;font-weight:bold">
+</span><span style="color:#0ff;font-weight:bold">@test &#34;show package manager version&#34; {
+</span><span style="color:#0ff;font-weight:bold">
+</span><span style="color:#0ff;font-weight:bold">  run show_package_manager
+</span><span style="color:#0ff;font-weight:bold">
+</span><span style="color:#0ff;font-weight:bold">  # Verify that the result is right
+</span><span style="color:#0ff;font-weight:bold">  (( status == 0 )) &amp;&amp; [[ &#34;$output&#34; != &#34;&#34; ]]
+</span><span style="color:#0ff;font-weight:bold">}
+</span><span style="color:#0ff;font-weight:bold">&#39;</span> &gt; test/batscore/test-case-4.bats
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="running-test-cases">Running test cases</h2>
+<p>Now that all test cases are created let&rsquo;s use the <code>testmansh</code> tool to run them in purpose-build containers:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#007f7f"># Run all test cases in Alpine3</span>
+./bin/testmansh -b -o -e alpine-3-bash-test:0.3.0
+</code></pre></td></tr></table>
+</div>
+</div><p>See below the execution report. All test cases passed successfully:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6">6</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7">7</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8">8</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="9"><a style="outline: none; text-decoration:none; color:inherit" href="#9">9</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-text" data-lang="text">testmansh@phineas Process: [run bats-core tests] started
+testmansh@phineas Task: run test cases on the container image: alpine-3-bash-test:0.3.0
+1..5
+ok 1 run with no parameters
+ok 2 run with required parameter
+ok 3 convert all caps
+ok 4 convert mixed caps
+ok 5 show package manager version
+testmansh@phineas Process: [run bats-core tests] finished successfully
+</code></pre></td></tr></table>
+</div>
+</div><p>Since the function <code>show_package_manager</code> depends on the OS, let&rsquo;s see what happens in a different OS:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#007f7f"># Run all test cases in Alpine3</span>
+./bin/testmansh -b -o -e debian-11-bash-test:0.5.0 -c test/batscore/test-case-4
+</code></pre></td></tr></table>
+</div>
+</div><p>As expected the test fails because the function is incompatible with the target OS:</p>
+<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6">6</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7">7</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-text" data-lang="text">testmansh@phineas Process: [run bats-core tests] started
+testmansh@phineas Task: run test cases on the container image: debian-11-bash-test:0.5.0
+1..1
+not ok 1 show package manager version
+# (in test file /test/test/batscore/test-case-4.bats, line 12)
+#   `(( status == 0 ))&#39; failed
+testmansh@phineas Process: [run bats-core tests] finished with errors: exit-status-1
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="references">References</h2>
 <ul>
-<li>jobs</li>
-<li>signals</li>
-<li>traps</li>
-<li>parallelism</li>
-<li>error handling</li>
-<li>configuration settings</li>
-</ul>
-<p>Organize your code by choosing a coding style. For example: <a href="https://google.github.io/styleguide/shellguide.html">Google Shell Style Guide</a></p>
-<p>Enhance script&rsquo;s quality by incorporating linter and testing tools:</p>
-<ul>
-<li><a href="https://www.shellcheck.net/">Shell Check</a></li>
-<li><a href="https://github.com/bats-core/bats-core">Bats-Core</a></li>
+<li><a href="https://bats-core.readthedocs.io/en/stable/index.html">Bats-Core Docs</a></li>
+<li><a href="https://github.com/bats-core/bats-core">Bats-Core GIT Repo</a></li>
+<li><a href="https://github.com/serdigital64/testmansh">TestManSH Repo</a></li>
 </ul>
 <h2 id="copyright-information">Copyright information</h2>
 <p>This article is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. For copyright information on the product or products mentioned inhere refer to their respective owner.</p>

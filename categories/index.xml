@@ -7,31 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Articles in this site are licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0)</copyright>
-    <lastBuildDate>Sun, 10 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://serdigital64.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>projects</title>
-      <link>https://serdigital64.github.io/categories/projects/</link>
-      <pubDate>Sun, 10 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://serdigital64.github.io/categories/projects/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Sat, 07 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://serdigital64.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>tutorials</title>
       <link>https://serdigital64.github.io/categories/tutorials/</link>
-      <pubDate>Mon, 27 Dec 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 07 May 2022 00:00:00 +0000</pubDate>
       
       <guid>https://serdigital64.github.io/categories/tutorials/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>gallery</title>
-      <link>https://serdigital64.github.io/categories/gallery/</link>
-      <pubDate>Sat, 17 Jul 2021 00:00:00 +0000</pubDate>
+      <title>projects</title>
+      <link>https://serdigital64.github.io/categories/projects/</link>
+      <pubDate>Sun, 10 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://serdigital64.github.io/categories/gallery/</guid>
+      <guid>https://serdigital64.github.io/categories/projects/</guid>
       <description></description>
     </item>
     

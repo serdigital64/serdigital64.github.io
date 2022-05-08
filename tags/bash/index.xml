@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Articles in this site are licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0)</copyright>
-    <lastBuildDate>Sun, 10 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://serdigital64.github.io/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://serdigital64.github.io/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Testing bash scripts</title>
+      <link>https://serdigital64.github.io/post/bash/testing-bash-scripts/</link>
+      <pubDate>Sat, 07 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://serdigital64.github.io/post/bash/testing-bash-scripts/</guid>
+      <description>Explore how to create, organize and run test cases for Bash scripts. Hands-on guide using bats-core and testmansh tools.</description>
+    </item>
+    
     <item>
       <title>TestManSH Project</title>
       <link>https://serdigital64.github.io/post/projects/project-testmansh/</link>
