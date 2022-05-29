@@ -26,7 +26,7 @@
 <meta property="og:url" content="https://serdigital64.github.io/post/projects/project-container64/" />
 <meta property="og:image" content="https://serdigital64.github.io/from-serdigital64-flicker/DSC_5196-wide.jpg" />
 <meta property="article:published_time" content="2021-11-18T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-04-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-29T00:00:00+00:00" />
 
 
 
@@ -152,7 +152,7 @@
               | 
                 
                   
-                    Sunday, Apr 10, 2022
+                    Sunday, May 29, 2022
                   
                 
               
@@ -182,7 +182,7 @@
         
 
         <h2 id="overview">Overview</h2>
-<p><strong>Container64</strong> is project for building and sharing OCI compliant container images for testing infrastructure management tools.</p>
+<p><strong>Container64</strong> is an OCI compliant container images repository for testing infrastructure management tools.</p>
 <h3 id="container-collection-ansible-node">Container collection: Ansible Node</h3>
 <ul>
 <li>Purpose: Ansible node testing</li>
@@ -200,7 +200,7 @@
 <tr>
 <td><code>almalinux-8-ansible-node</code></td>
 <td>almalinux</td>
-<td><code>docker.io/library/almalinux:8.5</code></td>
+<td><code>docker.io/library/almalinux:8</code></td>
 </tr>
 <tr>
 <td><code>centos-8-ansible-node</code></td>
@@ -233,9 +233,14 @@
 <td><code>docker.io/library/oraclelinux:8</code></td>
 </tr>
 <tr>
+<td><code>rockylinux-8-ansible-node</code></td>
+<td>rhel</td>
+<td><code>docker.io/rockylinux:8</code></td>
+</tr>
+<tr>
 <td><code>rhel-8-ansible-node</code></td>
 <td>rhel</td>
-<td><code>docker.io/redhat/ubi8:8.5</code></td>
+<td><code>docker.io/redhat/ubi8:latest</code></td>
 </tr>
 <tr>
 <td><code>ubuntu-20.4-ansible-node</code></td>
@@ -266,7 +271,7 @@
 <tr>
 <td><code>almalinux-8-bash-test</code></td>
 <td>almalinux</td>
-<td><code>docker.io/library/almalinux:8.5</code></td>
+<td><code>docker.io/library/almalinux:8</code></td>
 </tr>
 <tr>
 <td><code>alpine-3-bash-test</code></td>
@@ -329,9 +334,14 @@
 <td><code>docker.io/library/oraclelinux:8</code></td>
 </tr>
 <tr>
+<td><code>rockylinux-8-bash-test</code></td>
+<td>rockylinux</td>
+<td><code>docker.io/rockylinux:8</code></td>
+</tr>
+<tr>
 <td><code>rhel-8-bash-test</code></td>
 <td>rhel</td>
-<td><code>docker.io/redhat/ubi8:8.5</code></td>
+<td><code>docker.io/redhat/ubi8:latest</code></td>
 </tr>
 <tr>
 <td><code>ubuntu-20.4-bash-test</code></td>
@@ -343,12 +353,17 @@
 <td>ubuntu</td>
 <td><code>docker.io/library/ubuntu:21.04</code></td>
 </tr>
+<tr>
+<td><code>ubuntu-22.4-bash-test</code></td>
+<td>ubuntu</td>
+<td><code>docker.io/library/ubuntu:22.04</code></td>
+</tr>
 </tbody>
 </table>
 <h3 id="container-collection-terraform-test">Container collection: Terraform test</h3>
 <ul>
 <li>Purpose: Terraform code testing</li>
-<li>Packages: TFSec</li>
+<li>Packages: TFSec, TFLint, Terraform</li>
 </ul>
 <table>
 <thead>
@@ -430,86 +445,10 @@ podman pull ghcr.io/serdigital64/&lt;IMAGE&gt;<span style="color:#0ff;font-weigh
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="contributing">Contributing</h2>
-<h3 id="prepare-development-environment">Prepare Development Environment</h3>
+<p>Help on implementing new features and maintaining the code base is welcomed.</p>
 <ul>
-<li>
-<p>Prepare dev tools</p>
-<ul>
-<li>Install GIT</li>
-<li>Install Docker or Podman</li>
-</ul>
-</li>
-<li>
-<p>Clone GIT repository</p>
-<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">git clone https://github.com/serdigital64/container64.git
-</code></pre></td></tr></table>
-</div>
-</div></li>
-<li>
-<p>Adjust environment variables to reflect your configuration:</p>
-<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#007f7f"># Copy environment definition files from templates:</span>
-cp dot.local .local
-cp dot.secrets .secrets
-<span style="color:#007f7f"># Review and update content for both files</span>
-</code></pre></td></tr></table>
-</div>
-</div></li>
-<li>
-<p>Initialize dev environment variables</p>
-<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#fff;font-weight:bold">source</span> bin/devcnt-set
-</code></pre></td></tr></table>
-</div>
-</div></li>
-<li>
-<p>Download the latest version of <a href="https://github.com/serdigital64/bashlib64">BashLib64</a> to: <code>lib/</code> and &lsquo;src/loader&rsquo;</p>
-</li>
-</ul>
-<h3 id="update-source-code">Update source code</h3>
-<ul>
-<li>Add/Edit source code in: <code>src/dockerfiles</code></li>
-<li>Build container image</li>
-</ul>
-<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">./cntbuild -b -c CONTAINER_NAME -e TAG
-</code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>Publish container image</li>
-</ul>
-<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">./cntbuild -u -c CONTAINER_NAME -e TAG
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="repositories">Repositories</h2>
-<ul>
-<li>Project GIT repository: <a href="https://github.com/serdigital64/container64">https://github.com/serdigital64/container64</a></li>
-<li>Project Documentation: <a href="https://serdigital64.github.io/container64/">https://serdigital64.github.io/container64/</a></li>
+<li><a href="https://github.com/serdigital64/container64/blob/master/CONTRIBUTING.md">Guidelines</a></li>
+<li><a href="https://github.com/serdigital64/container64/blob/master/CODE_OF_CONDUCT.md">Contributor Covenant Code of Conduct</a></li>
 </ul>
 <h2 id="license">License</h2>
 <p><a href="https://www.gnu.org/licenses/gpl-3.0.txt">GPL-3.0-or-later</a></p>

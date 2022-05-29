@@ -21,7 +21,7 @@
 
 
 <meta property="og:title" content="TestManSH Project" />
-<meta property="og:description" content="Simple tool for testing Bash scripts in either native environment or purpose-build container images." />
+<meta property="og:description" content="Simple tool for testing Bash scripts in native environment or purpose-build container images." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://serdigital64.github.io/post/projects/project-testmansh/" />
 <meta property="og:image" content="https://serdigital64.github.io/from-serdigital64-flicker/00004-wide.jpg" />
@@ -34,7 +34,7 @@
 <meta name="twitter:image" content="https://serdigital64.github.io/from-serdigital64-flicker/00004-wide.jpg"/>
 
 <meta name="twitter:title" content="TestManSH Project"/>
-<meta name="twitter:description" content="Simple tool for testing Bash scripts in either native environment or purpose-build container images."/>
+<meta name="twitter:description" content="Simple tool for testing Bash scripts in native environment or purpose-build container images."/>
 <meta name="twitter:site" content="@SerDigital64"/>
 
 
@@ -182,7 +182,7 @@
         
 
         <h2 id="overview">Overview</h2>
-<p><strong>TestManSH</strong> is a simple tool for testing Bash scripts in either native environment or purpose-build container images.</p>
+<p>Simple tool for testing Bash scripts in native environment or purpose-build container images.</p>
 <p>Supported features:</p>
 <ul>
 <li>Run tests inside container using docker or podman container engines</li>
@@ -198,7 +198,24 @@
 <li><code>project_path/</code>: project base path</li>
 <li><code>project_path/src</code>: bash scripts</li>
 <li><code>project_path/test</code>: test-cases repository</li>
-<li><code>project_path/test/batscore</code>: test-cases in bats-core format</li>
+<li><code>project_path/test/batscore</code>: test cases in bats-core format</li>
+<li><code>project_path/test/samples</code>: test samples</li>
+<li><code>project_path/test/lib</code>: shared code for test cases</li>
+</ul>
+<p>The tool also sets and exports shell environment variables that can be used directly in test cases. The content is automatically adjusted to native or container execution:</p>
+<ul>
+<li><code>TESTMANSH_PROJECT_ROOT</code>: project base path (project/)</li>
+<li><code>TESTMANSH_PROJECT_BIN</code>: dev time scripts (project/bin)</li>
+<li><code>TESTMANSH_PROJECT_SRC</code>: source code (project/src)</li>
+<li><code>TESTMANSH_PROJECT_LIB</code>: dev time libs (project/lib)</li>
+<li><code>TESTMANSH_PROJECT_BUILD</code>: location for dev,test builds (project/build)</li>
+<li><code>TESTMANSH_TEST</code>: tests base path (project/test)</li>
+<li><code>TESTMANSH_TEST_SAMPLES</code>: test samples (project/test/samples)</li>
+<li><code>TESTMANSH_TEST_LIB</code>: test shared libs (project/test/lib)</li>
+<li><code>TESTMANSH_TEST_BATSCORE_SETUP</code>: batscore setup script (project/test/lib/batscore-setup.bash)</li>
+<li><code>TESTMANSH_CMD_BATS_HELPER_SUPPORT</code>: full path to the bats-core support helper</li>
+<li><code>TESTMANSH_CMD_BATS_HELPER_ASSERT</code>: full path to the bats-core assert helper</li>
+<li><code>TESTMANSH_CMD_BATS_HELPER_FILE</code>: full path to the bats-core file helper</li>
 </ul>
 <h2 id="usage">Usage</h2>
 <div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
@@ -232,11 +249,12 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="27"><a style="outline: none; text-decoration:none; color:inherit" href="#27">27</a>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="28"><a style="outline: none; text-decoration:none; color:inherit" href="#28">28</a>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="29"><a style="outline: none; text-decoration:none; color:inherit" href="#29">29</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="30"><a style="outline: none; text-decoration:none; color:inherit" href="#30">30</a>
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-text" data-lang="text">Usage: testmansh &lt;-b|-t|-q|-l|-i|k&gt; [-p Project] [-c Case] [-e Image] [-r Registry] [-s BatsCore] [-u ShellCheck] [-f EnvFile] [-m Format] [-g] [-h]
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-text" data-lang="text">Usage: testmansh &lt;-b|-t|-q|-l|-i|k&gt; [-p Project] [-c Case] [-e Image] [-r Registry] [-s BatsCore] [-u ShellCheck] [-f EnvFile] [-m Format|-j JUnitFile] [-g] [-h]
 
-Simple tool for testing Bash scripts in either native environment or purpose-build container images.
+Simple tool for testing Bash scripts in native environment or purpose-build container images.
 
 Commands
 
@@ -256,13 +274,14 @@ Flags
 Parameters
 
   -p Project   : Full path to the project location. Alternative: exported shell variable TESTMANSH_PROJECT. Default: current location
-  -c Case      : Test case name. Default: all. Format: path/file (relative to Project)
+  -c Case      : Test case name (for -b) or source code (for -t). Default: all. Format: path/file or path/ (relative to TESTMANSH_PROJECT)
   -e Image     : Image name to use for running the container test (-b) or open (-q). Alternative: exported shell variable TESTMANSH_IMAGES_TEST. Default: predefined list
   -r Registry  : Container registry URL. Alternative: exported shell variable TESTMANSH_REGISTRY
-  -f EnvFile   : Full path to the container environment file. Default: none
+  -f EnvFile   : Full path to the container environment file. Default: TESTMANSH_PROJECT/test/container.env
   -s BatsCore  : Full path to the bats-core shell script. Alternative: exported shell variable TESTMANSH_CMD_BATS
   -u ShellCheck: Full path to the bats-core shell script. Alternative: exported shell variable TESTMANSH_CMD_SHELLCHECK
-  -m Format    : Set report format type. Valued values: shellcheck and bats-core dependant
+  -m Format    : Show test results on STDOUT using the Format type. Format: shellcheck and bats-core dependant
+  -j JUnitFile : Save test results in JUnit format to the file JUnitFile. Format: full path
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="run-bats-core-test-cases-in-container-images">Run bats-core test-cases in container images</h3>
@@ -333,8 +352,10 @@ testmansh -t -o
 <li>OracleLinux7</li>
 <li>OracleLinux8</li>
 <li>RedHatLinux8</li>
+<li>RockyLinux8</li>
 <li>Ubuntu20</li>
 <li>Ubuntu21</li>
+<li>Ubuntu22</li>
 </ul>
 <h3 id="requirements">Requirements</h3>
 <ul>
@@ -362,86 +383,14 @@ mv testmansh ~/.local/bin
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="contributing">Contributing</h2>
-<h3 id="prepare-development-environment">Prepare Development Environment</h3>
+<p>Help on implementing new features and maintaining the code base is welcomed.</p>
 <ul>
-<li>
-<p>Prepare dev tools</p>
-<ul>
-<li>Install GIT</li>
-<li>Install bats-core and plugins (file, assert, support)</li>
-<li>Install container engine (docker or podman)</li>
+<li><a href="https://github.com/serdigital64/testmansh/blob/main/CONTRIBUTING.md">Guidelines</a></li>
+<li><a href="https://github.com/serdigital64/testmansh/blob/main/CODE_OF_CONDUCT.md">Contributor Covenant Code of Conduct</a></li>
 </ul>
-</li>
-<li>
-<p>Clone GIT repository</p>
-<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">git clone https://github.com/serdigital64/testmansh
-</code></pre></td></tr></table>
-</div>
-</div></li>
-<li>
-<p>Adjust environment variables to reflect your configuration:</p>
-<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#007f7f"># Copy environment definition files from templates:</span>
-cp dot.local .local
-cp dot.secrets .secrets
-<span style="color:#007f7f"># Review and update content for both files</span>
-</code></pre></td></tr></table>
-</div>
-</div></li>
-<li>
-<p>Initialize dev environment variables</p>
-</li>
-</ul>
-<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#fff;font-weight:bold">source</span> bin/devtmsh-set
-</code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>Download the latest version of <a href="https://github.com/serdigital64/bashlib64">BashLib64</a> to: <code>lib/</code></li>
-</ul>
-<h3 id="update-source-code">Update source code</h3>
-<ul>
-<li>Add/Edit source code in: <code>src/</code></li>
-<li>Build the <code>testmansh</code> script:</li>
-</ul>
-<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">./bin/devtmsh-build
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="test-source-code">Test source code</h3>
-<ul>
-<li>Add/update test-cases in: <code>test/batscore</code></li>
-<li>Run test cases</li>
-</ul>
-<pre><code class="language-test" data-lang="test">./testmansh -b
-</code></pre><h2 id="repositories">Repositories</h2>
-<ul>
-<li>Project GIT repository: <a href="https://github.com/serdigital64/testmansh">https://github.com/serdigital64/testmansh</a></li>
-<li>Project Documentation: <a href="https://github.com/serdigital64/testmansh">https://github.com/serdigital64/testmansh</a></li>
-</ul>
-<h2 id="license">License</h2>
+<h3 id="license">License</h3>
 <p><a href="https://www.gnu.org/licenses/gpl-3.0.txt">GPL-3.0-or-later</a></p>
-<h2 id="author">Author</h2>
+<h3 id="author">Author</h3>
 <ul>
 <li><a href="https://serdigital64.github.io/">SerDigital64</a></li>
 </ul>

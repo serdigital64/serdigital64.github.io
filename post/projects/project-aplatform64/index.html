@@ -21,12 +21,12 @@
 
 
 <meta property="og:title" content="A:Platform64 Project" />
-<meta property="og:description" content="Automated infrastructure-as-code management solution based on Ansible for small to medium computing environments" />
+<meta property="og:description" content="Automated infrastructure-as-code management platform based on Ansible" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://serdigital64.github.io/post/projects/project-aplatform64/" />
 <meta property="og:image" content="https://serdigital64.github.io/from-serdigital64-flicker/DSC_8063-wide.jpg" />
 <meta property="article:published_time" content="2021-10-03T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-02-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-29T00:00:00+00:00" />
 
 
 
@@ -34,7 +34,7 @@
 <meta name="twitter:image" content="https://serdigital64.github.io/from-serdigital64-flicker/DSC_8063-wide.jpg"/>
 
 <meta name="twitter:title" content="A:Platform64 Project"/>
-<meta name="twitter:description" content="Automated infrastructure-as-code management solution based on Ansible for small to medium computing environments"/>
+<meta name="twitter:description" content="Automated infrastructure-as-code management platform based on Ansible"/>
 <meta name="twitter:site" content="@SerDigital64"/>
 
 
@@ -146,13 +146,13 @@
                   
                 
 
-              | 7
+              | 6
 
               
               | 
                 
                   
-                    Sunday, Feb 20, 2022
+                    Sunday, May 29, 2022
                   
                 
               
@@ -182,7 +182,7 @@
         
 
         <h2 id="overview">Overview</h2>
-<p><strong>A:Platform64</strong> is an automated infrastructure-as-code management platform based on Ansible for small to medium computing environments.</p>
+<p><strong>A:Platform64</strong> is an automated infrastructure-as-code management platform based on Ansible.</p>
 <h3 id="design-principles">Design Principles</h3>
 <p>The platform is designed to take full control of the target infrastructure under the following principles:</p>
 <ul>
@@ -369,24 +369,16 @@ Each playbook will integrate the roles needed to implement the service along wit
 </thead>
 <tbody>
 <tr>
-<td><a href="https://aplatform64.readthedocs.io/en/latest/playbooks/bootstrap_ansible_managed_nodes/">bootstrap_ansible_managed_nodes</a></td>
-<td>Bootstrap Ansible Managed nodes</td>
+<td><a href="https://aplatform64.readthedocs.io/en/latest/playbooks/manage_aplatform64_servers/">manage_aplatform64_servers</a></td>
+<td>Manage A:Platform64 Control node</td>
 </tr>
 <tr>
-<td><a href="https://aplatform64.readthedocs.io/en/latest/playbooks/manage_ansible_control_nodes/">manage_ansible_control_nodes</a></td>
-<td>Manage Ansible Control node</td>
-</tr>
-<tr>
-<td><a href="https://aplatform64.readthedocs.io/en/latest/playbooks/manage_ansible_managed_nodes/">manage_ansible_managed_nodes</a></td>
-<td>Manage Ansible Managed nodes</td>
+<td><a href="https://aplatform64.readthedocs.io/en/latest/playbooks/manage_aplatform64_nodes/">manage_aplatform64_nodes</a></td>
+<td>Manage A:Platform64 Managed nodes</td>
 </tr>
 <tr>
 <td><a href="https://aplatform64.readthedocs.io/en/latest/playbooks/manage_cloud_control_nodes/">manage_cloud_control_nodes</a></td>
 <td>Provision public cloud management tools</td>
-</tr>
-<tr>
-<td><a href="https://aplatform64.readthedocs.io/en/latest/playbooks/manage_cloud_realm/">manage_cloud_realm</a></td>
-<td>Manage cloud provider accounts, users and organizations as a single entity</td>
 </tr>
 <tr>
 <td><a href="https://aplatform64.readthedocs.io/en/latest/playbooks/manage_dev_nodes/">manage_dev_nodes</a></td>
@@ -425,6 +417,10 @@ Each playbook will integrate the roles needed to implement the service along wit
 <td>Manage Linux Workstations</td>
 </tr>
 <tr>
+<td><a href="https://aplatform64.readthedocs.io/en/latest/playbooks/manage_macos_workstations/">manage_macos_workstations</a></td>
+<td>Manage MacOS Workstations</td>
+</tr>
+<tr>
 <td><a href="https://aplatform64.readthedocs.io/en/latest/playbooks/manage_office_nodes/">manage_office_nodes</a></td>
 <td>Provision office productivity applications</td>
 </tr>
@@ -438,18 +434,21 @@ Each playbook will integrate the roles needed to implement the service along wit
 <h3 id="os-compatibility">OS Compatibility</h3>
 <p><strong>A:Platform64</strong> is compatible with the following Linux operating systems:</p>
 <ul>
-<li>CentOS8</li>
-<li>RedHat8</li>
 <li>AlmaLinux8</li>
-<li>OracleLinux8</li>
-<li>Ubuntu20</li>
-<li>Ubuntu21</li>
-<li>Fedora33</li>
-<li>Fedora35</li>
+<li>CentOS8</li>
 <li>Debian10</li>
 <li>Debian11</li>
+<li>Fedora33</li>
+<li>Fedora35</li>
+<li>MacOSX12</li>
+<li>OracleLinux8</li>
+<li>RedHat8</li>
+<li>RockyLinux8</li>
+<li>Ubuntu20</li>
+<li>Ubuntu21</li>
+<li>Ubuntu22</li>
 </ul>
-<p>Notice that roles have their own compatibility matrix. Refer to their documentation for further details.</p>
+<p>Notice that roles have their own compatibility matrix. Refer to the respective documentation for further details.</p>
 <h3 id="prerequisites">Prerequisites</h3>
 <ul>
 <li>Control Node:
@@ -470,9 +469,8 @@ Each playbook will integrate the roles needed to implement the service along wit
 </li>
 </ul>
 <h3 id="installation">Installation</h3>
-<p>Download the installation script and resources:</p>
 <ul>
-<li><a href="https://raw.githubusercontent.com/aplatform64/automation/main/roles/auto_aplatform64/files/installer/install-aplatform64">install-aplatform64</a></li>
+<li>Download the installation script:</li>
 </ul>
 <div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -480,123 +478,32 @@ Each playbook will integrate the roles needed to implement the service along wit
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">curl -O https://raw.githubusercontent.com/aplatform64/automation/main/roles/auto_aplatform64/files/installer/install-aplatform64
-chmod <span style="color:#ff0;font-weight:bold">0755</span> install-aplatform64
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">curl -O https://raw.githubusercontent.com/serdigital64/aplatform64/main/ap64
+chmod <span style="color:#ff0;font-weight:bold">0755</span> ap64
 </code></pre></td></tr></table>
 </div>
-</div><p>Run the installation script with the default options. See the <a href="https://aplatform64.readthedocs.io/en/latest/bin/install-aplatform64/">documentation</a> for more options</p>
+</div><ul>
+<li>Run installation script with the default options. Curent user must have sudo privileges.</li>
+</ul>
 <div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">./install-aplatform64 -x
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">./ap64 -i
 </code></pre></td></tr></table>
 </div>
-</div><p>Done. The <strong>A:Platform64</strong> platform is now installed.</p>
+</div><ul>
+<li>Done, <strong>A:Platform64</strong> is now installed and ready to use:
+<ul>
+<li>installation location: <code>/opt/ap64</code></li>
+<li>installation user: <code>ap64</code></li>
+<li>CLI: <code>/opt/ap64/ap64</code></li>
+</ul>
+</li>
+</ul>
 <h2 id="usage">Usage</h2>
-<h3 id="initialize-the-environment">Initialize the environment</h3>
-<p>To start using <strong>A:Platform64</strong> change to the Ansible Control user and set the environment:</p>
-<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6">6</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7">7</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8">8</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="9"><a style="outline: none; text-decoration:none; color:inherit" href="#9">9</a>
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#007f7f"># Switch to the Ansible Control user</span>
-sudo su - sitectl
-
-<span style="color:#007f7f"># Set the environment for Ansible</span>
-<span style="color:#fff;font-weight:bold">source</span> /opt/aplatform64/bin/site/ansible_control.env
-workon aplatform64
-
-<span style="color:#007f7f"># Go to the install location</span>
-<span style="color:#fff;font-weight:bold">cd</span> /opt/aplatform64/
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="register-managed-hosts">Register managed hosts</h3>
-<p>Register the target remote host in the bootstrap process by adding it to the inventory:</p>
-<ul>
-<li>file: <code>inventories/site/ansible_service.ini</code></li>
-<li>group <code>[bootstrap_ansible_managed_nodes_distro]</code></li>
-</ul>
-<p>The bootstrap process will connect to the managed node using a pre-existing user account with root privilege and then create the dedicated account for Ansible.</p>
-<p>Register the bootstrap user details and review the dedicated user definition:</p>
-<ul>
-<li>file: <code>inventories/site/group_vars/bootstrap_ansible_managed_nodes/auto_ansible_node.yml</code>
-<ul>
-<li>variable <code>auto_ansible_node_bootstrap:</code></li>
-<li>variable <code>auto_ansible_node_user:</code></li>
-</ul>
-</li>
-<li>file: <code>inventories/site/group_vars/ansible_managed_nodes/auto_ansible_node.yml</code>
-<ul>
-<li>variable <code>auto_ansible_node_user:</code></li>
-</ul>
-</li>
-</ul>
-<p>Execute the bootstrap process:</p>
-<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">/opt/aplatform64/bin/ap64.sh -n -p bootstrap_ansible_managed_nodes -s <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">${</span>APLATFORM64_SITE<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">&#34;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>The host is now ready for Ansible. Promote the hostname by removing it from the <code>[bootstrap_ansible_managed_nodes_distro]</code> group and adding it to:</p>
-<ul>
-<li>File: <code>inventories/site/ansible_service.ini</code></li>
-<li>Host Group: <code>ansible_managed_nodes</code></li>
-</ul>
-<h3 id="run-automation-scripts">Run automation scripts</h3>
-<p>Use any of the predefined playbooks and customize the default end-state definitions for the group or create per host definitions.</p>
-<p>For example, to configure workstations and notebooks for office work:</p>
-<ol>
-<li>Add the target hostname to the inventory: <code>inventories/site/office_nodes.ini</code></li>
-<li>Review default end-state configuration: <code>inventories/site/group_vars/office_nodes/*</code></li>
-<li>Run the playgook:</li>
-</ol>
-<div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">ansible-playbook <span style="color:#0ff;font-weight:bold">\
-</span><span style="color:#0ff;font-weight:bold"></span>  -i <span style="color:#0ff;font-weight:bold">&#34;inventories/</span><span style="color:#0ff;font-weight:bold">${</span>APLATFORM64_SITE<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">/office_nodes.ini&#34;</span> <span style="color:#0ff;font-weight:bold">\
-</span><span style="color:#0ff;font-weight:bold"></span>  <span style="color:#0ff;font-weight:bold">&#34;playbooks/</span><span style="color:#0ff;font-weight:bold">${</span>APLATFORM64_SITE<span style="color:#0ff;font-weight:bold">}</span><span style="color:#0ff;font-weight:bold">/manage_office_nodes.yml&#34;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>Additional playbooks and roles can be added to further customize the platform.</p>
-<p>In addition to the standard ansible CLI commands, A:Platform64 provides the <a href="https://aplatform64.readthedocs.io/en/latest/bin/ap64/">bin/ap64.sh</a> CLI that can be used for:</p>
-<ul>
-<li>List/Run playbooks</li>
-<li>List/Create sites</li>
-<li>Upgrade collections</li>
-<li>Update sites configurations</li>
-</ul>
-<h2 id="development">Development</h2>
-<h3 id="environment">Environment</h3>
-<p>Use the following instructions for preparing the development environment:</p>
-<ul>
-<li>Prepare dev tools:
-<ul>
-<li>Install GIT</li>
-<li>Install Git Flow</li>
-<li>Install Python, PIP, Virtual Environment Wrapper</li>
-</ul>
-</li>
-<li>Clone GIT repositories</li>
-</ul>
+<h3 id="command-line-interface-cli">Command Line Interface (CLI)</h3>
 <div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1"> 1</a>
@@ -611,100 +518,139 @@ workon aplatform64
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="10"><a style="outline: none; text-decoration:none; color:inherit" href="#10">10</a>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="11"><a style="outline: none; text-decoration:none; color:inherit" href="#11">11</a>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="12"><a style="outline: none; text-decoration:none; color:inherit" href="#12">12</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="13"><a style="outline: none; text-decoration:none; color:inherit" href="#13">13</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="14"><a style="outline: none; text-decoration:none; color:inherit" href="#14">14</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="15"><a style="outline: none; text-decoration:none; color:inherit" href="#15">15</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="16"><a style="outline: none; text-decoration:none; color:inherit" href="#16">16</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="17"><a style="outline: none; text-decoration:none; color:inherit" href="#17">17</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="18"><a style="outline: none; text-decoration:none; color:inherit" href="#18">18</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="19"><a style="outline: none; text-decoration:none; color:inherit" href="#19">19</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="20"><a style="outline: none; text-decoration:none; color:inherit" href="#20">20</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="21"><a style="outline: none; text-decoration:none; color:inherit" href="#21">21</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="22"><a style="outline: none; text-decoration:none; color:inherit" href="#22">22</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="23"><a style="outline: none; text-decoration:none; color:inherit" href="#23">23</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="24"><a style="outline: none; text-decoration:none; color:inherit" href="#24">24</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="25"><a style="outline: none; text-decoration:none; color:inherit" href="#25">25</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="26"><a style="outline: none; text-decoration:none; color:inherit" href="#26">26</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="27"><a style="outline: none; text-decoration:none; color:inherit" href="#27">27</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="28"><a style="outline: none; text-decoration:none; color:inherit" href="#28">28</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="29"><a style="outline: none; text-decoration:none; color:inherit" href="#29">29</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="30"><a style="outline: none; text-decoration:none; color:inherit" href="#30">30</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="31"><a style="outline: none; text-decoration:none; color:inherit" href="#31">31</a>
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#007f7f"># Create the main repository</span>
-<span style="color:#fff;font-weight:bold">cd</span> &lt;YOUR_PROJECTS_PATH&gt;
-git clone https://github.com/serdigital64/aplatform64
-<span style="color:#fff;font-weight:bold">cd</span> aplatform64
-<span style="color:#007f7f"># Create module repositories as git submodules</span>
-git submodule init
-<span style="color:#007f7f"># Update modules</span>
-git submodule update
-<span style="color:#007f7f"># Enable main branch on submodules</span>
-git submodule foreach <span style="color:#0ff;font-weight:bold">&#34;git checkout main&#34;</span>; git submodule foreach <span style="color:#0ff;font-weight:bold">&#34;git checkout develop&#34;</span>
-<span style="color:#007f7f"># (Optional) Initialize git flow. Production branch:main, use defaults for the remaining branches</span>
-git submodule foreach <span style="color:#0ff;font-weight:bold">&#34;git flow init&#34;</span>
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">Usage: ap64 &lt;-i|-j|-c|-o|-r|-u|-l|-n|-t|-k&gt; [-s Site] [-x Host] [-p Playbook] [-e Collection|-f Package] [-b Root] [-d Var] [-g User] [-h]
+
+A:Platform64 <span style="color:#fff;font-weight:bold">command</span> line interface
+
+Commands
+
+  -i           : Install A:Platform64
+  -j           : Bootstrap A:Platform64
+  -c           : Create a A:Platform64 site
+  -o           : Remove a A:Platform64 site
+  -r           : Refresh A:Platform64 site configuration by rerunning the setup process
+  -u           : Upgrade A:Platform64 Ansible collections to the latest version in Ansible Galaxy
+  -l           : List available playbooks
+  -n           : Run playbook
+  -t           : List sites
+  -k           : Add node
+
+Flags
+
+  -h           : Show usage info
+
+Parameters
+
+  -b Root      : APlatform64 root path. Default: /opt/ap64
+  -d Var       : APlatform64 var path. Default: /var/opt/ap64
+  -g User      : APlatform64 user name. Default: ap64
+  -s Site      : Target Site. Defaul: site
+  -x Host      : Target host <span style="color:#fff;font-weight:bold">for</span> playbook run. Default: all
+  -p Playbook  : Name of the playbook to run
+  -e Collection: Collection name <span style="color:#fff;font-weight:bold">for</span> the upgrade option (-u). Default: all
+  -f Package   : Collection package file (-u). Default: none
 </code></pre></td></tr></table>
 </div>
-</div><ul>
-<li>Adjust environment variables to reflect your configuration:</li>
-</ul>
+</div><h3 id="common-use-cases">Common Use Cases</h3>
+<h4 id="register-managed-node">Register managed node</h4>
+<p>Use to register managed nodes.</p>
+<p>The target node must be prepared for running Ansible (i.e.: have a compatible Linux distro, python3, sudo and openssh)</p>
 <div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#007f7f"># Copy environment definition files from templates:</span>
-cp dot.local .local
-cp dot.secrets .secrets
-<span style="color:#007f7f"># Review and update content for both files</span>
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#007f7f"># Set bootstrap connection credentials. This is required for the initial connection only</span>
+<span style="color:#fff;font-weight:bold">export</span> AP64_NODE_USER=<span style="color:#0ff;font-weight:bold">&#39;sysadmin&#39;</span>
+<span style="color:#fff;font-weight:bold">export</span> AP64_NODE_PASSWORD=<span style="color:#0ff;font-weight:bold">&#39;**change_me**&#39;</span>
+<span style="color:#007f7f"># Register the host</span>
+/opt/ap64/ap64 -k -x <span style="color:#0ff;font-weight:bold">&#39;host1.domain1&#39;</span>
 </code></pre></td></tr></table>
 </div>
-</div><ul>
-<li>Create Python Virtual Environment Wrapper workspace</li>
-</ul>
+</div><h4 id="create-site">Create Site</h4>
+<p>Use to create new environments. Each environment is an isolated set of inventories, playbooks and configurations</p>
 <div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#fff;font-weight:bold">source</span> .local
-<span style="color:#fff;font-weight:bold">source</span> .env
-<span style="color:#fff;font-weight:bold">source</span> <span style="color:#0ff;font-weight:bold">&#34;</span>$DEVAP_VEW_LOADER<span style="color:#0ff;font-weight:bold">&#34;</span>
-mkvirtualenv aplatform64
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#007f7f"># Example: create site &#39;prod&#39;</span>
+/opt/ap64/ap64 -c -s <span style="color:#0ff;font-weight:bold">&#39;prod&#39;</span>
+
+<span style="color:#007f7f"># List available sites</span>
+/opt/ap64/ap64 -t
 </code></pre></td></tr></table>
 </div>
-</div><ul>
-<li>Install Python dev modules</li>
-</ul>
+</div><h4 id="run-aplatform64-playbook">Run A:Platform64 Playbook</h4>
 <div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell">pip3 install --upgrade -r requirements-aplatform64.txt
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#007f7f"># List available playbooks</span>
+/opt/ap64/ap64 -l
+
+<span style="color:#007f7f"># Run example playbook on localhost</span>
+/opt/ap64/ap64 -n <span style="color:#0ff;font-weight:bold">&#39;hello_world&#39;</span>
 </code></pre></td></tr></table>
 </div>
-</div><ul>
-<li>The environment is now ready. From now use the following script to load environment variables and set the virtual Python environment:</li>
-</ul>
+</div><h4 id="upgrade-aplatform64-collections">Upgrade A:Platform64 Collections</h4>
+<p>Use to upgrade collections from Ansible Galaxy</p>
 <div class="highlight"><div style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#727272" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#fff;font-weight:bold">source</span> bin/devap-set
+<pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-shell" data-lang="shell"><span style="color:#007f7f"># Download and upgrade latest collections</span>
+/opt/ap64/ap64 -u
+
+<span style="color:#007f7f"># Update site configuration</span>
+/opt/ap64/ap64 -r
 </code></pre></td></tr></table>
 </div>
-</div><ul>
-<li>Additional scripts are provided to support testing and package building:
-<ul>
-<li><code>bin/devap-build</code>: build and publish Ansible Collection packages</li>
-<li><code>bin/devap-test</code>: test Ansible Roles using Molecule</li>
-</ul>
-</li>
-</ul>
-<h3 id="repositories">Repositories</h3>
-<ul>
-<li>Project GIT repository
-<ul>
-<li>Main: <a href="https://github.com/serdigital64/aplatform64">https://github.com/serdigital64/aplatform64</a></li>
-<li>Submodules: <a href="https://github.com/aplatform64">https://github.com/aplatform64</a></li>
-</ul>
-</li>
-<li>Project Ansible Galaxy repository: <a href="https://galaxy.ansible.com/serdigital64">https://galaxy.ansible.com/serdigital64</a></li>
-<li>Project Documentation: <a href="https://aplatform64.readthedocs.io">https://aplatform64.readthedocs.io</a></li>
-</ul>
-<h2 id="contributing">Contributing</h2>
+</div><h2 id="contributing">Contributing</h2>
 <p>Help on implementing new features and maintaining the code base is welcomed.</p>
-<p>Please see the <a href="contributing/CONTRIBUTING.md">guidelines</a> for further details and the <a href="contributing/CODE_OF_CONDUCT.md">code of conduct</a>.</p>
+<ul>
+<li><a href="%5BCONTRIBUTING.md%5D(https://aplatform64.readthedocs.io/en/latest/contributing/CONTRIBUTING/)">Guidelines</a></li>
+<li><a href="%5BCODE_OF_CONDUCT.md%5D(https://aplatform64.readthedocs.io/en/latest/contributing/CODE_OF_CONDUCT/)">Contributor Covenant Code of Conduct</a></li>
+</ul>
 <h2 id="author">Author</h2>
 <ul>
 <li><a href="https://serdigital64.github.io/">SerDigital64</a></li>

@@ -23,7 +23,7 @@
       <pubDate>Sun, 10 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://serdigital64.github.io/post/projects/project-testmansh/</guid>
-      <description>Simple tool for testing Bash scripts in either native environment or purpose-build container images.</description>
+      <description>Simple tool for testing Bash scripts in native environment or purpose-build container images.</description>
     </item>
     
     <item>
@@ -50,7 +50,7 @@
       <pubDate>Sun, 03 Oct 2021 00:00:00 +0000</pubDate>
       
       <guid>https://serdigital64.github.io/post/projects/project-aplatform64/</guid>
-      <description>Automated infrastructure-as-code management solution based on Ansible for small to medium computing environments</description>
+      <description>Automated infrastructure-as-code management platform based on Ansible</description>
     </item>
     
   </channel>
